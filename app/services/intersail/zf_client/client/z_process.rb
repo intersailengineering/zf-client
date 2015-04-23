@@ -4,18 +4,15 @@ module Intersail
       class ZProcess
         include HTTParty
 
-        attr_accessor :z_token
-        attr_accessor :base_uri
         attr_accessor :create_process_uri
         attr_accessor :abort_process_uri
         attr_accessor :apply_transition_uri
+        attr_accessor :z_token
 
         #@jtodoIMP extract all below as mixin
-        def initialize(base_uri = nil, z_token = nil)
+        def initialize(z_token = nil, base_uri = nil)
           self.class.base_uri(base_uri)
           self.z_token = z_token
-          #@jtodoIMP make token mandatory because it's needed for auth and
-          # is different for every user!
           initialize_config
         end
 
@@ -43,7 +40,6 @@ module Intersail
 
         def initialize_config
           self.class.base_uri(ZfClient.config.process_def_base_uri) unless self.class.base_uri
-          self.z_token ||= ZfClient.config.process_def_z_token
           self.create_process_uri = ZfClient.config.create_process_uri
           self.abort_process_uri = ZfClient.config.abort_process_uri
           self.apply_transition_uri = ZfClient.config.apply_transition_uri
