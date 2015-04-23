@@ -1,4 +1,4 @@
-# Guida all'uso dello sviluppatore
+=== Guida all'uso dello sviluppatore
 
 1. Eseguire sempre le spec: 'bundle exec rspec'
 2. Creare nuove spec quando si implementano nuove features
