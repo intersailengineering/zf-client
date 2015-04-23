@@ -1,5 +1,5 @@
 module Intersail
-  module ZapFlow
+  module ZfClient
     class ZProcessProperty
       include ActiveModel::Model
 

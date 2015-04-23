@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :z_process_def, class: Intersail::ZapFlow::ZProcessDef do
+  factory :z_process_def, class: Intersail::ZfClient::ZProcessDef do
     process_def_id Faker::Number.number(4)
     name Faker::Name.name
     description Faker::Name.name

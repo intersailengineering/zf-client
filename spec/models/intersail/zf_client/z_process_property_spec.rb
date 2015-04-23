@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Intersail
-  module ZapFlow
+  module ZfClient
     RSpec.describe ZProcessProperty, type: :model do
       subject { build(:z_process_property) }
 

@@ -10,7 +10,6 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# To use a debugger
 group :development, :test do
   # Offers a better rails console
   gem 'pry-rails'

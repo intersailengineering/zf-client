@@ -1,6 +1,6 @@
 module Intersail
-  module ZapFlow
-    #@jtodoIMP this is a process instance not a def!!! do refactoring
+  module ZfClient
+    #@jtodoIMP this is a process instance not a def!!! do refactoring, also clear out client namespace: too much
     class ZProcessDef
       include ActiveModel::Model
       include ActiveModel::Serializers::JSON

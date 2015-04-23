@@ -5,6 +5,10 @@ require 'rails/all'
 require 'rspec/rails'
 require 'spec_helper'
 require 'database_cleaner'
+require 'factory_girl'
+require 'faker'
+require 'shoulda-matchers'
+require 'httparty'
 
 
 # Require support files

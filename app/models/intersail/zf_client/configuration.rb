@@ -1,5 +1,5 @@
 module Intersail
-  module ZapFlow
+  module ZfClient
     class Configuration
       # Configuration available options
 

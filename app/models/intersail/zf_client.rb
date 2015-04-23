@@ -1,5 +1,5 @@
 module Intersail
-  module ZapFlow
+  module ZfClient
     def self.config
       @config ||= Configuration.new
     end
