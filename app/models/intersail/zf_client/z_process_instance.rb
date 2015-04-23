@@ -1,7 +1,5 @@
 module Intersail
   module ZfClient
-    #@jtodoIMP this is a process instance not a def!!! do refactoring, also clear out client namespace: too much
-    #@jtodoIMP also add the initializer on a setup command for the default config options
     class ZProcessInstance
       include ActiveModel::Model
       include ActiveModel::Serializers::JSON

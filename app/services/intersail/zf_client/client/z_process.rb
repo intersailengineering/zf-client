@@ -4,12 +4,13 @@ module Intersail
       class ZProcess
         include HTTParty
 
+        # Properties
         attr_accessor :create_process_uri
         attr_accessor :abort_process_uri
         attr_accessor :apply_transition_uri
         attr_accessor :z_token
 
-        #@jtodoIMP extract all below as mixin
+        #@jtodoIMP extract all below as mixin and test it apart
         def initialize(z_token = nil, base_uri = nil)
           self.class.base_uri(base_uri)
           self.z_token = z_token
@@ -20,8 +21,9 @@ module Intersail
           {"X-ZToken" => self.z_token, "Accept" => "application/json"}
         end
 
-        def post(data_jsonable, relative_uri)
-          self.class.post relative_uri, body: data_jsonable.as_json, headers: header
+        def post(obj, relative_uri)
+          doValidation(obj)
+          self.class.post relative_uri, body: obj.as_json, headers: header
         end
 
 
@@ -33,8 +35,6 @@ module Intersail
 
         # process def is a z_process_def obj as_json
         def create_process_def(process_def)
-          doValidation(process_def)
-          #@jtodoIMP handle when pass with ot without /
           post(process_def, self.create_process_uri)
         end
 

@@ -19,7 +19,7 @@ module Intersail
           expect(@process).to have_attr_accessor(:apply_transition_uri)
         end
 
-        context "confiugration" do
+        context "configuration" do
           before(:all) do
             ZfClient.configure do |config|
               config.create_process_uri = "/CreateProcess.aspx"
@@ -38,20 +38,11 @@ module Intersail
             expect(@process.apply_transition_uri).to be == (ZfClient.config.apply_transition_uri)
             # Base uri
             expect(ZProcess.base_uri).to be == (ZfClient.config.process_def_base_uri)
-            expect{ZProcess.new(@z_token, @changed_uri)}.to change{ZProcess.base_uri}.to(@changed_uri)
+            expect { ZProcess.new(@z_token, @changed_uri) }.to change { ZProcess.base_uri }.to(@changed_uri)
           end
         end
 
-        #@jTODOimp extract both into shared example
-        it "should pass authorization data in the hedader" do
-          expect(@process.header["X-ZToken"]).to be == @process.z_token
-        end
-
-        it "should pass data content json in header" do
-          expect(@process.header["Accept"]).to be == 'application/json'
-        end
-
-        context "process definition" do
+        context "process instance" do
           let(:p_def) { build(:z_process_inst) }
           let(:success_res) { build(:success_pdef_create_res_success) }
           let(:error_res) { build(:success_pdef_create_res_error) }
@@ -61,35 +52,16 @@ module Intersail
             it_behaves_like "process_instance"
           end
 
+          it_behaves_like "client_validatable"
+
           context "create" do
-            # Response data: ProcessId , Errors
             context "success" do
               it "should create a process definition" do
-                #@jtodoIMP extract to reusable method
-                expect(@process.class).to receive(:post)
-                                          .with(@process.create_process_uri, body: p_def.as_json, headers: @process.header)
-                                          .and_return(success_res)
+                expect(@process).to receive(:post)
+                                    .with(p_def, @process.create_process_uri)
+                                    .and_return(success_res)
 
                 expect(@process.create_process_def(p_def)).to be == success_res
-              end
-
-
-            end
-
-            context "error" do
-              it "should not create a process definition" do
-                #@jtodoIMP extract to reusable method
-                expect(@process.class).to receive(:post)
-                                          .with(@process.create_process_uri, body: p_def.as_json, headers: @process.header)
-                                          .and_return(error_res)
-
-                expect(@process.create_process_def(p_def)).to be == error_res
-              end
-
-              it "should not create a process definintion if argument are invalid" do
-                expect(p_def).to receive(:valid?) { false }
-                allow(p_def).to receive_message_chain(:errors, :full_messages) { "Fake error message" }
-                expect { @process.create_process_def(p_def) }.to raise_error(Intersail::Errors::StandardValidationError, p_def.errors.full_messages)
               end
             end
           end

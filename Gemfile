@@ -16,6 +16,8 @@ group :development, :test do
   gem 'pry-doc'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Test coverage
+  gem 'simplecov'
 
   # Others
 end

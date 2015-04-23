@@ -13,6 +13,8 @@ module Intersail
 
       # User and Acl
       #@jtodoLOW add accessors
+
+      #@jtodoIMP create a setup like devise that publish initializers!
     end
   end
 end
