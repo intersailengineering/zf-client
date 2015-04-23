@@ -1,17 +1,20 @@
 module Intersail
   module ZfClient
     #@jtodoIMP this is a process instance not a def!!! do refactoring, also clear out client namespace: too much
-    class ZProcessDef
+    #@jtodoIMP also add the initializer on a setup command for the default config options
+    class ZProcessInstance
       include ActiveModel::Model
       include ActiveModel::Serializers::JSON
 
       attr_accessor :process_def_id
+      attr_accessor :parent_process_id
       attr_accessor :name
       attr_accessor :description
       attr_accessor :properties
 
       # Validation
       validates_presence_of :process_def_id
+      validates_presence_of :parent_process_id
       validates_presence_of :name
       validates_presence_of :description
       validates_presence_of :properties
@@ -23,36 +26,26 @@ module Intersail
       end
 
       # Serialization
-      def as_json(options = nil)
+      def as_json(options = {})
         return nil unless self.valid?
         super(options)
       end
 
       def attributes
         {
-            'ProcessDefId' => 0,
-            'Name' => "",
-            'Description' => "",
-            'Properties' => ""
+          "process_def_id" => 0,
+          "parent_process_id" => 0,
+          "name" => "",
+          "description" => "",
+          "properties" => [],
         }
       end
 
-      #@jtodoIMP remove this and use no camel case
-      def ProcessDefId
-        self.process_def_id
+      def serializable_hash(options = {})
+        options[:include] = [:properties]
+        super(options)
       end
 
-      def Name
-        self.name
-      end
-
-      def Description
-        self.description
-      end
-
-      def Properties
-        self.properties.as_json
-      end
     end
   end
 end

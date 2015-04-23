@@ -52,13 +52,13 @@ module Intersail
         end
 
         context "process definition" do
-          let(:p_def) { build(:z_process_def) }
+          let(:p_def) { build(:z_process_inst) }
           let(:success_res) { build(:success_pdef_create_res_success) }
           let(:error_res) { build(:success_pdef_create_res_error) }
 
           context "stub validation" do
             subject { p_def }
-            it_behaves_like "process_definition"
+            it_behaves_like "process_instance"
           end
 
           context "create" do
