@@ -19,5 +19,21 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.1"
 
+  # Databse connector
+  s.add_dependency 'pg'
   s.add_development_dependency "sqlite3"
+
+  # Development
+  # Rspec
+  s.add_development_dependency 'rspec-rails'
+  # Automated tests with guard
+  s.add_development_dependency 'guard-rspec'
+  # Auto Clean DB
+  s.add_development_dependency 'database_cleaner'
+  # More Rspec matches
+  s.add_development_dependency 'shoulda-matchers'
+  # Automated Object building
+  s.add_development_dependency "factory_girl_rails", "~> 4.0"
+  # Build fake data
+  s.add_development_dependency 'faker'
 end

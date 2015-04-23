@@ -6,9 +6,14 @@ require 'rspec/rails'
 require 'spec_helper'
 require 'database_cleaner'
 
+
 # Require support files
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path("../../test/dummy/config/environment.rb",  __FILE__)
 Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each { |f| require f }
+
+# Setup migration paths
+ActiveRecord::Migrator.migrations_paths = [File.expand_path("../test/dummy/db/migrate", __FILE__)]
+ActiveRecord::Migrator.migrations_paths << File.expand_path('../db/migrate', __FILE__)
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests

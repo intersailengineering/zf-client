@@ -11,5 +11,12 @@ gemspec
 # your gem to rubygems.org.
 
 # To use a debugger
-# gem 'byebug', group: [:development, :test]
+group :development, :test do
+  # Offers a better rails console
+  gem 'pry-rails'
+  gem 'pry-doc'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
 
+  # Others
+end
