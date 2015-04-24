@@ -1,9 +1,8 @@
 module Intersail
   shared_examples "user" do
-    let(:_custom_data) { subject }
+    let(:_user) { subject }
 
     it "should behave as a ZUser" do
-      pending "implement attr accessors"
       expect(_user).to have_attr_accessor(:id)
       expect(_user).to have_attr_accessor(:username)
       expect(_user).to have_attr_accessor(:description)
@@ -12,17 +11,17 @@ module Intersail
       expect(_user).to have_attr_accessor(:info)
     end
 
-    xit "should be an active model"
+    it "should be an active model" do
+      expect(_user).to extends(ActiveModel::Model)
+    end
 
-    xit "should validate his data"
-
-    #@jtodoIMP before this extract p_instance validation login and use it here
-    #@dup extract as mixin this login
-    context "serialization" do
-      xit "should be serialized as json if valid"
-      xit "should not be serialized as json if not valid"
-      xit "should ask his info if it's valid"
-
+    it "should validate his data" do
+      expect(_user).to validate_presence_of(:username)
+      expect(_user).to validate_presence_of(:description)
+      expect(_user).to validate_presence_of(:password)
+      expect(_user).to validate_presence_of(:active)
+      expect(_user).to validate_presence_of(:info)
+      expect(_user).to have_subattribute_validator(:info)
     end
   end
 end

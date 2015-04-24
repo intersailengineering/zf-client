@@ -3,6 +3,7 @@ module Intersail
     let(:_custom_data) { subject }
 
     it "should behaves as a ZCustomData" do
+      expect(_custom_data).to have_attr_accessor(:id)
       expect(_custom_data).to have_attr_accessor(:name)
       expect(_custom_data).to have_attr_accessor(:value)
     end
@@ -14,17 +15,6 @@ module Intersail
     it "should validate his data" do
       expect(_custom_data).to validate_presence_of(:name)
       expect(_custom_data).to validate_presence_of(:value)
-    end
-
-    context "serialization" do
-      it "should have serialization attributes" do
-        expect(subject.attributes).to be == {
-            "name" => "",
-            "value" => "",
-        }
-      end
-
-      it_behaves_like "serializable"
     end
   end
 end

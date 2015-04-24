@@ -8,6 +8,8 @@ module Intersail
       it_behaves_like "process_instance"
 
       context "serialization" do
+        it_behaves_like "serializable"
+
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
               "process_def_id" => 0,
@@ -17,8 +19,6 @@ module Intersail
               "properties" => []
           }
         end
-
-        it_behaves_like "serializable"
       end
     end
   end
