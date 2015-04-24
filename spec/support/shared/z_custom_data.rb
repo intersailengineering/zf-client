@@ -16,10 +16,15 @@ module Intersail
       expect(_custom_data).to validate_presence_of(:value)
     end
 
-    #@dup extract as mixin this login
     context "serialization" do
-      xit "should be serialized as json if valid"
-      xit "should not be serialized as json if invalid"
+      it "should have serialization attributes" do
+        expect(subject.attributes).to be == {
+            "name" => "",
+            "value" => "",
+        }
+      end
+
+      it_behaves_like "serializable"
     end
   end
 end
