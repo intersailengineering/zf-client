@@ -8,11 +8,16 @@ module Intersail
       it_behaves_like "urr"
 
       context "serialization" do
-        # it_behaves_like "serializable"
-        xit "should have serialization attributes" do
+        it_behaves_like "serializable"
+        it "should have serialization attributes" do
           expect(subject.attributes).to be == {
-
+            "role" => [],
+            "resource" => []
           }
+        end
+
+        it "should include role and resource" do
+          expect(subject.attributes_to_include).to be == [:role, :resource]
         end
       end
     end

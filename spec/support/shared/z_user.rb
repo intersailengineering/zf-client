@@ -8,8 +8,8 @@ module Intersail
       expect(_user).to have_attr_accessor(:description)
       expect(_user).to have_attr_accessor(:password)
       expect(_user).to have_attr_accessor(:active)
-      expect(_user).to have_attr_accessor(:resource)
       expect(_user).to have_attr_accessor(:profile)
+      expect(_user).to have_attr_accessor(:urr)
     end
 
     it "should be an active model" do
@@ -17,13 +17,14 @@ module Intersail
     end
 
     it "should validate his data" do
+      pending "activate when urr is complete"
       expect(_user).to validate_presence_of(:username)
       expect(_user).to validate_presence_of(:description)
       expect(_user).to validate_presence_of(:password)
       expect(_user).to validate_presence_of(:active)
-      expect(_user).to validate_presence_of(:resource)
-      expect(_user).to have_subattribute_validator(:resource)
+      expect(_user).to validate_presence_of(:profile)
       expect(_user).to have_subattribute_validator(:profile)
+      expect(_user).to have_subattribute_validator(:urr)
     end
   end
 end
