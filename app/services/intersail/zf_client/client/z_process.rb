@@ -17,9 +17,13 @@ module Intersail
           initialize_config
         end
 
-        # process def is a z_process_def obj as_json
-        def create_process_def(process_def)
-          post(process_def, self.create_process_uri)
+        # Create a new process instance
+        # requires a valid process_instance is a z_process_instance object
+        # Returns the given process instance with his data populated
+        def create_process_def(process_instance)
+          res = post(process_instance, self.create_process_uri)
+          process_instance.id = res[:process_id]
+          process_instance
         end
 
         def initialize_config

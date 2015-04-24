@@ -9,7 +9,7 @@ module Intersail
           @process = ZProcess.new(@z_token)
         end
 
-        it "behaves like a ZfClient client" do
+        it "behaves like a ZProcess client" do
           expect(@process).to extends(HTTParty)
           expect(@process.class.base_uri).to be == @base_uri
           expect(@process.z_token).to be == @z_token
@@ -60,7 +60,10 @@ module Intersail
                                   .with(p_def, @process.create_process_uri)
                                   .and_return(success_res)
 
-              expect(@process.create_process_def(p_def)).to be == success_res
+              process_id = success_res["process_id"]
+              p_def.id = process_id
+
+              expect(@process.create_process_def(p_def)).to be == p_def
             end
           end
 

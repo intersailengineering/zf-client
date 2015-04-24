@@ -4,6 +4,7 @@ module Intersail
       include ActiveModel::Model
       include ActiveModel::Serializers::JSON
 
+      attr_accessor :id
       attr_accessor :process_def_id
       attr_accessor :parent_process_id
       attr_accessor :name

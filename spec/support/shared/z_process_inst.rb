@@ -3,6 +3,7 @@ module Intersail
     let(:_p_inst) { subject }
 
     it "should have process instance attributes" do
+      expect(_p_inst).to have_attr_accessor(:id)
       expect(_p_inst).to have_attr_accessor(:process_def_id)
       expect(_p_inst).to have_attr_accessor(:parent_process_id)
       expect(_p_inst).to have_attr_accessor(:name)
