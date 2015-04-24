@@ -2,7 +2,7 @@ module Intersail
   module ZfClient
     class ZProcessInstance
       include ActiveModel::Model
-      include ActiveModel::Serializers::JSON
+      include Serializable
 
       attr_accessor :id
       attr_accessor :process_def_id
@@ -25,19 +25,6 @@ module Intersail
       end
 
       # Serialization
-      #@jtodoIMP extract this as mixin
-      # start extract mixin
-      def as_json(options = {})
-        return nil unless self.valid?
-        super(options)
-      end
-
-      def serializable_hash(options = {})
-        options[:include] = [:properties]
-        super(options)
-      end
-
-      # stop extract mixin
       def attributes
         {
           "process_def_id" => 0,
@@ -46,6 +33,10 @@ module Intersail
           "description" => "",
           "properties" => [],
         }
+      end
+
+      def attributes_to_include
+        [:properties]
       end
     end
   end

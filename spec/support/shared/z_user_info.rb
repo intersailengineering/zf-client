@@ -1,6 +1,6 @@
 module Intersail
   shared_examples "user_info" do
-    let(:_user) { subject }
+    let(:_custom_data) { subject }
 
     it "should behave as a ZUserInfo" do
       pending "implement attr accessors"
