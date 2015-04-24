@@ -3,6 +3,7 @@ module Intersail
     module Client
       class ZProcess
         include HTTParty
+        include Validatable
 
         # Properties
         attr_accessor :create_process_uri
@@ -10,28 +11,11 @@ module Intersail
         attr_accessor :apply_transition_uri
         attr_accessor :z_token
 
-        #@jtodoIMP extract all below as mixin and test it apart
         def initialize(z_token = nil, base_uri = nil)
           self.class.base_uri(base_uri)
           self.z_token = z_token
           initialize_config
         end
-
-        def header
-          {"X-ZToken" => self.z_token, "Accept" => "application/json"}
-        end
-
-        def post(obj, relative_uri)
-          doValidation(obj)
-          self.class.post relative_uri, body: obj.as_json, headers: header
-        end
-
-
-        def doValidation(object_validatable)
-          raise(Intersail::Errors::StandardValidationError, object_validatable.errors.full_messages) unless object_validatable.valid?
-        end
-
-        ###### no more mixin below here
 
         # process def is a z_process_def obj as_json
         def create_process_def(process_def)
