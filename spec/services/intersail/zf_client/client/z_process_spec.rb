@@ -55,35 +55,21 @@ module Intersail
           it_behaves_like "client_validatable"
 
           context "create" do
-            context "success" do
-              it "should create a process definition" do
-                expect(@process).to receive(:post)
-                                    .with(p_def, @process.create_process_uri)
-                                    .and_return(success_res)
+            it "should create a process definition" do
+              expect(@process).to receive(:post)
+                                  .with(p_def, @process.create_process_uri)
+                                  .and_return(success_res)
 
-                expect(@process.create_process_def(p_def)).to be == success_res
-              end
+              expect(@process.create_process_def(p_def)).to be == success_res
             end
           end
 
           context "apply_transition" do
-            context "success" do
-              xit "should apply transition"
-            end
-
-            context "error" do
-              xit "should not apply transition"
-            end
+            xit "should apply transition"
           end
 
           context "abort_process" do
-            context "success" do
-              xit "should abort process"
-            end
-
-            context "error" do
-              xit "should not abort process"
-            end
+            xit "should abort process"
           end
         end
       end
