@@ -21,16 +21,8 @@ module Intersail
       expect(_p_inst).to validate_presence_of(:name)
       expect(_p_inst).to validate_presence_of(:description)
       expect(_p_inst).to validate_presence_of(:properties)
+      expect(_p_inst).to have_subattribute_validator(:properties)
     end
 
-    #@jtodoIMP extract this into shared example such as with attributes, then implement models then stubs
-    it "should ask his properties if it's valid" do
-      d_invalid = double()
-      expect(d_invalid).to receive(:valid?) { false }
-      expect(d_invalid).to receive_message_chain(:errors, :full_message) { "Fake error message" }
-
-      _p_inst.properties = [d_invalid]
-      expect(_p_inst.valid?).to be == false
-    end
   end
 end

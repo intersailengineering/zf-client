@@ -17,12 +17,7 @@ module Intersail
       validates_presence_of :name
       validates_presence_of :description
       validates_presence_of :properties
-      validates_each :properties do |record, attr, value|
-        next if value.nil? || value.empty?
-        value.each do |validatable|
-          record.errors[attr] = validatable.errors.full_message unless validatable.valid?
-        end
-      end
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :properties
 
       # Serialization
       def attributes

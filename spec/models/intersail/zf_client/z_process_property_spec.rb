@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Intersail
   module ZfClient
-    RSpec.describe ZProcessProperty, type: :model do
+    describe ZProcessProperty, type: :model do
       subject { build(:z_process_property) }
 
       it { is_expected.to have_attr_accessor(:name) }

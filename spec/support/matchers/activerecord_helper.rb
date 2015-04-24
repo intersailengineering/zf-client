@@ -32,5 +32,16 @@ module Helpers
         expect(actual).to(have_db_column(:type).of_type(:string))
       end
     end
+
+    RSpec::Matchers.define :have_subattribute_validator do |attr_name|
+      # Check for all the callback that have SubAttributeValidator on the given attribute attr_name
+      match do |actual|
+        validator = actual._validate_callbacks.select {|x|
+          x.filter.attributes == [attr_name.to_sym] &&
+              x.filter.class == Intersail::Validators::SubAttributeValidator
+        }
+        expect(validator.size).to be > 0
+      end
+    end
   end
 end
