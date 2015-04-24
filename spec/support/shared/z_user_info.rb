@@ -4,8 +4,8 @@ module Intersail
 
     it "should behave as a ZUserInfo" do
       pending "implement attr accessors"
-      expect(_user).to have_attr_accessor(:cognome)
-      expect(_user).to have_attr_accessor(:nome)
+      expect(_user).to have_attr_accessor(:first_name)
+      expect(_user).to have_attr_accessor(:last_name)
       expect(_user).to have_attr_accessor(:mail)
       expect(_user).to have_attr_accessor(:custom_data)
     end

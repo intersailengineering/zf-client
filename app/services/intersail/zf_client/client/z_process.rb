@@ -19,7 +19,8 @@ module Intersail
         # Create a new process instance
         # requires a valid process_instance is a z_process_instance object
         # Returns the given process instance with his data populated
-        def create_process_def(process_instance)
+        #@jtodoIMP change into process instance
+        def create_process_inst(process_instance)
           res = post(process_instance, self.create_process_uri)
           process_instance.id = res[:process_id]
           process_instance

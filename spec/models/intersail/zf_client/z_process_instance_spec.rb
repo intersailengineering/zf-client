@@ -8,7 +8,15 @@ module Intersail
       it_behaves_like "process_instance"
 
       context "serialization" do
-        xit "should have serialization attributes"
+        it "should have serialization attributes" do
+          expect(subject.attributes).to be == {
+              "process_def_id" => 0,
+              "parent_process_id" => 0,
+              "name" => "",
+              "description" => "",
+              "properties" => []
+          }
+        end
 
         it_behaves_like "serializable"
       end

@@ -24,6 +24,10 @@ module Intersail
         _serializable.serializable_hash
       end
 
+      it "should implement attributes_to_include" do
+        expect(_serializable).to respond_to :attributes_to_include
+      end
+
       class SerializableStub
         include Serializable
       end

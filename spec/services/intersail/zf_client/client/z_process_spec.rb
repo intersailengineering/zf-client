@@ -62,7 +62,7 @@ module Intersail
               process_id = success_res["process_id"]
               p_def.id = process_id
 
-              expect(@process.create_process_def(p_def)).to be == p_def
+              expect(@process.create_process_inst(p_def)).to be == p_def
             end
           end
 

@@ -23,7 +23,7 @@ module Intersail
       expect(_p_inst).to validate_presence_of(:properties)
     end
 
-    #@jtodoIMP extract this into shared example such as with attributes
+    #@jtodoIMP extract this into shared example such as with attributes, then implement models then stubs
     it "should ask his properties if it's valid" do
       d_invalid = double()
       expect(d_invalid).to receive(:valid?) { false }

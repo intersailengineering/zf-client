@@ -31,7 +31,7 @@ module Intersail
           "parent_process_id" => 0,
           "name" => "",
           "description" => "",
-          "properties" => [],
+          "properties" => []
         }
       end
 
