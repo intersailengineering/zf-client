@@ -1,7 +1,12 @@
 module Intersail
   module ZfClient
     module Client
-      module Validatable
+      module HTTPartyValidatable
+        # Depends on HTTParty
+        def self.included(receiver)
+          receiver.send :include, HTTParty
+        end
+
         def header
           {"X-ZToken" => self.z_token, "Accept" => "application/json"}
         end

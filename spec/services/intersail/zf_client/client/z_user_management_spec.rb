@@ -23,7 +23,7 @@ module Intersail
           xit "should list all users filtered"
         end
 
-        #@jtodoIMP create the user resource now, then do same for role and permissions
+        #@jtodoIMP create the user resource now, integrate it into zum_engine, cloned from andrea one and with test fixed tell to andrea, then do same for role and permissions
       end
     end
   end

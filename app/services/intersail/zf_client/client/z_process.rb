@@ -2,8 +2,7 @@ module Intersail
   module ZfClient
     module Client
       class ZProcess
-        include HTTParty
-        include Validatable
+        include HTTPartyValidatable
 
         # Properties
         attr_accessor :create_process_uri
