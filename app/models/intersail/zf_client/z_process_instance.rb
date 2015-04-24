@@ -25,11 +25,19 @@ module Intersail
       end
 
       # Serialization
+      #@jtodoIMP extract this as mixin
+      # start extract mixin
       def as_json(options = {})
         return nil unless self.valid?
         super(options)
       end
 
+      def serializable_hash(options = {})
+        options[:include] = [:properties]
+        super(options)
+      end
+
+      # stop extract mixin
       def attributes
         {
           "process_def_id" => 0,
@@ -39,12 +47,6 @@ module Intersail
           "properties" => [],
         }
       end
-
-      def serializable_hash(options = {})
-        options[:include] = [:properties]
-        super(options)
-      end
-
     end
   end
 end
