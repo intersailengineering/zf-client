@@ -17,7 +17,6 @@ module Intersail
     end
 
     it "should validate his data" do
-      pending "activate when urr is complete"
       expect(_user).to validate_presence_of(:username)
       expect(_user).to validate_presence_of(:description)
       expect(_user).to validate_presence_of(:password)

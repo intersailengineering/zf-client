@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :urr, class: Intersail::ZfClient::ZUrr do
-    #@jtodoIMP add role and resource then uncomment this and uncomment on user
-    # role
-    # resource
+    role Intersail::ZfClient::ZRole.new
+    resource Intersail::ZfClient::ZResource.new
   end
 end

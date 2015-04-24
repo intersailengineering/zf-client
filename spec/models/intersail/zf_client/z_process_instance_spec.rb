@@ -19,6 +19,10 @@ module Intersail
               "properties" => []
           }
         end
+
+        it "should include properties" do
+          expect(subject.attributes_to_include).to be == [:properties]
+        end
       end
     end
   end

@@ -16,6 +16,10 @@ module Intersail
               "value" => "",
           }
         end
+
+        it "should not include subattributes" do
+          expect(subject.attributes_to_include).to be == []
+        end
       end
     end
   end

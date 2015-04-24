@@ -18,6 +18,10 @@ module Intersail
               "custom_data" => ""
           }
         end
+
+        it "should include custom data" do
+          expect(subject.attributes_to_include).to be == [:custom_data]
+        end
       end
     end
   end

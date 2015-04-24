@@ -21,7 +21,7 @@ module Intersail
       validates_presence_of :active
       validates_presence_of :profile
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :profile
-      # validates_with Intersail::Validators::SubAttributeValidator, attributes: :urr
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :urr
 
       # Serialization
       def attributes
