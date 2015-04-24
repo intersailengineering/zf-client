@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Intersail
   module ZfClient
-    describe Configuration do
+    describe Configuration, type: :model do
       before(:all) do
         class Configuration
           attr_accessor :setted

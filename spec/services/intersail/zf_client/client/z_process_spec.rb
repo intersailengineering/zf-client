@@ -3,7 +3,7 @@ require 'rails_helper'
 module Intersail
   module ZfClient
     module Client
-      RSpec.describe ZProcess, type: :model do
+      RSpec.describe ZProcess, type: :client do
         before(:all) do
           @z_token = SecureRandom.uuid
           @process = ZProcess.new(@z_token)
