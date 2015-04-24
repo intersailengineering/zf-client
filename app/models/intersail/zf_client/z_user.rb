@@ -11,15 +11,17 @@ module Intersail
       attr_accessor :description
       attr_accessor :password
       attr_accessor :active
-      attr_accessor :info
+      attr_accessor :resource
+      attr_accessor :profile
 
       # Validations
       validates_presence_of :username
       validates_presence_of :description
       validates_presence_of :password
       validates_presence_of :active
-      validates_presence_of :info
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :info
+      validates_presence_of :resource
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :profile
 
       # Serialization
       def attributes
@@ -28,12 +30,13 @@ module Intersail
             "description" => "",
             "password" => "",
             "active" => false,
-            "info" => nil
+            "resource" => nil,
+            "profile" => []
         }
       end
 
       def attributes_to_include
-        [:info]
+        [:resource]
       end
     end
   end

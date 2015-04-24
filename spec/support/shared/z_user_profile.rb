@@ -1,8 +1,8 @@
 module Intersail
-  shared_examples "user_info" do
+  shared_examples "user_profile" do
     let(:_user) { subject }
 
-    it "should behave as a ZUserInfo" do
+    it "should behave as a ZUserProfile" do
       expect(_user).to have_attr_accessor(:id)
       expect(_user).to have_attr_accessor(:first_name)
       expect(_user).to have_attr_accessor(:last_name)

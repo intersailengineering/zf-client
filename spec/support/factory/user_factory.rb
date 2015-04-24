@@ -5,6 +5,6 @@ FactoryGirl.define do
     description Faker::Name.name
     password Faker::Internet.password(8)
     active true
-    info { FactoryGirl.build(:user_info) }
+    resource { FactoryGirl.build(:user_profile) }
   end
 end

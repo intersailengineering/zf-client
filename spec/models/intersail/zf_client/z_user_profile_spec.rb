@@ -2,10 +2,10 @@ require 'rails_helper'
 
 module Intersail
   module ZfClient
-    describe ZUserInfo, type: :model do
-      subject { @user_info = build(:user_info) }
+    describe ZUserProfile, type: :model do
+      subject { @user_profile = build(:user_profile) }
 
-      it_behaves_like "user_info"
+      it_behaves_like "user_profile"
 
       context "serialization" do
         it_behaves_like "serializable"

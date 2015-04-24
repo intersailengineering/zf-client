@@ -9,13 +9,14 @@ module Intersail
           @process = ZProcess.new(@z_token)
         end
 
+        it_behaves_like "httparty_validatable"
+
         it "behaves like a ZProcess client" do
-          expect(@process.class.base_uri).to be == @base_uri
-          expect(@process.z_token).to be == @z_token
           expect(@process).to have_attr_accessor(:z_token)
           expect(@process).to have_attr_accessor(:create_process_uri)
           expect(@process).to have_attr_accessor(:abort_process_uri)
           expect(@process).to have_attr_accessor(:apply_transition_uri)
+          expect(@process.z_token).to be == @z_token
         end
 
         context "configuration" do
@@ -51,7 +52,6 @@ module Intersail
             it_behaves_like "process_instance"
           end
 
-          it_behaves_like "httparty_validatable"
 
           context "create" do
             it "should create a process definition" do

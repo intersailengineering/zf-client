@@ -7,7 +7,6 @@ module Intersail
 
       it_behaves_like "user"
 
-
       context "serialization" do
         it_behaves_like "serializable"
         it "should have serialization attributes" do
@@ -16,7 +15,8 @@ module Intersail
               "description" => "",
               "password" => "",
               "active" => false,
-              "info" => nil
+              "resource" => nil,
+              "profile" => []
           }
         end
       end

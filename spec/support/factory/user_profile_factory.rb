@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user_info, class: Intersail::ZfClient::ZUserInfo do
+  factory :user_profile, class: Intersail::ZfClient::ZUserProfile do
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
     mail Faker::Internet.email

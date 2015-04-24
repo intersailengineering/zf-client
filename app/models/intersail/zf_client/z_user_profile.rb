@@ -1,6 +1,6 @@
 module Intersail
   module ZfClient
-    class ZUserInfo
+    class ZUserProfile
       include ActiveModel::Model
       include Serializable
 

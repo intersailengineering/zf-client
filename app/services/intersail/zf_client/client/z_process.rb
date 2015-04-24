@@ -4,7 +4,7 @@ module Intersail
       class ZProcess
         include HTTPartyValidatable
 
-        # Properties
+        # Attributes
         attr_accessor :create_process_uri
         attr_accessor :abort_process_uri
         attr_accessor :apply_transition_uri
