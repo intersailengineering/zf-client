@@ -16,7 +16,7 @@ module Intersail
            # IMPLEMENT FAKE HERE
         end
 
-        def get_user
+        def get_user  
            # IMPLEMENT FAKE HERE
         end
 

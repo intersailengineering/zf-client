@@ -3,7 +3,7 @@ require 'rails_helper'
 module Intersail
   module ZfClient
     describe ZProcessInstance, type: :model do
-      subject { @p_inst = build(:z_process_inst) }
+      subject { build(:z_process_inst) }
 
       it_behaves_like "process_instance"
 

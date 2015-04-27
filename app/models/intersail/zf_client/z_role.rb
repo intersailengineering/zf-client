@@ -1,7 +1,7 @@
 module Intersail
   module ZfClient
     class ZRole
-
+      #@dup all the code here is the same as for the unit
       include ActiveModel::Model
       include Serializable
 

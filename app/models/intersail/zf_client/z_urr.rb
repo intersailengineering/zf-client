@@ -22,14 +22,29 @@ module Intersail
       # Serialization
       def attributes
         {
-            "role" => [],
-            "resource" => [],
-            "unit" => []
+            "role_id" => nil,
+            "user_id" => nil,
+            "unit_id" => nil
         }
       end
 
+      def role_id
+        return self.role.id if self.role && self.role.id != nil
+        nil
+      end
+
+      def user_id
+        return self.user.id if self.user && self.user.id != nil
+        nil
+      end
+
+      def unit_id
+        # return self.unit.id if self.unit && self.unit.id != nil
+        nil
+      end
+
       def attributes_to_include
-        [:role, :user, :unit]
+        []
       end
     end
   end
