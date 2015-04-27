@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :role, class: Intersail::ZfClient::ZRole do
+    id Faker::Number.number(4)
     name Faker::Lorem.word
     description Faker::Lorem.words(5)
     parent { FactoryGirl.build(:role_no_parent) }

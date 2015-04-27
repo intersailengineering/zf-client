@@ -37,7 +37,7 @@ module Intersail
       end
 
       def unit_id
-        # return self.unit.id if self.unit && self.unit.id != nil
+        return self.unit.id if self.unit && self.unit.id != nil
         nil
       end
 

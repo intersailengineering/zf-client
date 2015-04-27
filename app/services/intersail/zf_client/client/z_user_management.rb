@@ -12,12 +12,14 @@ module Intersail
           self.z_token = z_token
         end
 
-        def create_user
-           # IMPLEMENT FAKE HERE
+        def create_user(user)
+           return nil unless user.valid?
+           user.id = 1
+           user
         end
 
-        def get_user
-           # IMPLEMENT FAKE HERE
+        def get_user(id)
+           user = FactoryGirl.build(:user)
         end
 
         def update_user
