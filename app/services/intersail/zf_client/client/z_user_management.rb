@@ -19,9 +19,7 @@ module Intersail
         end
 
         def get_user(id)
-          user = FactoryGirl.build(:user)
-          user.id = id
-          return user
+          build_user(id)
         end
 
         def update_user(user)
@@ -36,12 +34,76 @@ module Intersail
 
         def all_users
           (1..10).to_a.inject([]) do |users, index|
-            fake_user = FactoryGirl.build(:user)
-            fake_user.urr = nil
+            fake_user = self.build_user(index)
             users.push(fake_user)
           end
           users
         end
+
+        private
+
+        # Build fake data
+        def build_user(id)
+          user = ZUser.new({
+                               id: id,
+                               username: Faker::Name.name,
+                               description: Faker::Name.name,
+                               password: Faker::Internet.password(8),
+                               active: true,
+                           })
+          user.profile = build_profile
+          user.urr = build_urr(user, build_unit, build_role)
+          user
+        end
+
+        def build_profile
+          ZUserProfile.new({
+                           first_name: Faker::Name.first_name,
+                           last_name: Faker::Name.last_name,
+                           mail: Faker::Internet.email,
+                           custom_data: ZCustomData.new({
+                                                            name: Faker::Lorem.word,
+                                                            value: Faker::Lorem.word
+                                                        })
+                       })
+        end
+
+        def build_unit
+          ZUnit.new({
+                        id: Faker::Number.number(4),
+                        name: Faker::Lorem.word,
+                        description: Faker::Lorem.words(5),
+                        parent: (ZUnit.new({
+                                               id: Faker::Number.number(4),
+                                               name: Faker::Lorem.word,
+                                               description: Faker::Lorem.words(5),
+                                               parent: nil
+                                           }))
+                    })
+        end
+
+        def build_role
+          ZRole.new({
+                        id: Faker::Number.number(4),
+                        name: Faker::Lorem.word,
+                        description: Faker::Lorem.words(5),
+                        parent: (ZUnit.new({
+                                               id: Faker::Number.number(4),
+                                               name: Faker::Lorem.word,
+                                               description: Faker::Lorem.words(5),
+                                               parent: nil
+                                           }))
+                    })
+        end
+
+        def build_urr(user, unit, role)
+          ZUrr.new({
+                       user: user,
+                       unit: unit,
+                       role: role
+                   })
+        end
+
       end
     end
   end

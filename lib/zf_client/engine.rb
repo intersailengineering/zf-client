@@ -2,6 +2,6 @@ module ZfClient
   class Engine < ::Rails::Engine
     isolate_namespace ZfClient
 
-    Dir["#{config.root}/lib/**/*.rb"].each { |f| require f }
+    config.autoload_paths << File.expand_path("#{config.root}/lib", __FILE__)
   end
 end
