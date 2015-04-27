@@ -17,9 +17,6 @@ module Intersail
       expect(_urr).to validate_presence_of(:role)
       expect(_urr).to validate_presence_of(:unit)
       expect(_urr).to validate_presence_of(:user)
-      expect(_urr).to have_subattribute_validator(:role)
-      expect(_urr).to have_subattribute_validator(:unit)
-      expect(_urr).to have_subattribute_validator(:user)
     end
   end
 end

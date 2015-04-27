@@ -15,9 +15,7 @@ module Intersail
       validates_presence_of :role
       validates_presence_of :user
       validates_presence_of :unit
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :role
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :user
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :unit
+      # Here we doet not validate user,role and resource subattributes to avoid infinite loop
 
       # Serialization
       def attributes
