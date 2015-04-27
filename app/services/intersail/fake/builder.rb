@@ -1,3 +1,7 @@
+#@jtodoIMP comment this out when faking is done
+
+require 'faker'
+
 module Intersail
   module Fake
     class Builder

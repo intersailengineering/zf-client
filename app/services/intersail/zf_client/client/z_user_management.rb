@@ -10,6 +10,7 @@ module Intersail
         def initialize(z_token = nil, base_uri = nil)
           self.class.base_uri(base_uri)
           self.z_token = z_token
+          #@jtodoIMP remove this when faking is done
           @faker = Intersail::Fake::Builder.new
         end
 

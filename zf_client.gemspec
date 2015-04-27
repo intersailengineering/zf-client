@@ -18,6 +18,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.1"
+  # Build fake data
+  #@jtodoIMP remove when faking is done
+  s.add_dependency 'faker'
+
 
   # Databse connector
   s.add_dependency 'pg'
@@ -37,5 +41,6 @@ Gem::Specification.new do |s|
   # Automated Object building
   s.add_development_dependency "factory_girl_rails", "~> 4.0"
   # Build fake data
-  s.add_development_dependency 'faker'
+  # Uncomment here
+  # s.add_development_dependency 'faker'
 end
