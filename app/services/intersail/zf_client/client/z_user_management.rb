@@ -33,11 +33,9 @@ module Intersail
         end
 
         def all_users
-          (1..10).to_a.inject([]) do |users, index|
-            fake_user = self.build_user(index)
-            users.push(fake_user)
+          (1..10).inject([]) do |items, index|
+            items << build_user(index)
           end
-          users
         end
 
         private
