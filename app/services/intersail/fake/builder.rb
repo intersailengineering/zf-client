@@ -14,7 +14,7 @@ module Intersail
                              active: true,
                          })
         user.profile = build_profile
-        user.urr = build_urr(user, build_unit, build_role) unless no_urr
+        user.urr = [build_urr(user, build_unit, build_role)] unless no_urr
         user
       end
 
