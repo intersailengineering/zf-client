@@ -7,5 +7,9 @@ FactoryGirl.define do
     active true
     profile { FactoryGirl.build(:user_profile) }
     urr { FactoryGirl.build(:urr) }
+
+    factory :user_no_urr, class: Intersail::ZfClient::ZUser do
+      urr []
+    end
   end
 end

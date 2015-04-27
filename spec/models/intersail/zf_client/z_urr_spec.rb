@@ -12,12 +12,13 @@ module Intersail
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
             "role" => [],
-            "resource" => []
+            "resource" => [],
+            "unit" => []
           }
         end
 
         it "should include role and resource" do
-          expect(subject.attributes_to_include).to be == [:role, :resource]
+          expect(subject.attributes_to_include).to be == [:role, :user, :unit]
         end
       end
     end

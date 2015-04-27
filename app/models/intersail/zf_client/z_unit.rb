@@ -1,6 +1,6 @@
 module Intersail
   module ZfClient
-    class ZResource
+    class ZUnit
       include ActiveModel::Model
     end
   end

@@ -8,24 +8,28 @@ module Intersail
       # Attributes
       attr_accessor :id
       attr_accessor :role
-      attr_accessor :resource
+      attr_accessor :user
+      attr_accessor :unit
 
       # Validation
       validates_presence_of :role
-      validates_presence_of :resource
+      validates_presence_of :user
+      validates_presence_of :unit
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :role
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :user
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :unit
 
       # Serialization
       def attributes
         {
             "role" => [],
-            "resource" => []
+            "resource" => [],
+            "unit" => []
         }
       end
 
       def attributes_to_include
-        [:role, :resource]
+        [:role, :user, :unit]
       end
     end
   end
