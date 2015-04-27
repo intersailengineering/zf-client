@@ -1,3 +1,5 @@
+require 'httparty'
+
 module Intersail
   module ZfClient
     module Client

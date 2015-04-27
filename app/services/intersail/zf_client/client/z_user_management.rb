@@ -13,25 +13,34 @@ module Intersail
         end
 
         def create_user(user)
-           return nil unless user.valid?
-           user.id = 1
-           user
+          return nil unless user.valid?
+          user.id = 1
+          user
         end
 
         def get_user(id)
-           user = FactoryGirl.build(:user)
+          user = FactoryGirl.build(:user)
+          user.id = id
+          return user
         end
 
-        def update_user
-           # IMPLEMENT FAKE HERE
+        def update_user(user)
+          return nil unless user.valid?
+          user
         end
 
-        def delete_user
-           # IMPLEMENT FAKE HERE
+        def delete_user(id)
+          # Raise an exception if any problem occurs
+          return nil
         end
 
         def all_users
-           # IMPLEMENT FAKE HERE WITH USER_INFO DATA SO NO URR INFO
+          (1..10).to_a.inject([]) do |users, index|
+            fake_user = FactoryGirl.build(:user)
+            fake_user.urr = nil
+            users.push(fake_user)
+          end
+          users
         end
       end
     end
