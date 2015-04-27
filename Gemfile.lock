@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     zf_client (0.0.1)
+      faker
       httparty
       pg
       rails (~> 4.2.1)
@@ -97,7 +98,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.4.3)
+    mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.0)
     multi_xml (0.5.5)
@@ -200,7 +201,6 @@ DEPENDENCIES
   byebug
   database_cleaner
   factory_girl_rails (~> 4.0)
-  faker
   guard-rspec
   pry-doc
   pry-rails

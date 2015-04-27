@@ -50,63 +50,79 @@ module Intersail
 
         context "single unit" do
           it "should create unit" do
+            pending "to implement"
             expect(@um).to respond_to(:create_unit)
           end
           it "should read unit" do
+            pending "to implement"
             expect(@um).to respond_to(:get_unit)
           end
           it "should update unit" do
+            pending "to implement"
             expect(@um).to respond_to(:update_unit)
           end
           it "should delete unit" do
+            pending "to implement"
             expect(@um).to respond_to(:delete_unit)
           end
         end
 
         context "all units" do
           it "should list all unit info" do
+            pending "to implement"
             expect(@um).to respond_to(:all_units)
           end
           it "should list all units filtered" do
+            pending "to implement"
             expect(@um).to respond_to(:all_units)
           end
         end
 
         context "single role" do
           it "should create role" do
+            pending "to implement"
             expect(@um).to respond_to(:create_role)
           end
           it "should read role" do
+            pending "to implement"
             expect(@um).to respond_to(:get_role)
           end
           it "should update role" do
+            pending "to implement"
             expect(@um).to respond_to(:update_role)
           end
           it "should delete role" do
+            pending "to implement"
             expect(@um).to respond_to(:delete_role)
           end
         end
 
         context "all roles" do
           it "should list all role info" do
+            pending "to implement"
             expect(@um).to respond_to(:all_roles)
           end
           it "should list all roles filtered" do
+            pending "to implement"
             expect(@um).to respond_to(:all_roles)
           end
         end
 
         context "acl" do
           it "should create acl" do
+            pending "to implement"
             expect(@um).to respond_to(:create_acl)
           end
           it "should read acl" do
+            pending "to implement"
             expect(@um).to respond_to(:get_acl)
           end
           it "should update acl" do
+            pending "to implement"
             expect(@um).to respond_to(:update_acl)
           end
           it "should delete acl" do
+            pending "to implement"
             expect(@um).to respond_to(:delete_acl)
           end
         end

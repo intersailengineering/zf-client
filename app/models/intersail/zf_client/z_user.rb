@@ -12,6 +12,7 @@ module Intersail
       attr_accessor :password
       attr_accessor :active
       attr_accessor :profile
+      #@jtodoIMP rename to urrs
       attr_accessor :urr
 
       # Validations

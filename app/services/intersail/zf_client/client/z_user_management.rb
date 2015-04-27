@@ -17,7 +17,7 @@ module Intersail
         # User
         #@jtodoIMP extract
         def create_user(user)
-          return nil unless user.valid?
+          doValidation(user)
           user.id = 1
           user
         end
@@ -27,7 +27,7 @@ module Intersail
         end
 
         def update_user(user)
-          return nil unless user.valid?
+          doValidation(user)
           user
         end
 

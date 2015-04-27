@@ -8,10 +8,10 @@ module Intersail
         # loop if enumerable
         if value.is_a? Enumerable
           value.map do |val|
-            record.errors[attribute] << val.errors.full_message unless val.valid?
+            record.errors[attribute] << val.errors.full_messages unless val.valid?
           end
         else
-          record.errors[attribute] << value.errors.full_message unless value.valid?
+          record.errors[attribute] << value.errors.full_messages unless value.valid?
         end
       end
     end
