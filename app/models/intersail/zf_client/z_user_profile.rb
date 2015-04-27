@@ -18,7 +18,6 @@ module Intersail
       validates_presence_of :custom_data
 
       # Serialization
-
       def attributes
         {
             "first_name" => "",

@@ -29,7 +29,7 @@ module Intersail
         end
 
         def all_users
-           # IMPLEMENT FAKE HERE WITH USER_INFO DATA SO NO PROFILES
+           # IMPLEMENT FAKE HERE WITH USER_INFO DATA SO NO URR INFO
         end
       end
     end

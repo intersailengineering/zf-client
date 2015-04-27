@@ -12,7 +12,7 @@ module Intersail
         it_behaves_like "httparty_validatable"
 
         it "behaves like a ZUserManagement client" do
-          #@jtodoIMP go from here and to the real client remember for the
+          #@jtodoIMP go from here and do the real client remember for the
           # need of get patch delete method also and fix of post
           expect(@um).to have_attr_accessor(:z_token)
 
@@ -47,8 +47,6 @@ module Intersail
             expect(@um).to respond_to(:all_users)
           end
         end
-
-        #@jtodoIMP create the user resource now, integrate it into zum_engine, cloned from andrea one and with test fixed tell to andrea, then do same for role and permissions
       end
     end
   end
