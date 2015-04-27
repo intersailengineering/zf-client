@@ -13,6 +13,8 @@ module Intersail
           @faker = Intersail::Fake::Builder.new
         end
 
+        # User
+        #@jtodoIMP extract
         def create_user(user)
           return nil unless user.valid?
           user.id = 1
@@ -36,9 +38,19 @@ module Intersail
         def all_users(filter = {})
           # ignore filter for now
           (1..10).inject([]) do |items, index|
-            items << @faker.build_user(index)
+            items << @faker.build_user(index, true)
           end
         end
+
+        # Role
+        #@jtodoIMP extract
+
+        # Unit
+        #@jtodoIMP extract
+
+        # Acl
+        #@jtodoIMP extract
+
       end
     end
   end

@@ -23,7 +23,7 @@ module Intersail
           xit "should use initializer settings as default"
         end
 
-        #@jtodoIMP complete the test here
+        #@jtodoIMP complete all the tests below
         context "single user" do
           it "should create user" do
             expect(@um).to respond_to(:create_user)
@@ -47,6 +47,70 @@ module Intersail
             expect(@um).to respond_to(:all_users)
           end
         end
+
+        context "single unit" do
+          it "should create unit" do
+            expect(@um).to respond_to(:create_unit)
+          end
+          it "should read unit" do
+            expect(@um).to respond_to(:get_unit)
+          end
+          it "should update unit" do
+            expect(@um).to respond_to(:update_unit)
+          end
+          it "should delete unit" do
+            expect(@um).to respond_to(:delete_unit)
+          end
+        end
+
+        context "all units" do
+          it "should list all unit info" do
+            expect(@um).to respond_to(:all_units)
+          end
+          it "should list all units filtered" do
+            expect(@um).to respond_to(:all_units)
+          end
+        end
+
+        context "single role" do
+          it "should create role" do
+            expect(@um).to respond_to(:create_role)
+          end
+          it "should read role" do
+            expect(@um).to respond_to(:get_role)
+          end
+          it "should update role" do
+            expect(@um).to respond_to(:update_role)
+          end
+          it "should delete role" do
+            expect(@um).to respond_to(:delete_role)
+          end
+        end
+
+        context "all roles" do
+          it "should list all role info" do
+            expect(@um).to respond_to(:all_roles)
+          end
+          it "should list all roles filtered" do
+            expect(@um).to respond_to(:all_roles)
+          end
+        end
+
+        context "acl" do
+          it "should create acl" do
+            expect(@um).to respond_to(:create_acl)
+          end
+          it "should read acl" do
+            expect(@um).to respond_to(:get_acl)
+          end
+          it "should update acl" do
+            expect(@um).to respond_to(:update_acl)
+          end
+          it "should delete acl" do
+            expect(@um).to respond_to(:delete_acl)
+          end
+        end
+
       end
     end
   end
