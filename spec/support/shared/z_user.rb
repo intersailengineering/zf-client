@@ -9,7 +9,7 @@ module Intersail
       expect(_user).to have_attr_accessor(:password)
       expect(_user).to have_attr_accessor(:active)
       expect(_user).to have_attr_accessor(:profile)
-      expect(_user).to have_attr_accessor(:urr)
+      expect(_user).to have_attr_accessor(:urrs)
     end
 
     it "should be an active model" do
@@ -23,7 +23,7 @@ module Intersail
       expect(_user).to validate_presence_of(:active)
       expect(_user).to validate_presence_of(:profile)
       expect(_user).to have_subattribute_validator(:profile)
-      expect(_user).to have_subattribute_validator(:urr)
+      expect(_user).to have_subattribute_validator(:urrs)
     end
   end
 end

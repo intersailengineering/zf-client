@@ -6,15 +6,15 @@ FactoryGirl.define do
     password Faker::Internet.password(8)
     active true
     profile { FactoryGirl.build(:user_profile) }
-    urr { [FactoryGirl.build(:urr)] }
+    urrs { [FactoryGirl.build(:urr)] }
 
     after(:build) do |user|
       # Setup relation of first urr user
-      user.urr[0].user = user unless user.urr.empty?
+      user.urrs[0].user = user unless user.urrs.empty?
     end
 
     factory :user_no_urr, class: Intersail::ZfClient::ZUser do
-      urr []
+      urrs []
     end
   end
 end

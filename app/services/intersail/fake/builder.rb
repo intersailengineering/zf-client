@@ -5,7 +5,7 @@ require 'faker'
 module Intersail
   module Fake
     class Builder
-      def build_user(id, no_urr = false)
+      def build_user(id, no_urrs = false)
         user = Intersail::ZfClient::ZUser.new({
                              id: id,
                              username: Faker::Name.name,
@@ -14,7 +14,7 @@ module Intersail
                              active: true,
                          })
         user.profile = build_profile
-        user.urr = [build_urr(user, build_unit, build_role)] unless no_urr
+        user.urrs = [build_urr(user, build_unit, build_role)] unless no_urrs
         user
       end
 

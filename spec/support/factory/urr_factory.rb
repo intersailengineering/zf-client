@@ -7,7 +7,7 @@ FactoryGirl.define do
 
     after(:build) do |urr|
       # Setup relation of user of a given urr
-      urr.user.urr = [urr]
+      urr.user.urrs = [urr]
     end
   end
 end

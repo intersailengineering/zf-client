@@ -12,8 +12,7 @@ module Intersail
       attr_accessor :password
       attr_accessor :active
       attr_accessor :profile
-      #@jtodoIMP rename to urrs
-      attr_accessor :urr
+      attr_accessor :urrs
 
       # Validations
       validates_presence_of :username
@@ -22,7 +21,7 @@ module Intersail
       validates_presence_of :active
       validates_presence_of :profile
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :profile
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :urr
+      validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
 
       # Serialization
       def attributes
@@ -32,12 +31,12 @@ module Intersail
             "password" => "",
             "active" => false,
             "profile" => nil,
-            "urr" => []
+            "urrs" => []
         }
       end
 
       def attributes_to_include
-        [:profile, :urr]
+        [:profile, :urrs]
       end
     end
   end
