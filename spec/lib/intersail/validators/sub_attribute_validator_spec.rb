@@ -33,9 +33,8 @@ module Intersail
 
       end
 
-      #@jtodoIMP add the test that checkes that responds to errors.full_messages
-
       context "error" do
+
         it "should set error if the subattribute is invalid" do
           error_double = double("error")
           expect(error_double).to receive(:valid?) { false }

@@ -13,7 +13,7 @@ module Helpers
             .to(second_value)
 
         #second value to first value
-        expect { actual.send("#{original_name}=",first_value) }
+        expect { actual.send("#{original_name}=", first_value) }
         .to change { actual.send(alias_name) }
             .from(second_value)
             .to(first_value)
@@ -36,11 +36,15 @@ module Helpers
     RSpec::Matchers.define :have_subattribute_validator do |attr_name|
       # Check for all the callback that have SubAttributeValidator on the given attribute attr_name
       match do |actual|
-        validator = actual._validate_callbacks.select {|callback|
+        validator = actual._validate_callbacks.select { |callback|
           callback.filter.attributes == [attr_name.to_sym] &&
               callback.filter.class == Intersail::Validators::SubAttributeValidator
         }
         expect(validator.size).to be > 0
+
+        # Check for valid interface
+        expect(actual).to respond_to :errors
+        expect(actual.errors).to respond_to :full_messages
       end
     end
   end
