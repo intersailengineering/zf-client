@@ -10,12 +10,14 @@ module Intersail
       attr_accessor :role
       attr_accessor :user
       attr_accessor :unit
+      #@jtodoIMP add user,role and unit id for create req
 
       # Validation
       validates_presence_of :role
       validates_presence_of :user
       validates_presence_of :unit
-      # Here we doet not validate user,role and resource subattributes to avoid infinite loop
+      # Here we does not validate user,role and resource subattributes to avoid infinite loop
+      # and to allow use of just ids for creation
 
       # Serialization
       def attributes

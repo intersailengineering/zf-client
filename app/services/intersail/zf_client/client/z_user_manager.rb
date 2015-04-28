@@ -122,8 +122,16 @@ module Intersail
         end
 
         # Urr
-        def create_urr(urr)
-          doValidation(urr)
+        # {user_id: , role_id:, unit_id: }
+        #@jtodoIMP update urr class and refactor it with validation
+        def create_urr(ids = {})
+          user = @faker.build_user(ids[:user_id])
+          role = @faker.build_role
+          role.id = ids[:role_id]
+          unit = @faker.build_unit
+          unit.id = ids[:unit_id]
+
+          urr = @faker.build_urr(user,unit,role)
           urr.id = 1
           urr
         end
@@ -132,20 +140,21 @@ module Intersail
           @faker.build_urr(@faker.build_user(id.to_i),@faker.build_unit,@faker.build_role)
         end
 
-        def update_urr(urr)
-          doValidation(urr)
+        def update_urr(ids = {})
+          #@jtodoIMP fix this aswell with creation
+          user = @faker.build_user(ids[:user_id])
+          role = @faker.build_role
+          role.id = ids[:role_id]
+          unit = @faker.build_unit
+          unit.id = ids[:unit_id]
+
+          urr = @faker.build_urr(user,unit,role)
+          urr.id = 1
           urr
         end
 
         def delete_urr(id)
           nil
-        end
-
-        def all_urrs(filter = {})
-          # ignore filter for now
-          (1..5).inject([]) do |items, key|
-            items << @faker.build_urr(@faker.build_user(key.to_i),@faker.build_unit,@faker.build_role)
-          end
         end
 
         # END REMOVE

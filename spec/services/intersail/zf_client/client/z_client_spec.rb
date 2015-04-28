@@ -13,7 +13,7 @@ module Intersail
           private
 
           def delegated
-            {stub_m: StubMananger}
+            {stub_m: Intersail::ZfClient::Client::StubManager}
           end
         end
 
@@ -35,8 +35,8 @@ module Intersail
           end
 
           it "should initialize himself with all the manager configured" do
-            pending
-            expect(@z_client).to respond_to :stub_m
+            expect(@z_client).to have_attr_accessor :stub_m
+            expect(@z_client.stub_m.class).to be == StubManager
           end
 
           xit "should have valid clients for delegation"
