@@ -11,9 +11,8 @@ module Intersail
       attr_accessor :process_def_base_uri
       attr_accessor :process_def_z_token
 
-      # User and Acl
-      #@jtodoLOW add accessors
-
+      # UserManangement
+      #@jtodoIMP add all accessors for config items
       #@jtodoIMP create a setup like devise that publish initializers!
     end
   end
