@@ -8,9 +8,9 @@ module Intersail
       # Attributes
       attr_accessor :process_id
       attr_accessor :activity_id
-      attr_accessor :unit
-      attr_accessor :role
-      attr_accessor :resource
+      attr_accessor :unit_id
+      attr_accessor :role_id
+      attr_accessor :resource_id
       attr_accessor :permission
       attr_accessor :priority
       attr_accessor :inherit_unit
@@ -21,9 +21,9 @@ module Intersail
       # Validation
       validates_presence_of :process_id
       validates_presence_of :activity_id
-      validates_presence_of :unit
-      validates_presence_of :role
-      validates_presence_of :resource
+      validates_presence_of :unit_id
+      validates_presence_of :role_id
+      validates_presence_of :resource_id
       validates_presence_of :permission
       validates_presence_of :priority
       validates_presence_of :inherit_unit
@@ -37,9 +37,9 @@ module Intersail
         {
             "process_id" => 0,
             "activity_id" => 0,
-            "unit" => "",
-            "role" => "",
-            "resource" => "",
+            "unit_id" => "",
+            "role_id" => "",
+            "resource_id" => "",
             "permission" => "",
             "priority" => 0,
             "inherit_unit" => false,

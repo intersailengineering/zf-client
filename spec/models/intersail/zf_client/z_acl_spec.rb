@@ -14,9 +14,9 @@ module Intersail
           expect(subject.attributes).to be == {
             "process_id" => 0,
             "activity_id" => 0,
-            "unit" => "",
-            "role" => "",
-            "resource" => "",
+            "unit_id" => "",
+            "role_id" => "",
+            "resource_id" => "",
             "permission" => "",
             "priority" => 0,
             "inherit_unit" => false,
