@@ -140,6 +140,7 @@ module Intersail
           @faker.build_urr(@faker.build_user(id.to_i),@faker.build_unit,@faker.build_role)
         end
 
+        # {id: 7, user_id: 6, role_id: 4, unit_id: 2}
         def update_urr(ids = {})
           #@jtodoIMP fix this aswell with creation
           user = @faker.build_user(ids[:user_id])
@@ -149,7 +150,7 @@ module Intersail
           unit.id = ids[:unit_id]
 
           urr = @faker.build_urr(user,unit,role)
-          urr.id = 1
+          urr.id = ids[:id]
           urr
         end
 

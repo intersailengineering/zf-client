@@ -22,6 +22,8 @@ module Intersail
           end
         end
 
+        #@jtodoIMP finish this then update the urrs
+
         def delegated
           # TODO test and check for values
         end
