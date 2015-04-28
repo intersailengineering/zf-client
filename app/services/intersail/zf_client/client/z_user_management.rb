@@ -33,7 +33,7 @@ module Intersail
 
         def delete_user(id)
           # Raise an exception if any problem occurs
-          return nil
+          nil
         end
 
         def all_users(filter = {})
@@ -48,6 +48,24 @@ module Intersail
 
         # Unit
         #@jtodoIMP extract
+        def create_unit(unit)
+          doValidation(unit)
+          unit.id = 1
+          unit
+        end
+
+        def get_unit(id)
+          @faker.build_unit
+        end
+
+        def update_unit(unit)
+          doValidation(unit)
+          unit
+        end
+
+        def delete_unit(id)
+          nil
+        end
 
         # Acl
         #@jtodoIMP extract

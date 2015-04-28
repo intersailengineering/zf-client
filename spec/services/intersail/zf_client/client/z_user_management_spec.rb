@@ -50,19 +50,15 @@ module Intersail
 
         context "single unit" do
           it "should create unit" do
-            pending "to implement"
             expect(@um).to respond_to(:create_unit)
           end
           it "should read unit" do
-            pending "to implement"
             expect(@um).to respond_to(:get_unit)
           end
           it "should update unit" do
-            pending "to implement"
             expect(@um).to respond_to(:update_unit)
           end
           it "should delete unit" do
-            pending "to implement"
             expect(@um).to respond_to(:delete_unit)
           end
         end
