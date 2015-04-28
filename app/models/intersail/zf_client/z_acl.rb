@@ -6,6 +6,7 @@ module Intersail
       include Serializable
 
       # Attributes
+      attr_accessor :id
       attr_accessor :process_id
       attr_accessor :activity_id
       attr_accessor :unit_id

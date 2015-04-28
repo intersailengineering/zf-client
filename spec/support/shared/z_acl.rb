@@ -3,6 +3,7 @@ module Intersail
     let(:_acl) { subject }
 
     it "should behaves as a ZAcl" do
+      expect(_acl).to have_attr_accessor(:id)
       expect(_acl).to have_attr_accessor(:process_id)
       expect(_acl).to have_attr_accessor(:activity_id)
       expect(_acl).to have_attr_accessor(:unit_id)

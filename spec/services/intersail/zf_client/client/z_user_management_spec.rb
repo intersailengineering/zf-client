@@ -98,19 +98,15 @@ module Intersail
 
         context "acl" do
           it "should create acl" do
-            pending "to implement"
             expect(@um).to respond_to(:create_acl)
           end
           it "should read acl" do
-            pending "to implement"
             expect(@um).to respond_to(:get_acl)
           end
           it "should update acl" do
-            pending "to implement"
             expect(@um).to respond_to(:update_acl)
           end
           it "should delete acl" do
-            pending "to implement"
             expect(@um).to respond_to(:delete_acl)
           end
         end

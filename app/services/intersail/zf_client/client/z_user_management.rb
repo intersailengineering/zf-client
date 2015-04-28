@@ -101,6 +101,24 @@ module Intersail
 
         # Acl
         #@jtodoIMP extract
+        def create_acl(acl)
+          doValidation(acl)
+          acl.id = 1
+          acl
+        end
+
+        def get_acl(id)
+          @faker.build_acl
+        end
+
+        def update_acl(acl)
+          doValidation(acl)
+          acl
+        end
+
+        def delete_acl(id)
+          nil
+        end
 
       end
     end
