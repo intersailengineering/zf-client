@@ -3,10 +3,10 @@ require 'rails_helper'
 module Intersail
   module ZfClient
     module Client
-      RSpec.describe ZUserManagement, type: :client do
+      describe ZUserManager, type: :client do
         before(:all) do
           @z_token = SecureRandom.uuid
-          @um = ZUserManagement.new(@z_token)
+          @um = ZUserManager.new(@z_token)
         end
 
         it_behaves_like "httparty_validatable"

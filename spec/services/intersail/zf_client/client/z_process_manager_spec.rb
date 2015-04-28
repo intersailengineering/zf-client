@@ -3,15 +3,15 @@ require 'rails_helper'
 module Intersail
   module ZfClient
     module Client
-      RSpec.describe ZProcess, type: :client do
+      RSpec.describe ZProcessManager, type: :client do
         before(:all) do
           @z_token = SecureRandom.uuid
-          @process = ZProcess.new(@z_token)
+          @process = ZProcessManager.new(@z_token)
         end
 
         it_behaves_like "httparty_validatable"
 
-        it "behaves like a ZProcess client" do
+        it "behaves like a ZProcessManager client" do
           expect(@process).to have_attr_accessor(:z_token)
           expect(@process).to have_attr_accessor(:create_process_uri)
           expect(@process).to have_attr_accessor(:abort_process_uri)
@@ -29,7 +29,7 @@ module Intersail
               config.process_def_z_token = SecureRandom.uuid
             end
             @changed_uri = "http://changed-uri.com"
-            @process = ZProcess.new(@z_token)
+            @process = ZProcessManager.new(@z_token)
           end
 
           it "should use initializer settings as default" do
@@ -37,8 +37,8 @@ module Intersail
             expect(@process.abort_process_uri).to be == (ZfClient.config.abort_process_uri)
             expect(@process.apply_transition_uri).to be == (ZfClient.config.apply_transition_uri)
             # Base uri
-            expect(ZProcess.base_uri).to be == (ZfClient.config.process_def_base_uri)
-            expect { ZProcess.new(@z_token, @changed_uri) }.to change { ZProcess.base_uri }.to(@changed_uri)
+            expect(ZProcessManager.base_uri).to be == (ZfClient.config.process_def_base_uri)
+            expect { ZProcessManager.new(@z_token, @changed_uri) }.to change { ZProcessManager.base_uri }.to(@changed_uri)
           end
         end
 

@@ -1,7 +1,7 @@
 module Intersail
   module ZfClient
     module Client
-      class ZUserManagement
+      class ZUserManager
         include HTTPartyValidatable
 
         # Attributes
