@@ -37,6 +37,8 @@ module Intersail
         expect(obj.z_token).to be == token
         expect(obj.base_uri).to be == uri
       end
+
+      xit "should run after_initialize callback after init"
     end
 
     context "validation" do

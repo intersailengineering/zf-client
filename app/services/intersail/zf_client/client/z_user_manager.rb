@@ -10,7 +10,6 @@ module Intersail
         end
 
         # User
-        #@jtodoIMP extract
         def create_user(user)
           doValidation(user)
           user.id = 1
@@ -38,8 +37,9 @@ module Intersail
           end
         end
 
+        # TODO START REMOVE ALL BELOW
+
         # Role
-        #@jtodoIMP extract
         def create_role(role)
           doValidation(role)
           role.id = 1
@@ -67,7 +67,6 @@ module Intersail
         end
 
         # Unit
-        #@jtodoIMP extract
         def create_unit(unit)
           doValidation(unit)
           unit.id = 1
@@ -96,7 +95,6 @@ module Intersail
         end
 
         # Acl
-        #@jtodoIMP extract
         def create_acl(acl)
           doValidation(acl)
           acl.id = 1
@@ -122,6 +120,8 @@ module Intersail
             items << @faker.build_acl
           end
         end
+
+        # END REMOVE
 
       end
     end

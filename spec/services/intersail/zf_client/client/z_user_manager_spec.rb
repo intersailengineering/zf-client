@@ -20,7 +20,7 @@ module Intersail
         end
 
         context "configuration" do
-          xit "should use initializer settings as default"
+          xit "should setup def settings with after_initialize"
         end
 
         #@jtodoIMP complete all the tests below
