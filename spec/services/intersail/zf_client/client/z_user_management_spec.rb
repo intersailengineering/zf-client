@@ -74,30 +74,24 @@ module Intersail
 
         context "single role" do
           it "should create role" do
-            pending "to implement"
             expect(@um).to respond_to(:create_role)
           end
           it "should read role" do
-            pending "to implement"
             expect(@um).to respond_to(:get_role)
           end
           it "should update role" do
-            pending "to implement"
             expect(@um).to respond_to(:update_role)
           end
           it "should delete role" do
-            pending "to implement"
             expect(@um).to respond_to(:delete_role)
           end
         end
 
         context "all roles" do
           it "should list all role info" do
-            pending "to implement"
             expect(@um).to respond_to(:all_roles)
           end
           it "should list all roles filtered" do
-            pending "to implement"
             expect(@um).to respond_to(:all_roles)
           end
         end

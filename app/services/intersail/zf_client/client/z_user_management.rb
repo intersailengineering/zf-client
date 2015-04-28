@@ -45,6 +45,31 @@ module Intersail
 
         # Role
         #@jtodoIMP extract
+        def create_role(role)
+          doValidation(role)
+          role.id = 1
+          role
+        end
+
+        def get_role(id)
+          @faker.build_role
+        end
+
+        def update_role(role)
+          doValidation(role)
+          role
+        end
+
+        def delete_role(id)
+          nil
+        end
+
+        def all_roles(filter = {})
+          # ignore filter for now
+          (1..20).inject([]) do |items|
+            items << @faker.build_role
+          end
+        end
 
         # Unit
         #@jtodoIMP extract
