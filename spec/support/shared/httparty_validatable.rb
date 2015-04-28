@@ -38,7 +38,10 @@ module Intersail
         expect(obj.base_uri).to be == uri
       end
 
-      xit "should run after_initialize callback after init"
+      it "should run after_initialize callback after initialize" do
+        expect_any_instance_of(subject.class).to receive(:after_initialize)
+        subject.class.new
+      end
     end
 
     context "validation" do
