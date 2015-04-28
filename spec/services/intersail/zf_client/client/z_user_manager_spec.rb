@@ -128,22 +128,11 @@ module Intersail
           it "should read urr" do
             expect(@um).to respond_to(:get_urr)
           end
-          it "should update urr" do
-            expect(@um).to respond_to(:update_urr)
-          end
           it "should delete urr" do
             expect(@um).to respond_to(:delete_urr)
           end
         end
 
-        context "all urrs" do
-          it "should list all role info" do
-            expect(@um).to respond_to(:all_urrs)
-          end
-          it "should list all urrs filtered" do
-            expect(@um).to respond_to(:all_urrs)
-          end
-        end
       end
     end
   end
