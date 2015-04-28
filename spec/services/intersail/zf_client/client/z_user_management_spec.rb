@@ -111,6 +111,14 @@ module Intersail
           end
         end
 
+        context "all acls" do
+          it "should list all role info" do
+            expect(@um).to respond_to(:all_acls)
+          end
+          it "should list all acls filtered" do
+            expect(@um).to respond_to(:all_acls)
+          end
+        end
       end
     end
   end

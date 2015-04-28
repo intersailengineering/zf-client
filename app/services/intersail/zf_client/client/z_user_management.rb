@@ -120,6 +120,13 @@ module Intersail
           nil
         end
 
+        def all_acls(filter = {})
+          # ignore filter for now
+          (1..20).inject([]) do |items|
+            items << @faker.build_acl
+          end
+        end
+
       end
     end
   end
