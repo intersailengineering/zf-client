@@ -4,19 +4,15 @@ module Intersail
   module ZfClient
     module Client
       RSpec.describe ZProcessManager, type: :client do
-        before(:all) do
-          @z_token = SecureRandom.uuid
-          @process = ZProcessManager.new(@z_token)
-        end
+        let(:process) { ZProcessManager.new }
+        subject { process }
 
         it_behaves_like "httparty_validatable"
 
         it "behaves like a ZProcessManager client" do
-          expect(@process).to have_attr_accessor(:z_token)
-          expect(@process).to have_attr_accessor(:create_process_uri)
-          expect(@process).to have_attr_accessor(:abort_process_uri)
-          expect(@process).to have_attr_accessor(:apply_transition_uri)
-          expect(@process.z_token).to be == @z_token
+          expect(process).to have_attr_accessor(:create_process_uri)
+          expect(process).to have_attr_accessor(:abort_process_uri)
+          expect(process).to have_attr_accessor(:apply_transition_uri)
         end
 
         context "configuration" do
@@ -28,17 +24,18 @@ module Intersail
               config.process_def_base_uri = "http://base-uri.com"
               config.process_def_z_token = SecureRandom.uuid
             end
-            @changed_uri = "http://changed-uri.com"
-            @process = ZProcessManager.new(@z_token)
           end
 
           it "should use initializer settings as default" do
-            expect(@process.create_process_uri).to be == (ZfClient.config.create_process_uri)
-            expect(@process.abort_process_uri).to be == (ZfClient.config.abort_process_uri)
-            expect(@process.apply_transition_uri).to be == (ZfClient.config.apply_transition_uri)
-            # Base uri
-            expect(ZProcessManager.base_uri).to be == (ZfClient.config.process_def_base_uri)
-            expect { ZProcessManager.new(@z_token, @changed_uri) }.to change { ZProcessManager.base_uri }.to(@changed_uri)
+            # run callback
+            process.after_initialize
+
+            expect(process.create_process_uri).to be == (ZfClient.config.create_process_uri)
+            expect(process.abort_process_uri).to be == (ZfClient.config.abort_process_uri)
+            expect(process.apply_transition_uri).to be == (ZfClient.config.apply_transition_uri)
+            # reset class base_uri value
+            ZProcessManager.class_eval("@default_options[:base_uri] = nil")
+            expect(ZProcessManager.new.class.base_uri).to be == (ZfClient.config.process_def_base_uri)
           end
         end
 
@@ -55,14 +52,14 @@ module Intersail
 
           context "create" do
             it "should create a process definition" do
-              expect(@process).to receive(:post)
-                                  .with(p_def, @process.create_process_uri)
-                                  .and_return(success_res)
+              expect(process).to receive(:post)
+                                 .with(p_def, process.create_process_uri)
+                                 .and_return(success_res)
 
               process_id = success_res["process_id"]
               p_def.id = process_id
 
-              expect(@process.create_process_inst(p_def)).to be == p_def
+              expect(process.create_process_inst(p_def)).to be == p_def
             end
           end
 

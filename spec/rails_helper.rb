@@ -8,6 +8,7 @@ require 'database_cleaner'
 require 'factory_girl'
 require 'faker'
 require 'shoulda-matchers'
+require 'shoulda-callback-matchers'
 require 'httparty'
 
 

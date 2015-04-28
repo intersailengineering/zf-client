@@ -8,13 +8,6 @@ module Intersail
         attr_accessor :create_process_uri
         attr_accessor :abort_process_uri
         attr_accessor :apply_transition_uri
-        attr_accessor :z_token
-
-        def initialize(z_token = nil, base_uri = nil)
-          self.class.base_uri(base_uri)
-          self.z_token = z_token
-          initialize_config
-        end
 
         # Create a new process instance
         # requires a valid process_instance is a z_process_instance object
@@ -25,7 +18,7 @@ module Intersail
           process_instance
         end
 
-        def initialize_config
+        def after_initialize
           self.class.base_uri(ZfClient.config.process_def_base_uri) unless self.class.base_uri
           self.create_process_uri = ZfClient.config.create_process_uri
           self.abort_process_uri = ZfClient.config.abort_process_uri

@@ -7,7 +7,7 @@ module Intersail
     class Builder
       def build_user(id, no_urrs = false)
         user = Intersail::ZfClient::ZUser.new({
-                                                  id: id,
+                                                  id: id.to_i,
                                                   username: Faker::Name.name,
                                                   description: Faker::Name.name,
                                                   password: Faker::Internet.password(8),

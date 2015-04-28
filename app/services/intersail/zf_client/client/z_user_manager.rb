@@ -4,12 +4,7 @@ module Intersail
       class ZUserManager
         include HTTPartyValidatable
 
-        # Attributes
-        attr_accessor :z_token
-
-        def initialize(z_token = nil, base_uri = nil)
-          self.class.base_uri(base_uri)
-          self.z_token = z_token
+        def after_initialize
           #@jtodoIMP remove this when faking is done
           @faker = Intersail::Fake::Builder.new
         end
@@ -63,7 +58,7 @@ module Intersail
         def delete_role(id)
           nil
         end
-
+        # {user_id: 12345}
         def all_roles(filter = {})
           # ignore filter for now
           (1..20).inject([]) do |items|
@@ -92,6 +87,7 @@ module Intersail
           nil
         end
 
+        # {user_id: 12345}
         def all_units(filter = {})
           # ignore filter for now
           (1..20).inject([]) do |items|
