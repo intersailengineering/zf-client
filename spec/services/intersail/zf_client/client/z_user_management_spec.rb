@@ -65,11 +65,9 @@ module Intersail
 
         context "all units" do
           it "should list all unit info" do
-            pending "to implement"
             expect(@um).to respond_to(:all_units)
           end
           it "should list all units filtered" do
-            pending "to implement"
             expect(@um).to respond_to(:all_units)
           end
         end

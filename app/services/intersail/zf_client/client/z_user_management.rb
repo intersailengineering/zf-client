@@ -67,6 +67,13 @@ module Intersail
           nil
         end
 
+        def all_units(filter = {})
+          # ignore filter for now
+          (1..20).inject([]) do |items|
+            items << @faker.build_unit
+          end
+        end
+
         # Acl
         #@jtodoIMP extract
 
