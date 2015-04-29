@@ -1,6 +1,8 @@
 FactoryGirl.define do
-  factory :create_user_success_res, class: Hash do
+  factory :create_user_success_res, parent: :user do
 
-    initialize_with {attributes.stringify_keys}
+    after(:build) do |user|
+      user.as_json
+    end
   end
 end
