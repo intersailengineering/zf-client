@@ -18,9 +18,9 @@ module Intersail
 
       # Validation
       # validates presence of either class param or class_id
-      validates_presence_of :role
-      validates_presence_of :user
-      validates_presence_of :unit
+      validates_presence_of :role_id
+      validates_presence_of :user_id
+      validates_presence_of :unit_id
 
       # Serialization
       def attributes
@@ -32,15 +32,15 @@ module Intersail
       end
 
       def role_id
-        @role_id || self.role.id
+        @role_id || self.role && self.role.id
       end
 
       def user_id
-        @user_id || self.user.id
+        @user_id || self.user && self.user.id
       end
 
       def unit_id
-        @unit_id || self.unit.id
+        @unit_id || self.unit && self.unit.id
       end
 
       def attributes_to_include

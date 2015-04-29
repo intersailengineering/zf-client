@@ -3,9 +3,6 @@ module Intersail
     module Client
       class ZClient
 
-        #@jtodoIMP update the urrs model and fake
-        # then update the api calls and then integrate with .net
-
         attr_accessor :z_token
         attr_accessor :base_uri
 

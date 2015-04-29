@@ -20,7 +20,7 @@ module Intersail
       expect(_user).to validate_presence_of(:username)
       expect(_user).to validate_presence_of(:description)
       expect(_user).to validate_presence_of(:password)
-      expect(_user).to validate_inclusion_of(:active).in_array([false,true])
+      expect(_user).to validate_exclusion_of(:active).in_array([nil])
       expect(_user).to validate_presence_of(:profile)
       expect(_user).to have_subattribute_validator(:profile)
       expect(_user).to have_subattribute_validator(:urrs)

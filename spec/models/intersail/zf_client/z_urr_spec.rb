@@ -16,25 +16,6 @@ module Intersail
             "unit_id" => nil
           }
         end
-
-        it "should include role_id with precedence on role_id field" do
-          expect(subject.as_json["role_id"]).to be == subject.role_id
-          expect{subject.role_id = nil}.to change{subject.as_json["role_id"]}.to(subject.role.id)
-        end
-
-        it "should include user_id with precedence on user_id field" do
-          expect(subject.as_json["user_id"]).to be == subject.user_id
-          expect{subject.user_id = nil}.to change{subject.as_json["user_id"]}.to(subject.user.id)
-        end
-
-        it "should include unit_id with precedence on unit_id field" do
-          expect(subject.as_json["unit_id"]).to be == subject.unit_id
-          expect{subject.unit_id = nil}.to change{subject.as_json["unit_id"]}.to(subject.unit.id)
-        end
-
-        it "should include nothing as subresource" do
-          expect(subject.attributes_to_include).to be == []
-        end
       end
     end
   end

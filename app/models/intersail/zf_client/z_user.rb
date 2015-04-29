@@ -18,7 +18,7 @@ module Intersail
       validates_presence_of :username
       validates_presence_of :description
       validates_presence_of :password
-      validates :active,  inclusion: { in: [true, false] }
+      validates :active, exclusion: { in: [nil] }
       validates_presence_of :profile
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :profile
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
