@@ -14,7 +14,8 @@ module Intersail
 
         # User
         def create_user(user)
-          post(user, self.user_uri)
+          user_as_json = post(user, self.user_uri)
+          ZUser.new(user_as_json)
         end
 
         def get_user(id)

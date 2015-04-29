@@ -30,20 +30,18 @@ module Intersail
 
         context "single user" do
           let(:user) { build(:user) }
-          let(:success_res) { user.as_json }
+          let(:success_res) { as_json(:create_user_success_res) }
 
           it "should create user" do
             expect(subject).to respond_to(:create_user)
             expect(subject).to receive(:post)
-                               .with(@user, subject.user_uri)
+                               .with(user, subject.user_uri)
                                .and_return(success_res)
 
-            # process_id = success_res["process_id"]
-            # p_def.id = process_id
-            #
-            # expect(process.create_process_inst(p_def)).to be == p_def
+            expect(subject.create_user(user).attributes).to be == user.attributes
           end
           it "should read user" do
+            #@jtodoIMP go from here: test post and then use the other methods and implement them into the httpartyvalidatable
             expect(subject).to respond_to(:get_user)
           end
           it "should update user" do

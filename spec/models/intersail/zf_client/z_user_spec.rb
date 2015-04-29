@@ -13,7 +13,7 @@ module Intersail
           expect(subject.attributes).to be == {
               "username" => "",
               "description" => "",
-              "password" => "",
+              "password" => nil,
               "active" => false,
               "profile" => nil,
               "urrs" => []

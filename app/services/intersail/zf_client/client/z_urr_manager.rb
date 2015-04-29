@@ -11,7 +11,6 @@ module Intersail
 
         # Urr
         # {user_id: , role_id:, unit_id: }
-        # @jtodoIMP update urr class and refactor it with validation
         def create_urr(ids = {})
           user = @faker.build_user(ids[:user_id])
           role = @faker.build_role

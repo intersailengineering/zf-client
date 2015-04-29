@@ -27,7 +27,7 @@ module Intersail
         {
             "username" => "",
             "description" => "",
-            "password" => "",
+            "password" => nil,
             "active" => false,
             "profile" => nil,
             "urrs" => []

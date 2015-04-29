@@ -12,18 +12,18 @@ Gem::Specification.new do |s|
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of ZfClient."
   s.description = "TODO: Description of ZfClient."
-  s.license     = "MIT"
+  s.license     = "PROPRIETARY"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.1"
   # Build fake data
   #@jtodoIMP remove when faking is done
   s.add_dependency 'faker'
 
-
   # Databse connector
+  #@jtodoIMP remove the db dependency
   s.add_dependency 'pg'
   s.add_dependency 'httparty'
 

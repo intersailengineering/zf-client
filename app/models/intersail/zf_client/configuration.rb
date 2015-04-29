@@ -13,7 +13,6 @@ module Intersail
       # UserManangement
       attr_accessor :user_uri
       attr_accessor :user_base_uri
-      #@jtodoIMP create a setup like devise that publish initializers!
     end
   end
 end
