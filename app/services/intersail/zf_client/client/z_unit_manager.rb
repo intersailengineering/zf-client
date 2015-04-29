@@ -5,8 +5,10 @@ module Intersail
         include HTTPartyValidatable
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+            self.class.base_uri(ZfClient.config.user_base_uri) unless self.class.base_uri
+            self.create_process_uri = ZfClient.config.create_process_uri
+            self.abort_process_uri = ZfClient.config.abort_process_uri
+            self.apply_transition_uri = ZfClient.config.apply_transition_uri
         end
 
         def create_unit(unit)

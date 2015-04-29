@@ -9,10 +9,10 @@ module Intersail
       attr_accessor :abort_process_uri
       attr_accessor :apply_transition_uri
       attr_accessor :process_def_base_uri
-      attr_accessor :process_def_z_token
 
       # UserManangement
-      #@jtodoIMP add all accessors for config items
+      attr_accessor :user_uri
+      attr_accessor :user_base_uri
       #@jtodoIMP create a setup like devise that publish initializers!
     end
   end

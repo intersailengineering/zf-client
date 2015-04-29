@@ -22,7 +22,6 @@ module Intersail
               config.abort_process_uri = "/AbortProcess.aspx"
               config.apply_transition_uri = "/ApplyTransition.aspx"
               config.process_def_base_uri = "http://base-uri.com"
-              config.process_def_z_token = SecureRandom.uuid
             end
           end
 
@@ -34,8 +33,8 @@ module Intersail
             expect(process.abort_process_uri).to be == (ZfClient.config.abort_process_uri)
             expect(process.apply_transition_uri).to be == (ZfClient.config.apply_transition_uri)
             # reset class base_uri value
-            ZProcessManager.class_eval("@default_options[:base_uri] = nil")
-            expect(ZProcessManager.new.class.base_uri).to be == (ZfClient.config.process_def_base_uri)
+            subject.class.class_eval("@default_options[:base_uri] = nil")
+            expect(subject.class.new.class.base_uri).to be == (ZfClient.config.process_def_base_uri)
           end
         end
 
@@ -49,27 +48,18 @@ module Intersail
             it_behaves_like "process_instance"
           end
 
+          it "should create a process definition" do
+            expect(process).to receive(:post)
+                               .with(p_def, process.create_process_uri)
+                               .and_return(success_res)
 
-          context "create" do
-            it "should create a process definition" do
-              expect(process).to receive(:post)
-                                 .with(p_def, process.create_process_uri)
-                                 .and_return(success_res)
+            process_id = success_res["process_id"]
+            p_def.id = process_id
 
-              process_id = success_res["process_id"]
-              p_def.id = process_id
-
-              expect(process.create_process_inst(p_def)).to be == p_def
-            end
+            expect(process.create_process_inst(p_def)).to be == p_def
           end
-
-          context "apply_transition" do
-            xit "should apply transition"
-          end
-
-          context "abort_process" do
-            xit "should abort process"
-          end
+          xit "should apply transition"
+          xit "should abort process"
         end
       end
     end

@@ -4,25 +4,23 @@ module Intersail
       class ZUserManager
         include HTTPartyValidatable
 
+        # Attributes
+        attr_accessor :user_uri
+
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+          self.class.base_uri(ZfClient.config.user_base_uri) unless self.class.base_uri
+          self.user_uri = ZfClient.config.user_uri
         end
 
         # User
         def create_user(user)
-          doValidation(user)
-          user.id = 1
-          user
+          post(user, self.user_uri)
         end
 
         def get_user(id)
-          @faker.build_user(id)
         end
 
         def update_user(user)
-          doValidation(user)
-          user
         end
 
         def delete_user(id)
@@ -31,10 +29,6 @@ module Intersail
         end
 
         def all_users(filter = {})
-          # ignore filter for now
-          (1..10).inject([]) do |items, index|
-            items << @faker.build_user(index, true)
-          end
         end
       end
     end

@@ -8,12 +8,40 @@ module Intersail
 
         #@jtodoIMP complete all the tests below
         context "configuration" do
-          xit "should setup def settings with after_initialize"
+          context "configuration" do
+            before(:all) do
+              ZfClient.configure do |config|
+                config.user_uri = "/User.aspx"
+                config.user_base_uri = Faker::Internet.url
+              end
+            end
+
+            it "should use initializer settings as default" do
+              # run callback
+              subject.after_initialize
+
+              expect(subject.user_uri).to be == (ZfClient.config.user_uri)
+              # reset class base_uri value
+              subject.class.class_eval("@default_options[:base_uri] = nil")
+              expect(subject.class.new.class.base_uri).to be == (ZfClient.config.user_base_uri)
+            end
+          end
         end
 
         context "single user" do
+          let(:user) { build(:user) }
+          let(:success_res) { user.as_json }
+
           it "should create user" do
             expect(subject).to respond_to(:create_user)
+            expect(subject).to receive(:post)
+                               .with(@user, subject.user_uri)
+                               .and_return(success_res)
+
+            # process_id = success_res["process_id"]
+            # p_def.id = process_id
+            #
+            # expect(process.create_process_inst(p_def)).to be == p_def
           end
           it "should read user" do
             expect(subject).to respond_to(:get_user)
