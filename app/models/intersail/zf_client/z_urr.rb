@@ -7,17 +7,20 @@ module Intersail
 
       # Attributes
       attr_accessor :id
+      # class attributes
       attr_accessor :role
       attr_accessor :user
       attr_accessor :unit
-      #@jtodoIMP add user,role and unit id for create req
+      # id attributes
+      attr_accessor :role_id
+      attr_accessor :user_id
+      attr_accessor :unit_id
 
       # Validation
+      # validates presence of either class param or class_id
       validates_presence_of :role
       validates_presence_of :user
       validates_presence_of :unit
-      # Here we does not validate user,role and resource subattributes to avoid infinite loop
-      # and to allow use of just ids for creation
 
       # Serialization
       def attributes
@@ -29,18 +32,15 @@ module Intersail
       end
 
       def role_id
-        return self.role.id if self.role && self.role.id != nil
-        nil
+        @role_id || self.role.id
       end
 
       def user_id
-        return self.user.id if self.user && self.user.id != nil
-        nil
+        @user_id || self.user.id
       end
 
       def unit_id
-        return self.unit.id if self.unit && self.unit.id != nil
-        nil
+        @unit_id || self.unit.id
       end
 
       def attributes_to_include
