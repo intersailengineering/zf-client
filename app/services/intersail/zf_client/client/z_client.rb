@@ -41,7 +41,7 @@ module Intersail
         def method_missing(method, *args, &block)
           delegated.each do |manager_attr|
             manager_obj = self.send(manager_attr[0])
-            return manager_obj.public_send(method,args) if manager_obj.respond_to?(method)
+            return manager_obj.public_send(method,*args) if manager_obj.respond_to?(method)
           end
         end
       end

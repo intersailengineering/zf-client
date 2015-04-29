@@ -60,6 +60,7 @@ module Intersail
 
       def build_urr(user, unit, role)
         Intersail::ZfClient::ZUrr.new({
+                                          id: Faker::Number(2),
                                           user: user,
                                           unit: unit,
                                           role: role
