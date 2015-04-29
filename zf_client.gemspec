@@ -23,8 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'faker'
 
   # Databse connector
-  #@jtodoIMP remove the db dependency
-  s.add_dependency 'pg'
+  # s.add_dependency 'pg'
   s.add_dependency 'httparty'
 
   # Development
@@ -35,7 +34,7 @@ Gem::Specification.new do |s|
   # Automated tests with guard
   s.add_development_dependency 'guard-rspec'
   # Auto Clean DB
-  s.add_development_dependency 'database_cleaner'
+  # s.add_development_dependency 'database_cleaner'
   # More Rspec matches
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'shoulda-callback-matchers', '~> 1.1.1'
