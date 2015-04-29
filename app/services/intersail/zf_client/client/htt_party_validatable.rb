@@ -41,6 +41,7 @@ module Intersail
         end
 
         def doValidation(object_validatable)
+          raise(Intersail::Errors::StandardValidationError, "You need to provide a validatable object") unless object_validatable.respond_to?(:valid?)
           raise(Intersail::Errors::StandardValidationError, object_validatable.errors.full_messages) unless object_validatable.valid?
         end
       end

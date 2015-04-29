@@ -45,6 +45,11 @@ module Intersail
     end
 
     context "validation" do
+      it "should check if given param is validatable" do
+        invalid = double("without_valid?")
+        expect { subject.doValidation(invalid) }.to raise_error(Intersail::Errors::StandardValidationError, "You need to provide a validatable object")
+      end
+
       it "should raise exception if invalid" do
         invalid = double("invalid")
         expect(invalid).to receive(:valid?) { false }
