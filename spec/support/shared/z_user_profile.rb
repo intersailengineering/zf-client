@@ -18,8 +18,6 @@ module Intersail
       expect(_user).to validate_presence_of(:first_name)
       expect(_user).to validate_presence_of(:last_name)
       expect(_user).to validate_presence_of(:mail)
-      expect(_user).to validate_presence_of(:custom_data)
-      # TODO Validate custom data subattribute
     end
   end
 end
