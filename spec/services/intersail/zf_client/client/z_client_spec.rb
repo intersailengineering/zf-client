@@ -7,13 +7,21 @@ module Intersail
         # Stubs
         class StubManager
           include HTTPartyValidatable
+
+          def stub_method
+          end
         end
 
         class StubClient < ZClient
           private
 
           def delegated
-            {stub_m: Intersail::ZfClient::Client::StubManager}
+            {
+                stub_m: Intersail::ZfClient::Client::StubManager,
+                stub_struct: Class.new do
+                  include HTTPartyValidatable
+                end
+            }
           end
         end
 
@@ -55,7 +63,10 @@ module Intersail
           end
 
           context "method delegation" do
-            xit "should delegate method calls to his managers"
+            it "should delegate method calls to his managers" do
+              expect(@z_client_stub.stub_m).to receive(:stub_method)
+              @z_client_stub.stub_method
+            end
           end
         end
 
