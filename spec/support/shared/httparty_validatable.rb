@@ -1,4 +1,5 @@
 module Intersail
+
   shared_examples "httparty_validatable" do
     let(:fake_data) { %Q/{"fake" : "fake_json"}/ }
 
@@ -67,24 +68,23 @@ module Intersail
       end
     end
 
-    context "post" do
-      it "should validate data and call post" do
-        expect(subject).to receive(:doValidation)
-
-        jsonable = double(as_json: "{}")
-        uri = "/RelativeUri.aspx"
-
-        expect(subject.class).to receive(:post).with(uri, body: "{}", headers: subject.header) { fake_data }
-        subject.post(jsonable, uri)
-      end
+    it "should do validation and call method" do
+      it_should_do_validation_and_call_method(:post)
+      it_should_do_validation_and_call_method(:put)
+      it_should_do_validation_and_call_method(:get)
+      it_should_do_validation_and_call_method(:delete)
     end
 
-    context "get" do
-      xit "should validate data and call get"
-    end
+    # Helpers
 
-    context "delete" do
-      xit "should validate data and call delete"
+    def it_should_do_validation_and_call_method(method)
+      expect(subject).to receive(:doValidation)
+
+      jsonable = double(as_json: "{}")
+      uri = "/RelativeUri.aspx"
+
+      expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
+      subject.send(method, jsonable, uri)
     end
   end
 end
