@@ -11,9 +11,9 @@ module Intersail
         it_behaves_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
+            "unit_id" => nil,
             "role_id" => nil,
-            "user_id" => nil,
-            "unit_id" => nil
+            "resource_id" => nil
           }
         end
       end

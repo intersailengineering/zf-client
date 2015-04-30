@@ -2,12 +2,12 @@ module Intersail
   shared_examples "urr" do
     it "should behave as a ZUrr" do
       expect(subject).to have_attr_accessor(:id)
-      expect(subject).to have_attr_accessor(:role)
-      expect(subject).to have_attr_accessor(:user)
       expect(subject).to have_attr_accessor(:unit)
-      expect(subject).to have_attr_accessor(:role_id)
-      expect(subject).to have_attr_accessor(:user_id)
+      expect(subject).to have_attr_accessor(:role)
+      expect(subject).to have_attr_accessor(:resource)
       expect(subject).to have_attr_accessor(:unit_id)
+      expect(subject).to have_attr_accessor(:role_id)
+      expect(subject).to have_attr_accessor(:resource_id)
     end
 
     it "should be an active model" do
@@ -16,9 +16,9 @@ module Intersail
 
     it "should validate presence of id params or class param with precedence on ids" do
       delete_object_attributes
-      expect(subject).to validate_presence_of(:role_id)
       expect(subject).to validate_presence_of(:unit_id)
-      expect(subject).to validate_presence_of(:user_id)
+      expect(subject).to validate_presence_of(:role_id)
+      expect(subject).to validate_presence_of(:resource_id)
     end
 
     context "attributes" do
@@ -34,16 +34,16 @@ module Intersail
         expect { subject.role_id = nil }.to change { subject.role_id }.to(subject.role.id)
       end
 
-      it "should obtain user_id from user or user_id with precedence on user_id" do
-        expect(subject.user_id).to be == subject.user_id
-        expect { subject.user_id = nil }.to change { subject.user_id }.to(subject.user.id)
+      it "should obtain resource_id from resource or resource_id with precedence on resource_id" do
+        expect(subject.resource_id).to be == subject.resource_id
+        expect { subject.resource_id = nil }.to change { subject.resource_id }.to(subject.resource.id)
       end
 
-      it "should return nil if user and user_id are not setted" do
+      it "should return nil if resource and resource_id are not setted" do
         expect {
-          subject.user_id = nil
-          subject.user = nil
-        }.to change { subject.user_id }.to(nil)
+          subject.resource_id = nil
+          subject.resource = nil
+        }.to change { subject.resource_id }.to(nil)
       end
 
 
@@ -66,7 +66,7 @@ module Intersail
 
     def delete_object_attributes
       subject.role = nil
-      subject.user = nil
+      subject.resource = nil
       subject.unit = nil
     end
   end

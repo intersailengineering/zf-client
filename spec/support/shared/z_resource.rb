@@ -8,6 +8,7 @@ module Intersail
       expect(_user).to have_attr_accessor(:last_name)
       expect(_user).to have_attr_accessor(:mail)
       expect(_user).to have_attr_accessor(:custom_data)
+      expect(_user).to have_attr_accessor(:urrs)
     end
 
     it "should be an active model" do
@@ -18,6 +19,7 @@ module Intersail
       expect(_user).to validate_presence_of(:first_name)
       expect(_user).to validate_presence_of(:last_name)
       expect(_user).to validate_presence_of(:mail)
+      expect(_user).to have_subattribute_validator(:urrs)
     end
   end
 end

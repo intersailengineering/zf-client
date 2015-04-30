@@ -12,7 +12,6 @@ module Intersail
       attr_accessor :password
       attr_accessor :active
       attr_accessor :resource
-      attr_accessor :urrs
 
       # Validations
       validates_presence_of :username
@@ -20,7 +19,9 @@ module Intersail
       validates :active, exclusion: { in: [nil] }
       validates_presence_of :resource
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
+
+      # Delegation
+      delegate :urrs, to: :resource
 
       # Serialization
       def attributes
@@ -29,13 +30,12 @@ module Intersail
             "description" => "",
             "password" => nil,
             "active" => false,
-            "resource" => nil,
-            "urrs" => []
+            "resource" => nil
         }
       end
 
       def attributes_to_include
-        [:resource, :urrs]
+        [:resource]
       end
     end
   end

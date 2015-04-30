@@ -15,12 +15,13 @@ module Intersail
               "first_name" => "",
               "last_name" => "",
               "mail" => "",
-              "custom_data" => ""
+              "custom_data" => "",
+              "urrs" => []
           }
         end
 
         it "should include custom data" do
-          expect(subject.attributes_to_include).to be == [:custom_data]
+          expect(subject.attributes_to_include).to be == [:custom_data, :urrs]
         end
       end
     end
