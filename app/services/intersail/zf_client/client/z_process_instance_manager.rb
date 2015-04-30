@@ -1,7 +1,7 @@
 module Intersail
   module ZfClient
     module Client
-      class ZProcessManager
+      class ZProcessInstanceManager
         include HTTPartyValidatable
 
         # Attributes

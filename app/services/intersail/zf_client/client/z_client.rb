@@ -15,11 +15,13 @@ module Intersail
 
         def delegated
           {
-              z_user: Intersail::ZfClient::Client::ZUserManager,
-              z_role: Intersail::ZfClient::Client::ZRoleManager,
-              z_unit: Intersail::ZfClient::Client::ZUnitManager,
-              z_urr: Intersail::ZfClient::Client::ZUrrManager,
-              z_acl: Intersail::ZfClient::Client::ZAclManager
+              user: Intersail::ZfClient::Client::ZUserManager,
+              role: Intersail::ZfClient::Client::ZRoleManager,
+              unit: Intersail::ZfClient::Client::ZUnitManager,
+              urr: Intersail::ZfClient::Client::ZUrrManager,
+              acl: Intersail::ZfClient::Client::ZAclManager,
+              process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
+
           }
         end
 

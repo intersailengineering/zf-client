@@ -3,8 +3,8 @@ require 'rails_helper'
 module Intersail
   module ZfClient
     module Client
-      RSpec.describe ZProcessManager, type: :client do
-        let(:process) { ZProcessManager.new }
+      RSpec.describe ZProcessInstanceManager, type: :client do
+        let(:process) { ZProcessInstanceManager.new }
         subject { process }
 
         it_behaves_like "httparty_validatable"
