@@ -53,24 +53,42 @@ module Intersail
 
             it "should have valid delegated classes" do
               expect(@z_client.delegated).to be == {
-                user: Intersail::ZfClient::Client::ZUserManager,
-                role: Intersail::ZfClient::Client::ZRoleManager,
-                unit: Intersail::ZfClient::Client::ZUnitManager,
-                urr: Intersail::ZfClient::Client::ZUrrManager,
-                acl: Intersail::ZfClient::Client::ZAclManager,
-                process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
+                  user: Intersail::ZfClient::Client::ZUserManager,
+                  role: Intersail::ZfClient::Client::ZRoleManager,
+                  unit: Intersail::ZfClient::Client::ZUnitManager,
+                  urr: Intersail::ZfClient::Client::ZUrrManager,
+                  acl: Intersail::ZfClient::Client::ZAclManager,
+                  process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
               }
             end
           end
 
           context "method delegation" do
-            it "should delegate method calls to his managers" do
-              expect(@z_client_stub.stub_m).to receive(:stub_method)
-              @z_client_stub.stub_method
+            it "should delegate crud methods to user" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :user, :user)
+            end
+
+            it "should delegate crud methods to role" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :role, :role)
+            end
+
+            it "should delegate crud methods to unit" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :unit, :unit)
+            end
+
+            it "should delegate crud methods to urr" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :delete], :urr, :urr)
+            end
+
+            it "should delegate crud methods to acl" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :acl, :acl)
+            end
+
+            it "should delegate crud methods to process_instance" do
+              expect(@z_client).to delegate_with_prefix(:create, :process_instance, :process_instance)
             end
           end
         end
-
       end
     end
   end

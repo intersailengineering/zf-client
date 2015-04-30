@@ -12,7 +12,19 @@ module Intersail
           initialize_clients
         end
 
+        ##
+        # Delegation
+        ##
 
+        # List of all the methods that needs to be delegated
+        delegate :create, :read, :update, :list, :delete, to: :user, prefix: :user
+        delegate :create, :read, :update, :list, :delete, to: :role, prefix: :role
+        delegate :create, :read, :update, :list, :delete, to: :unit, prefix: :unit
+        delegate :create, :read, :delete, to: :urr, prefix: :urr
+        delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
+        delegate :create, to: :process_instance, prefix: :process_instance
+
+        # List of all the managers as name => class
         def delegated
           {
               user: Intersail::ZfClient::Client::ZUserManager,
@@ -21,7 +33,6 @@ module Intersail
               urr: Intersail::ZfClient::Client::ZUrrManager,
               acl: Intersail::ZfClient::Client::ZAclManager,
               process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
-
           }
         end
 
@@ -35,13 +46,6 @@ module Intersail
 
         def initialize_client(klass)
           klass.new(@z_token, @base_uri)
-        end
-
-        def method_missing(method, *args, &block)
-          delegated.each do |manager_attr|
-            manager_obj = self.send(manager_attr[0])
-            return manager_obj.public_send(method,*args) if manager_obj.respond_to?(method)
-          end
         end
       end
     end
