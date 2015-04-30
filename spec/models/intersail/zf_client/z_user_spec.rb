@@ -15,13 +15,13 @@ module Intersail
               "description" => "",
               "password" => nil,
               "active" => false,
-              "profile" => nil,
+              "resource" => nil,
               "urrs" => []
           }
         end
 
-        it "should include profile and urrs" do
-          expect(subject.attributes_to_include).to be == [:profile, :urrs]
+        it "should include resource and urrs" do
+          expect(subject.attributes_to_include).to be == [:resource, :urrs]
         end
       end
     end

@@ -8,7 +8,7 @@ module Intersail
       expect(_user).to have_attr_accessor(:description)
       expect(_user).to have_attr_accessor(:password)
       expect(_user).to have_attr_accessor(:active)
-      expect(_user).to have_attr_accessor(:profile)
+      expect(_user).to have_attr_accessor(:resource)
       expect(_user).to have_attr_accessor(:urrs)
     end
 
@@ -20,8 +20,8 @@ module Intersail
       expect(_user).to validate_presence_of(:username)
       expect(_user).to validate_presence_of(:password)
       expect(_user).to validate_exclusion_of(:active).in_array([nil])
-      expect(_user).to validate_presence_of(:profile)
-      expect(_user).to have_subattribute_validator(:profile)
+      expect(_user).to validate_presence_of(:resource)
+      expect(_user).to have_subattribute_validator(:resource)
       expect(_user).to have_subattribute_validator(:urrs)
     end
   end

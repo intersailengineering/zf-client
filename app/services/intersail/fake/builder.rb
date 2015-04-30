@@ -13,13 +13,13 @@ module Intersail
                                                   password: Faker::Internet.password(8),
                                                   active: true,
                                               })
-        user.profile = build_profile
+        user.resource = build_resource
         user.urrs = [build_urr(user, build_unit, build_role)] unless no_urrs
         user
       end
 
-      def build_profile
-        Intersail::ZfClient::ZUserProfile.new({
+      def build_resource
+        Intersail::ZfClient::ZResource.new({
                                                   first_name: Faker::Name.first_name,
                                                   last_name: Faker::Name.last_name,
                                                   mail: Faker::Internet.email,
