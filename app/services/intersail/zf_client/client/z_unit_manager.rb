@@ -9,27 +9,27 @@ module Intersail
           @faker = Intersail::Fake::Builder.new
         end
 
-        def create_unit(unit)
+        def create(unit)
           doValidation(unit)
           unit.id = 1
           unit
         end
 
-        def get_unit(id)
+        def read(id)
           @faker.build_unit
         end
 
-        def update_unit(unit)
+        def update(unit)
           doValidation(unit)
           unit
         end
 
-        def delete_unit(id)
+        def delete(id)
           nil
         end
 
         # {user_id: 12345}
-        def all_units(filter = {})
+        def list(filter = {})
           # ignore filter for now
           (1..20).inject([]) do |items|
             items << @faker.build_unit

@@ -11,7 +11,7 @@ module Intersail
 
         # Urr
         # {user_id: , role_id:, unit_id: }
-        def create_urr(ids = {})
+        def create(ids = {})
           user = @faker.build_user(ids[:user_id])
           role = @faker.build_role
           role.id = ids[:role_id]
@@ -23,11 +23,11 @@ module Intersail
           urr
         end
 
-        def get_urr(id)
+        def read(id)
           @faker.build_urr(@faker.build_user(id.to_i),@faker.build_unit,@faker.build_role)
         end
 
-        def delete_urr(id)
+        def delete(id)
           nil
         end
 

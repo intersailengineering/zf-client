@@ -9,26 +9,26 @@ module Intersail
           @faker = Intersail::Fake::Builder.new
         end
 
-        def create_acl(acl)
+        def create(acl)
           doValidation(acl)
           acl.id = 1
           acl
         end
 
-        def get_acl(id)
+        def read(id)
           @faker.build_acl
         end
 
-        def update_acl(acl)
+        def update(acl)
           doValidation(acl)
           acl
         end
 
-        def delete_acl(id)
+        def delete(id)
           nil
         end
 
-        def all_acls(filter = {})
+        def list(filter = {})
           # ignore filter for now
           (1..20).inject([]) do |items|
             items << @faker.build_acl

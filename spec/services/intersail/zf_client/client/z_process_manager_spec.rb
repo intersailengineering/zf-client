@@ -49,14 +49,14 @@ module Intersail
           end
 
           it "should create a process definition" do
-            expect(process).to receive(:post)
+            expect(process).to receive(:_post)
                                .with(p_def, process.create_process_uri)
                                .and_return(success_res)
 
             process_id = success_res["process_id"]
             p_def.id = process_id
 
-            expect(process.create_process_inst(p_def)).to be == p_def
+            expect(process.create(p_def)).to be == p_def
           end
           xit "should apply transition"
           xit "should abort process"

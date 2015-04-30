@@ -44,7 +44,7 @@ module Intersail
               expect(@z_client_stub.base_uri).to be == @base_uri
             end
 
-            it "should initialize himself with all the manager configured" do
+            it "should initialize all the manager with token and base_uri" do
               expect(@z_client_stub).to have_attr_accessor :stub_m
               expect(@z_client_stub.stub_m.class).to be == StubManager
               expect(@z_client_stub.stub_m.z_token).to be == @z_token

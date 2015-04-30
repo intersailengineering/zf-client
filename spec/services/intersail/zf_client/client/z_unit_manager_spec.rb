@@ -10,27 +10,28 @@ module Intersail
           xit "should setup def settings with after_initialize"
         end
 
+        #@dup same for all manager need to refactor
         context "single unit" do
           it "should create unit" do
-            expect(subject).to respond_to(:create_unit)
+            expect(subject).to respond_to(:create)
           end
           it "should read unit" do
-            expect(subject).to respond_to(:get_unit)
+            expect(subject).to respond_to(:read)
           end
           it "should update unit" do
-            expect(subject).to respond_to(:update_unit)
+            expect(subject).to respond_to(:update)
           end
           it "should delete unit" do
-            expect(subject).to respond_to(:delete_unit)
+            expect(subject).to respond_to(:delete)
           end
         end
 
         context "all units" do
           it "should list all unit info" do
-            expect(subject).to respond_to(:all_units)
+            expect(subject).to respond_to(:list)
           end
           it "should list all units filtered" do
-            expect(subject).to respond_to(:all_units)
+            expect(subject).to respond_to(:list)
           end
         end
       end

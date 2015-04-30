@@ -10,15 +10,16 @@ module Intersail
           xit "should setup def settings with after_initialize"
         end
 
+        #@dup same for all manager need to refactor
         context "urr" do
           it "should create urr" do
-            expect(subject).to respond_to(:create_urr)
+            expect(subject).to respond_to(:create)
           end
           it "should read urr" do
-            expect(subject).to respond_to(:get_urr)
+            expect(subject).to respond_to(:read)
           end
           it "should delete urr" do
-            expect(subject).to respond_to(:delete_urr)
+            expect(subject).to respond_to(:delete)
           end
         end
       end

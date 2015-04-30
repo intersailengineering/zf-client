@@ -9,26 +9,26 @@ module Intersail
           @faker = Intersail::Fake::Builder.new
         end
 
-        def create_role(role)
+        def create(role)
           doValidation(role)
           role.id = 1
           role
         end
 
-        def get_role(id)
+        def read(id)
           @faker.build_role
         end
 
-        def update_role(role)
+        def update(role)
           doValidation(role)
           role
         end
 
-        def delete_role(id)
+        def delete(id)
           nil
         end
         # {user_id: 12345}
-        def all_roles(filter = {})
+        def list(filter = {})
           # ignore filter for now
           (1..20).inject([]) do |items|
             items << @faker.build_role

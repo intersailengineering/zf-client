@@ -69,22 +69,21 @@ module Intersail
     end
 
     it "should do validation and call method" do
-      it_should_do_validation_and_call_method(:post)
-      it_should_do_validation_and_call_method(:put)
-      it_should_do_validation_and_call_method(:get)
-      it_should_do_validation_and_call_method(:delete)
+      it_should_do_validation_and_call_method(:_get, :get)
+      it_should_do_validation_and_call_method(:_post, :post)
+      it_should_do_validation_and_call_method(:_put, :put)
+      it_should_do_validation_and_call_method(:_delete, :delete)
     end
 
     # Helpers
-
-    def it_should_do_validation_and_call_method(method)
+    def it_should_do_validation_and_call_method(name, method)
       expect(subject).to receive(:doValidation)
 
       jsonable = double(as_json: "{}")
       uri = "/RelativeUri.aspx"
 
       expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
-      subject.send(method, jsonable, uri)
+      subject.send(name, jsonable, uri)
     end
   end
 end

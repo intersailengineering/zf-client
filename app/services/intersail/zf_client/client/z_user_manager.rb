@@ -13,23 +13,23 @@ module Intersail
         end
 
         # User
-        def create_user(user)
-          user_as_json = post(user, self.user_uri)
+        def create(user)
+          user_as_json = _post(user, self.user_uri)
           ZUser.new(user_as_json)
         end
 
-        def get_user(id)
+        def read(id)
         end
 
-        def update_user(user)
+        def update(user)
         end
 
-        def delete_user(id)
+        def delete(id)
           # Raise an exception if any problem occurs
           nil
         end
 
-        def all_users(filter = {})
+        def list(filter = {})
         end
       end
     end
