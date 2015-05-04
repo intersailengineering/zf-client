@@ -1,9 +1,10 @@
 module Intersail
   module ZfClient
     class ZRole
-      #@dup all the code here is the same as for the unit
+      #@dup all the code here is the same as for the role, extract to mixin
       include ActiveModel::Model
       include Serializable
+      include Infoable
 
       # Attributes
       attr_accessor :id
@@ -16,6 +17,11 @@ module Intersail
       validates_presence_of :description
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :parent
 
+      # Infoable
+      def infoable_attributes
+        [:parent]
+      end
+
       # Serialization
       def attributes
         {
@@ -23,11 +29,6 @@ module Intersail
             "description" => "",
             "parent_id" => nil
         }
-      end
-
-      def parent_id
-        return self.parent.id if self.parent && self.parent.id != nil
-        nil
       end
 
       def attributes_to_include

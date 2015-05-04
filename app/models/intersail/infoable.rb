@@ -1,4 +1,10 @@
 module Intersail
+
+  # provides +is_info?+ and +data_attributes+ methods to handle info objects
+  # with the same class
+  # also creates an attributes_id accessor that you can use
+  # to fetches the id of the attribute either if it's present in the attribute.id or
+  # in the attribute_id field.
   module Infoable
     extend ActiveSupport::Concern
 
@@ -38,8 +44,8 @@ module Intersail
       !has_infoable && has_resources
     end
 
-    # Return the list of all his associated attributes or attributes_id depending
-    # if is an info object or not
+    # Return the list of all the associated attributes or attributes_id depending
+    # on +is_info?+ or not
     def data_attributes
       my_attributes = {}
       if is_info?
@@ -53,5 +59,11 @@ module Intersail
       end
       my_attributes
     end
+
+    # Default infoable implementation
+    def infoable_attributes
+      []
+    end
+
   end
 end

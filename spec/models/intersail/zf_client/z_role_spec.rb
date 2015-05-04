@@ -7,6 +7,14 @@ module Intersail
 
       it_behaves_like "role"
 
+      context "infoable" do
+        it_behaves_like "infoable"
+
+        it "should have given infoable attributes" do
+          expect(subject.infoable_attributes).to be == [:parent]
+        end
+      end
+
       context "serialization" do
         it_behaves_like "serializable"
         it "should have serialization attributes" do

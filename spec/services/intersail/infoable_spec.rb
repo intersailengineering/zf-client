@@ -8,22 +8,14 @@ module Intersail
       attr_accessor :an_attribute
 
       def infoable_attributes
-        [
-            :an_attribute
-        ]
+        [:an_attribute]
       end
     end
 
-
-    #@jtodoIMP extract to mixin to use for all the infoable!
-    context "should be infoable" do
-      subject {InfoableItem.new}
-        it {is_expected.to includes(Infoable)}
-        it {is_expected.to includes(ActiveModel::Model)}
-        it {is_expected.to respond_to(:infoable_attributes)}
-    end
-
     let(:infoable) { InfoableItem.new }
+    subject {infoable}
+
+    it_behaves_like "infoable"
 
     it "should create attr_accessor for the info id fields" do
       attributes = infoable.infoable_attributes
