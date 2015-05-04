@@ -2,7 +2,6 @@ module Intersail
   module ZfClient
     class ZUnit
       #@dup all the code here is the same as for the role, extract to mixin
-      include ActiveModel::Model
       include Serializable
       include Infoable
 
@@ -29,11 +28,6 @@ module Intersail
             "description" => "",
             "parent_id" => nil
         }
-      end
-
-      def parent_id
-        return self.parent.id if self.parent && self.parent.id != nil
-        nil
       end
 
       def attributes_to_include

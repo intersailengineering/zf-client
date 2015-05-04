@@ -5,7 +5,7 @@ require 'faker'
 module Intersail
   module Fake
     class Builder
-      def build_user(id, no_urrs = false)
+      def build_user(id, is_info = false)
         user = Intersail::ZfClient::ZUser.new({
                                                   id: id.to_i,
                                                   username: Faker::Name.name,
@@ -13,57 +13,63 @@ module Intersail
                                                   password: Faker::Internet.password(8),
                                                   active: true,
                                               })
-        user.resource = build_resource
-        user.urrs = [build_urr(user, build_unit, build_role)] unless no_urrs
+        user.resource = build_resource()
+        unless is_info
+          urrs = [build_urr(build_unit, build_role, user.resource)]
+          user.resource.urrs = urrs
+        end
         user
       end
 
-      def build_resource
+      def build_resource(urrs = [])
         Intersail::ZfClient::ZResource.new({
-                                                  first_name: Faker::Name.first_name,
-                                                  last_name: Faker::Name.last_name,
-                                                  mail: Faker::Internet.email,
-                                                  custom_data: Intersail::ZfClient::ZCustomData.new({
-                                                                                                        name: Faker::Lorem.word,
-                                                                                                        value: Faker::Lorem.word
-                                                                                                    })
-                                              })
+                                               first_name: Faker::Name.first_name,
+                                               last_name: Faker::Name.last_name,
+                                               mail: Faker::Internet.email,
+                                               custom_data: Intersail::ZfClient::ZCustomData.new({
+                                                                                                     name: Faker::Name.name,
+                                                                                                     value: Faker::Name.name
+                                                                                                 }),
+                                               urrs: urrs})
       end
 
-      def build_unit
-        Intersail::ZfClient::ZUnit.new({
-                                           id: Faker::Number.number(4),
-                                           name: Faker::Lorem.word,
-                                           description: Faker::Lorem.words(5),
-                                           parent: (Intersail::ZfClient::ZUnit.new({
-                                                                                       id: Faker::Number.number(4),
-                                                                                       name: Faker::Lorem.word,
-                                                                                       description: Faker::Lorem.words(5),
-                                                                                       parent: nil
-                                                                                   }))
-                                       })
+      def build_unit(is_info = false)
+        Intersail::ZfClient::ZUnit.new(unit_role_params(is_info, Intersail::ZfClient::ZUnit) )
       end
 
-      def build_role
-        Intersail::ZfClient::ZRole.new({
-                                           id: Faker::Number.number(4),
-                                           name: Faker::Lorem.word,
-                                           description: Faker::Lorem.words(5),
-                                           parent: (Intersail::ZfClient::ZUnit.new({
-                                                                                       id: Faker::Number.number(4),
-                                                                                       name: Faker::Lorem.word,
-                                                                                       description: Faker::Lorem.words(5),
-                                                                                       parent: nil
-                                                                                   }))
-                                       })
+      def build_role(is_info = false)
+        Intersail::ZfClient::ZRole.new(unit_role_params(is_info, Intersail::ZfClient::ZRole) )
       end
 
-      def build_urr(user, unit, role)
+      def unit_role_params(is_info, klass)
+        parent = nil
+        parent_id = Faker::Number.number(2)
+
+        unless is_info
+          parent = klass.new({
+                                                      id: Faker::Number.number(2),
+                                                      name: Faker::Lorem.word,
+                                                      description: Faker::Lorem.words(5),
+                                                      parent: nil
+                                                  })
+          parent_id = nil
+        end
+
+        {
+            id: Faker::Number.number(2),
+            name: Faker::Lorem.word,
+            description: Faker::Lorem.words(5),
+            parent: parent,
+            parent_id: parent_id
+        }
+      end
+
+      def build_urr(unit, role, resource)
         Intersail::ZfClient::ZUrr.new({
                                           id: Faker::Number.number(2),
-                                          user: user,
                                           unit: unit,
-                                          role: role
+                                          role: role,
+                                          resource: resource
                                       })
       end
 

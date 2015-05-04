@@ -17,6 +17,10 @@ module Intersail
 
     it_behaves_like "infoable"
 
+    it "should return nil if attribute and attribute_id are nil" do
+      expect(infoable.an_attribute_id).to be_nil
+    end
+
     it "should create attr_accessor for the info id fields" do
       attributes = infoable.infoable_attributes
       attributes.each do |name, value|

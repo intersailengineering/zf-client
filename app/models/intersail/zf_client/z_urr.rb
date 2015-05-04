@@ -1,7 +1,6 @@
 module Intersail
   module ZfClient
     class ZUrr
-      include ActiveModel::Model
       include Serializable
       include Infoable
 

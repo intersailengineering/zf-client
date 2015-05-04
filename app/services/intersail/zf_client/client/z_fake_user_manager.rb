@@ -5,14 +5,12 @@ module Intersail
         include HTTPartyValidatable
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
           @faker = Intersail::Fake::Builder.new
         end
 
         # User
         def create_user(user)
           doValidation(user)
-          user.urrs = []
           user.id = 1
           user
         end
