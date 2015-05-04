@@ -27,7 +27,7 @@ module Intersail
         # List of all the managers as name => class
         def delegated
           {
-              user: Intersail::ZfClient::Client::ZUserManager,
+              user: Intersail::ZfClient::Client::ZFakeUserManager,
               role: Intersail::ZfClient::Client::ZRoleManager,
               unit: Intersail::ZfClient::Client::ZUnitManager,
               urr: Intersail::ZfClient::Client::ZUrrManager,

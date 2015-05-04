@@ -9,27 +9,27 @@ module Intersail
         end
 
         # User
-        def create_user(user)
+        def create(user)
           doValidation(user)
           user.id = 1
           user
         end
 
-        def get_user(id)
+        def read(id)
           @faker.build_user(id)
         end
 
-        def update_user(user)
+        def update(user)
           doValidation(user)
           user
         end
 
-        def delete_user(id)
+        def delete(id)
           # Raise an exception if any problem occurs
           nil
         end
 
-        def all_users(filter = {})
+        def list(filter = {})
           # ignore filter for now
           (1..10).inject([]) do |items, index|
             items << @faker.build_user(index, true)
