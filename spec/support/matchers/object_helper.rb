@@ -12,7 +12,7 @@ module Helpers
       end
     end
 
-    RSpec::Matchers.define :extends do |klass|
+    RSpec::Matchers.define :includes do |klass|
       match do |actual|
         expect(actual.is_a? klass).to be true
       end

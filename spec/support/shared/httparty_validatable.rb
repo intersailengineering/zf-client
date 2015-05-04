@@ -3,7 +3,7 @@ module Intersail
   shared_examples "httparty_validatable" do
     let(:fake_data) { %Q/{"fake" : "fake_json"}/ }
 
-    it { is_expected.to extends(HTTParty) }
+    it { is_expected.to includes(HTTParty) }
 
     context "header" do
       it "should pass authorization data in the hedader" do

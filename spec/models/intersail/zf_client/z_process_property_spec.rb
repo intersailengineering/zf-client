@@ -7,8 +7,8 @@ module Intersail
 
       it { is_expected.to have_attr_accessor(:name) }
       it { is_expected.to have_attr_accessor(:value) }
-      it { is_expected.to extends(ActiveModel::Model) }
-      it { is_expected.to extends(ActiveModel::Serializers::JSON) }
+      it { is_expected.to includes(ActiveModel::Model) }
+      it { is_expected.to includes(ActiveModel::Serializers::JSON) }
 
       it "should validate his attributes" do
         expect(subject).to validate_presence_of(:name)

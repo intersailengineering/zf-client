@@ -18,7 +18,7 @@ module Intersail
     end
 
     it "should be an active model" do
-      expect(_acl).to extends(ActiveModel::Model)
+      expect(_acl).to includes(ActiveModel::Model)
     end
 
     it "should validate his data" do

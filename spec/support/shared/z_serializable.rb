@@ -4,7 +4,7 @@ module Intersail
 
     it "should ask at ActiveModel:Serializer::JSON for serialization with as_json" do
       allow(_serializable).to receive(:valid?) { true }
-      expect(_serializable).to extends(ActiveModel::Serializers::JSON)
+      expect(_serializable).to includes(ActiveModel::Serializers::JSON)
       expect_any_instance_of(ActiveModel::Serializers::JSON).to receive(:as_json)
 
       _serializable.as_json

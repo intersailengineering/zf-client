@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Intersail
-  describe 'InfoAble', focus: true do
+  describe 'InfoAble' do
     class InfoableItem
       include Infoable
 
@@ -15,11 +15,11 @@ module Intersail
     end
 
 
-    # extract to mixin to use for all the infoable!
+    #@jtodoIMP extract to mixin to use for all the infoable!
     context "should be infoable" do
       subject {InfoableItem.new}
-        it {is_expected.to extends(Infoable)}
-        it {is_expected.to extends(ActiveModel::Model)}
+        it {is_expected.to includes(Infoable)}
+        it {is_expected.to includes(ActiveModel::Model)}
         it {is_expected.to respond_to(:infoable_attributes)}
     end
 
@@ -40,22 +40,29 @@ module Intersail
       end
 
       it "should pass info data with data_attributes" do
-        pending "do the resource_id method first"
         expect(infoable.data_attributes).to be == {an_attribute_id: 1}
       end
 
-      xit "should return the id field of an attribute when accessing the attribute_id field"
+      it "should return the id field of an attribute when accessing the attribute_id field" do
+        expect(infoable.an_attribute_id).to be == 1
+      end
     end
 
     context "is not an info object" do
-      let(:infoable) { InfoableItem.new(an_attribute: OpenStruct.new(id: 1)) }
+      let(:attribute) { OpenStruct.new(id: 1) }
+      let(:infoable) { InfoableItem.new(an_attribute: attribute) }
 
       it "should tell that is not an info object with is_info?" do
         expect(infoable.is_info?).to be_falsey
       end
-      xit "should pass resource data with data_attributes"
 
-      xit "should return the id field of an attribute when accessing the attribute_id field"
+      it "should pass resource data with data_attributes" do
+        expect(infoable.data_attributes).to be == {an_attribute: attribute}
+      end
+
+      it "should return the id field of an attribute when accessing the attribute_id field" do
+        expect(infoable.an_attribute_id).to be == 1
+      end
     end
 
   end

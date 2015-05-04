@@ -11,7 +11,7 @@ module Intersail
     end
 
     it "should be an active model" do
-      expect(subject).to extends(ActiveModel::Model)
+      expect(subject).to includes(ActiveModel::Model)
     end
 
     it "should validate presence of id params or class param with precedence on ids" do

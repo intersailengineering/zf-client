@@ -12,7 +12,7 @@ module Intersail
     end
 
     it "should be an active model" do
-      expect(_p_inst).to extends(ActiveModel::Model)
+      expect(_p_inst).to includes(ActiveModel::Model)
     end
 
     it "should validate his attributes" do
