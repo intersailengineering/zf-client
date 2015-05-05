@@ -19,15 +19,11 @@ module Intersail
       validates_presence_of :resource
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
 
-      # Delegation
-      delegate :urrs, to: :resource
-
       # Serialization
       def attributes
         {
             "username" => "",
             "description" => "",
-            "password" => nil,
             "active" => false,
             "resource" => nil
         }

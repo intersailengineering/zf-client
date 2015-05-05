@@ -25,13 +25,13 @@ module Intersail
             "first_name" => "",
             "last_name" => "",
             "mail" => "",
-            "custom_data" => "",
+            "custom_data" => {},
             "urrs" => []
         }
       end
 
       def attributes_to_include
-        [:custom_data, :urrs]
+        [:urrs]
       end
     end
   end

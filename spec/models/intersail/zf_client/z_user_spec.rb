@@ -13,7 +13,6 @@ module Intersail
           expect(subject.attributes).to be == {
               "username" => "",
               "description" => "",
-              "password" => nil,
               "active" => false,
               "resource" => nil
           }
@@ -21,17 +20,6 @@ module Intersail
 
         it "should include resource and urrs" do
           expect(subject.attributes_to_include).to be == [:resource]
-        end
-      end
-
-      context "delegation" do
-        it "should delegate urrs calls to resource" do
-          resource = double("resource")
-          expect(resource).to receive(:urrs)
-
-          subject.resource = resource
-
-          subject.urrs
         end
       end
     end

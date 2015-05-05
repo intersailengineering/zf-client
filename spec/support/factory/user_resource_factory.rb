@@ -3,7 +3,10 @@ FactoryGirl.define do
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
     mail Faker::Internet.email
-    custom_data { FactoryGirl.build(:custom_data) }
+    custom_data Hash.new({
+      "field1" => Faker::Name.name,
+      "field2" => Faker::Name.name
+    })
     urrs { [FactoryGirl.build(:urr)] }
 
     after(:build) do |resource|

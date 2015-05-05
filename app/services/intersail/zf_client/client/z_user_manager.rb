@@ -4,6 +4,8 @@ module Intersail
       class ZUserManager
         include HTTPartyValidatable
 
+        #@jtodoIMP handle errors
+
         # Attributes
         attr_accessor :user_uri
 

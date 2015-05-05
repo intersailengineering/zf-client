@@ -20,9 +20,9 @@ module Intersail
         delegate :create, :read, :update, :list, :delete, to: :user, prefix: :user
         delegate :create, :read, :update, :list, :delete, to: :role, prefix: :role
         delegate :create, :read, :update, :list, :delete, to: :unit, prefix: :unit
-        delegate :create, :read, :delete, to: :urr, prefix: :urr
+        delegate :create, :read, :update, to: :urr, prefix: :urr
         delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
-        delegate :create, to: :process_instance, prefix: :process_instance
+        delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
 
         # List of all the managers as name => class
         def delegated

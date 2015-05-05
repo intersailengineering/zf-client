@@ -69,9 +69,8 @@ module Intersail
           end
 
           it "should list all user as info" do
-            p multiple_user_res
            # pp success_res
-           #  uri = "#{subject.user_uri}/"
+           #  uri = subject.user_uri
            #  expect(subject).to receive(:_get)
            #                     .with(uri)
            #                     .and_return()
