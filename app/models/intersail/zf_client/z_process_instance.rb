@@ -33,6 +33,10 @@ module Intersail
       def attributes_to_include
         []
       end
+
+      def self.from_hash(hash)
+        ZProcessInstance.new hash
+      end
     end
   end
 end

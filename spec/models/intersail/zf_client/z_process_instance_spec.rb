@@ -23,6 +23,7 @@ module Intersail
         it "should include properties" do
           expect(subject.attributes_to_include).to be == []
         end
+        it { is_expected.to be_buildable_from_hash }
       end
     end
   end

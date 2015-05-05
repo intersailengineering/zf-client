@@ -26,27 +26,45 @@ module Intersail
         end
 
         context "api" do
-          let(:p_def) { build(:z_process_inst) }
-          let(:success_res) { build(:success_pdef_create_res_success) }
-          let(:error_res) { build(:success_pdef_create_res_error) }
+          let(:p_inst) { build(:z_process_inst) }
+          let(:single_process_res) { as_json(:process_instance_success_res) }
 
           context "stub validation" do
-            subject { p_def }
+            subject { p_inst }
             it_behaves_like "process_instance"
           end
 
+          #@jtodoIMP use the resource mixin with only c of crud
           it "should create a process definition" do
             expect(subject).to receive(:_post)
-                               .with(p_def, subject.process_uri)
-                               .and_return(success_res)
+                               .with(subject.process_uri, p_inst)
+                               .and_return(single_process_res)
 
-            process_id = success_res["process_id"]
-            p_def.id = process_id
+            expect(ZProcessInstance).to receive(:from_hash) { Hash.new }
 
-            expect(subject.create(p_def)).to be == p_def
+            expect(subject.create(p_inst)).to be == {}
           end
-          xit "should apply transition"
-          xit "should abort process"
+
+          it "should apply transition" do
+            p_inst_id = 1
+            transition_name = "name"
+            uri = "#{subject.process_uri}/#{p_inst_id}/apply_transition/#{transition_name}"
+            expect(subject).to receive(:_put)
+                              .with(uri)
+
+            #@jtodoIMP check for return expetation
+            subject.apply_transition(p_inst_id, transition_name)
+          end
+
+          it "should abort process instance" do
+            p_inst_id = 1
+            uri = "#{subject.process_uri}/#{p_inst_id}/abort"
+            expect(subject).to receive(:_put)
+                               .with(uri)
+
+            #@jtodoIMP check for return expetation
+            subject.abort(p_inst_id)
+          end
         end
       end
     end

@@ -16,6 +16,7 @@ module Intersail
 
 
         #@jtodoIMP extract below as mixin
+        #@jtodoIMP handle errors in the mixin
         def create(user)
           ZUser.from_hash _post(self.user_uri, user)
         end
