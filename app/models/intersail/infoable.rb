@@ -12,8 +12,8 @@ module Intersail
       send("include", ActiveModel::Model)
 
       def initialize(params={})
-        super
         after_initialize
+        super
       end
 
       private
