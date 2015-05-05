@@ -46,13 +46,19 @@ module Intersail
     end
 
     context "validation" do
-      it "should check if given param is validatable" do
+      it "should skip validation for empty objects" do
+        subject.doValidation(nil)
+      end
+
+      it "should check if given param is validatable if obj is not empty" do
         invalid = double("without_valid?")
+        expect(invalid).to receive(:nil?) { false }
         expect { subject.doValidation(invalid) }.to raise_error(Intersail::Errors::StandardValidationError, "You need to provide a validatable object")
       end
 
       it "should raise exception if invalid" do
         invalid = double("invalid")
+        expect(invalid).to receive(:nil?) { false }
         expect(invalid).to receive(:valid?) { false }
         error_message = "fake error message"
         expect(invalid).to receive_message_chain(:errors, :full_messages) { error_message }
@@ -62,6 +68,7 @@ module Intersail
 
       it "should do nothing if valid" do
         valid = double("valid")
+        expect(valid).to receive(:nil?) { false }
         expect(valid).to receive(:valid?) { true }
 
         subject.doValidation(valid)
