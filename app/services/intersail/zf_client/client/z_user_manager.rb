@@ -12,13 +12,12 @@ module Intersail
           self.user_uri = ZfClient.config.user_uri
         end
 
-        # User
         def create(user)
-          user_as_json = _post(user, self.user_uri)
-          ZUser.new(user_as_json)
+          ZUser.new(_post(self.user_uri, user))
         end
 
         def read(id)
+          ZUser.new(_get("#{self.user_uri}/#{id}"))
         end
 
         def update(user)

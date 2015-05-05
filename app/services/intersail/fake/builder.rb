@@ -10,7 +10,6 @@ module Intersail
                                                   id: id.to_i,
                                                   username: Faker::Name.name,
                                                   description: Faker::Name.name,
-                                                  password: Faker::Internet.password(8),
                                                   active: true,
                                               })
         user.resource = build_resource()

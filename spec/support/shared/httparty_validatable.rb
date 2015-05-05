@@ -83,7 +83,7 @@ module Intersail
       uri = "/RelativeUri.aspx"
 
       expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
-      subject.send(name, jsonable, uri)
+      subject.send(name, uri, jsonable)
     end
   end
 end

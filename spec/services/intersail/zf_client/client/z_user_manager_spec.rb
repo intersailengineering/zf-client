@@ -28,36 +28,45 @@ module Intersail
           end
         end
 
-        context "single user" do
+        context "api" do
           let(:user) { build(:user) }
           let(:success_res) { as_json(:create_user_success_res) }
 
           it "should create user" do
-            expect(subject).to respond_to(:create)
             expect(subject).to receive(:_post)
-                               .with(user, subject.user_uri)
+                               .with(subject.user_uri, user)
                                .and_return(success_res)
 
             expect(subject.create(user).attributes).to be == user.attributes
           end
 
-          #@dup same for all manager need to refactor
           it "should read user" do
-            expect(subject).to respond_to(:read)
+            id = Faker::Number.digit
+            uri = "#{subject.user_uri}/#{id}"
+            expect(subject).to receive(:_get)
+                              .with(uri)
+                              .and_return(success_res)
+            subject.read(id)
           end
+
           it "should update user" do
-            expect(subject).to respond_to(:update)
+            pending "remove password from json user first"
+            id = Faker::Number.digit
+            uri = "#{subject.user_uri}/#{id}"
+            expect(subject).to receive(:_put)
+                               .with(uri, user)
+                               .and_return(success_res)
+            subject.update(user)
           end
+
           it "should delete user" do
             expect(subject).to respond_to(:delete)
           end
-        end
 
-        context "all users" do
-          it "should list all user info" do
+          it "should list all user as info" do
             expect(subject).to respond_to(:list)
           end
-          it "should list all users filtered" do
+          it "should list all users as info filtered" do
             expect(subject).to respond_to(:list)
           end
         end

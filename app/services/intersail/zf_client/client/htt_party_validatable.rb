@@ -35,22 +35,22 @@ module Intersail
           {"X-ZToken" => self.z_token, "Accept" => "application/json"}
         end
 
-        def _get(obj, relative_uri)
+        def _get(relative_uri, obj = {})
           doValidation(obj)
           call_method(:get, obj, relative_uri)
         end
 
-        def _post(obj, relative_uri)
+        def _post(relative_uri, obj = {})
           doValidation(obj)
           call_method(:post, obj, relative_uri)
         end
 
-        def _put(obj, relative_uri)
+        def _put(relative_uri, obj = {})
           doValidation(obj)
           call_method(:put, obj, relative_uri)
         end
 
-        def _delete(obj, relative_uri)
+        def _delete(relative_uri, obj = {})
           doValidation(obj)
           call_method(:delete, obj, relative_uri)
         end

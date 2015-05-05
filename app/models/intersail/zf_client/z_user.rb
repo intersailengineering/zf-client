@@ -15,7 +15,6 @@ module Intersail
 
       # Validations
       validates_presence_of :username
-      validates_presence_of :password
       validates :active, exclusion: { in: [nil] }
       validates_presence_of :resource
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
