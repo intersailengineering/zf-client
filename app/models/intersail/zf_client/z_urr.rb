@@ -34,6 +34,10 @@ module Intersail
       def attributes_to_include
         []
       end
+
+      def self.from_hash(hash)
+        ZUrr.new(hash)
+      end
     end
   end
 end

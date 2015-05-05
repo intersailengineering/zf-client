@@ -11,6 +11,7 @@ module Intersail
         it_behaves_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
+              "id" => nil,
               "username" => "",
               "description" => "",
               "active" => false,
@@ -21,6 +22,8 @@ module Intersail
         it "should include resource and urrs" do
           expect(subject.attributes_to_include).to be == [:resource]
         end
+
+        it { is_expected.to be_buildable_from_hash }
       end
     end
   end

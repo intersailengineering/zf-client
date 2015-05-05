@@ -32,7 +32,7 @@ module Intersail
         context "api" do
           let(:user) { build(:user) }
           let(:single_user_res) { as_json(:user_success_res) }
-          let(:multiple_user_res) { as_json_list(:user_success_res,3) }
+          let(:multiple_user_res) { as_json_list(:user_success_res, 2) }
 
           it "should create user" do
             expect(subject).to receive(:_post)
@@ -69,12 +69,14 @@ module Intersail
           end
 
           it "should list all user as info" do
-           # pp success_res
-           #  uri = subject.user_uri
-           #  expect(subject).to receive(:_get)
-           #                     .with(uri)
-           #                     .and_return()
-           #  subject.list({})
+           expect(subject).to receive(:_get)
+                               .with(subject.user_uri)
+                               .and_return(multiple_user_res)
+
+           expect(ZUser).to receive(:from_hash).twice { Hash.new }
+
+           # validate building of response as json
+           expect(subject.list({})).to be == [{},{}]
           end
 
           it "should list all users as info filtered" do

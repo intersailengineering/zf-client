@@ -47,5 +47,11 @@ module Helpers
         expect(actual.errors).to respond_to :full_messages
       end
     end
+
+    RSpec::Matchers.define :be_buildable_from_hash do
+      match do |actual|
+        expect(actual.class.from_hash(actual.as_json).serializable_hash).to be == actual.as_json
+      end
+    end
   end
 end

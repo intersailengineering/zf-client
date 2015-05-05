@@ -14,6 +14,8 @@ module Intersail
           self.user_uri = ZfClient.config.user_uri
         end
 
+
+        #@jtodoIMP extract below as mixin
         def create(user)
           ZUser.new _post(self.user_uri, user)
         end
@@ -31,7 +33,9 @@ module Intersail
         end
 
         def list(filter = {})
-
+          _get("#{self.user_uri}").collect do |user_hash|
+            ZUser.from_hash(user_hash)
+          end
         end
       end
     end

@@ -22,6 +22,7 @@ module Intersail
       # Serialization
       def attributes
         {
+            "id" => nil,
             "username" => "",
             "description" => "",
             "active" => false,
@@ -31,6 +32,12 @@ module Intersail
 
       def attributes_to_include
         [:resource]
+      end
+
+      def self.from_hash(h)
+        hash = h.clone
+        hash["resource"] = ZResource.from_hash(hash["resource"])
+        ZUser.new hash
       end
     end
   end

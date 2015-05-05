@@ -24,6 +24,7 @@ module Intersail
               "resource_id" => nil
           }
         end
+        it { is_expected.to be_buildable_from_hash }
       end
     end
   end
