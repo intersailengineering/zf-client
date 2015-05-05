@@ -10,6 +10,7 @@ module Intersail
       attr_accessor :parent_process_id
       attr_accessor :name
       attr_accessor :description
+      # Hash of custom properties
       attr_accessor :properties
 
       # Validation
@@ -17,8 +18,6 @@ module Intersail
       validates_presence_of :parent_process_id
       validates_presence_of :name
       validates_presence_of :description
-      validates_presence_of :properties
-      validates_with Intersail::Validators::SubAttributeValidator, attributes: :properties
 
       # Serialization
       def attributes
@@ -27,12 +26,12 @@ module Intersail
           "parent_process_id" => 0,
           "name" => "",
           "description" => "",
-          "properties" => []
+          "properties" => {}
         }
       end
 
       def attributes_to_include
-        [:properties]
+        []
       end
     end
   end

@@ -9,8 +9,9 @@ module Intersail
       attr_accessor :first_name
       attr_accessor :last_name
       attr_accessor :mail
+      # Hash of custom data
       attr_accessor :custom_data
-      # contain an array of ZUrr items
+      # Array of ZUrr items
       attr_accessor :urrs
 
       # Validation

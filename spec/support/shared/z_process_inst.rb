@@ -20,8 +20,6 @@ module Intersail
       expect(_p_inst).to validate_presence_of(:parent_process_id)
       expect(_p_inst).to validate_presence_of(:name)
       expect(_p_inst).to validate_presence_of(:description)
-      expect(_p_inst).to validate_presence_of(:properties)
-      expect(_p_inst).to have_subattribute_validator(:properties)
     end
 
   end

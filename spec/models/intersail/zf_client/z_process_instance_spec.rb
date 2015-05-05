@@ -16,12 +16,12 @@ module Intersail
               "parent_process_id" => 0,
               "name" => "",
               "description" => "",
-              "properties" => []
+              "properties" => {}
           }
         end
 
         it "should include properties" do
-          expect(subject.attributes_to_include).to be == [:properties]
+          expect(subject.attributes_to_include).to be == []
         end
       end
     end

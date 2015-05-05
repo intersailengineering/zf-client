@@ -17,15 +17,15 @@ module Intersail
 
         #@jtodoIMP extract below as mixin
         def create(user)
-          ZUser.new _post(self.user_uri, user)
+          ZUser.from_hash _post(self.user_uri, user)
         end
 
         def read(id)
-          ZUser.new _get("#{self.user_uri}/#{id}")
+          ZUser.from_hash _get("#{self.user_uri}/#{id}")
         end
 
         def update(id, user)
-          ZUser.new _put("#{self.user_uri}/#{id}", user)
+          ZUser.from_hash _put("#{self.user_uri}/#{id}", user)
         end
 
         def delete(id)
