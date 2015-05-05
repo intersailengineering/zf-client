@@ -13,14 +13,15 @@ module Intersail
         end
 
         def create(user)
-          ZUser.new(_post(self.user_uri, user))
+          ZUser.new _post(self.user_uri, user)
         end
 
         def read(id)
-          ZUser.new(_get("#{self.user_uri}/#{id}"))
+          ZUser.new _get("#{self.user_uri}/#{id}")
         end
 
-        def update(user)
+        def update(id, user)
+          ZUser.new _put("#{self.user_uri}/#{id}", user)
         end
 
         def delete(id)

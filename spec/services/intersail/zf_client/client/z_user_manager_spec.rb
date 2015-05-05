@@ -50,13 +50,12 @@ module Intersail
           end
 
           it "should update user" do
-            pending "remove password from json user first"
             id = Faker::Number.digit
             uri = "#{subject.user_uri}/#{id}"
             expect(subject).to receive(:_put)
                                .with(uri, user)
                                .and_return(success_res)
-            subject.update(user)
+            subject.update(id, user)
           end
 
           it "should delete user" do
