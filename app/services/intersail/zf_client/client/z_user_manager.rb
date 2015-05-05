@@ -25,11 +25,11 @@ module Intersail
         end
 
         def delete(id)
-          # Raise an exception if any problem occurs
-          nil
+          _delete("#{self.user_uri}/#{id}")
         end
 
         def list(filter = {})
+
         end
       end
     end

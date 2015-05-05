@@ -6,7 +6,6 @@ module Intersail
       describe ZUserManager, type: :client do
         it_behaves_like "httparty_validatable"
 
-        #@jtodoIMP complete all the tests below
         context "configuration" do
           context "configuration" do
             before(:all) do
@@ -28,14 +27,17 @@ module Intersail
           end
         end
 
+        #@dup
+        #@jtodoIMP extract as mixin
         context "api" do
           let(:user) { build(:user) }
-          let(:success_res) { as_json(:create_user_success_res) }
+          let(:single_user_res) { as_json(:user_success_res) }
+          let(:multiple_user_res) { as_json_list(:user_success_res,3) }
 
           it "should create user" do
             expect(subject).to receive(:_post)
                                .with(subject.user_uri, user)
-                               .and_return(success_res)
+                               .and_return(single_user_res)
 
             expect(subject.create(user).attributes).to be == user.attributes
           end
@@ -45,7 +47,7 @@ module Intersail
             uri = "#{subject.user_uri}/#{id}"
             expect(subject).to receive(:_get)
                               .with(uri)
-                              .and_return(success_res)
+                              .and_return(single_user_res)
             subject.read(id)
           end
 
@@ -54,17 +56,28 @@ module Intersail
             uri = "#{subject.user_uri}/#{id}"
             expect(subject).to receive(:_put)
                                .with(uri, user)
-                               .and_return(success_res)
+                               .and_return(single_user_res)
             subject.update(id, user)
           end
 
           it "should delete user" do
-            expect(subject).to respond_to(:delete)
+            id = Faker::Number.digit
+            uri = "#{subject.user_uri}/#{id}"
+            expect(subject).to receive(:_delete)
+                               .with(uri)
+            subject.delete(id)
           end
 
           it "should list all user as info" do
-            expect(subject).to respond_to(:list)
+            p multiple_user_res
+           # pp success_res
+           #  uri = "#{subject.user_uri}/"
+           #  expect(subject).to receive(:_get)
+           #                     .with(uri)
+           #                     .and_return()
+           #  subject.list({})
           end
+
           it "should list all users as info filtered" do
             expect(subject).to respond_to(:list)
           end
