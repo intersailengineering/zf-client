@@ -14,7 +14,6 @@ module Intersail
           self.user_uri = ZfClient.config.user_uri
         end
 
-
         #@jtodoIMP extract below as mixin
         #@jtodoIMP handle errors in the mixin
         def create(user)

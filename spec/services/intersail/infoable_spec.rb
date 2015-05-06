@@ -17,6 +17,10 @@ module Intersail
 
     it_behaves_like "infoable"
 
+    it "can be created from the id attributes" do
+      expect(subject.class.new(an_attribute_id: 1).an_attribute_id).to be == 1
+    end
+
     it "should return nil if attribute and attribute_id are nil" do
       expect(infoable.an_attribute_id).to be_nil
     end

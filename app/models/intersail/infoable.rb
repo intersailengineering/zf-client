@@ -12,13 +12,13 @@ module Intersail
       send("include", ActiveModel::Model)
 
       def initialize(params={})
-        after_initialize
+        before_initialize
         super
       end
 
       private
 
-      def after_initialize
+      def before_initialize
         create_infoable_attributes_setter
         create_infoable_attributes_getter
 
