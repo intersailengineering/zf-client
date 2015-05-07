@@ -2,6 +2,7 @@ module Intersail
   shared_examples "user_resource" do
     let(:_user) { subject }
 
+    it_behaves_like "serialize_idable"
     it "should behave as a ZResource" do
       expect(_user).to have_attr_accessor(:id)
       expect(_user).to have_attr_accessor(:first_name)
@@ -18,7 +19,6 @@ module Intersail
     it "should validate his data" do
       expect(_user).to validate_presence_of(:first_name)
       expect(_user).to validate_presence_of(:last_name)
-      expect(_user).to validate_presence_of(:mail)
       expect(_user).to have_subattribute_validator(:urrs)
     end
   end

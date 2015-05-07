@@ -3,9 +3,9 @@ module Intersail
     class ZProcessInstance
       include ActiveModel::Model
       include Serializable
+      include SerializeId
 
       # Attributes
-      attr_accessor :id
       attr_accessor :process_def_id
       attr_accessor :parent_process_id
       attr_accessor :name

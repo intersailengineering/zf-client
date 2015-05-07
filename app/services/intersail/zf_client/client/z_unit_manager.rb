@@ -3,37 +3,17 @@ module Intersail
     module Client
       class ZUnitManager
         include HTTPartyValidatable
+        include HTTPartyResource
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+          super
+          self.class.base_uri(ZfClient.config.unit_base_uri) unless self.class.base_uri
+          self.resource_uri = ZfClient.config.unit_uri
+          self.resource_class = ZUnit
         end
 
-        def create(unit)
-          doValidation(unit)
-          unit.id = 1
-          unit
-        end
-
-        def read(id)
-          @faker.build_unit
-        end
-
-        def update(unit)
-          doValidation(unit)
-          unit
-        end
-
-        def delete(id)
-          nil
-        end
-
-        # {user_id: 12345}
-        def list(filter = {})
-          # ignore filter for now
-          (1..20).inject([]) do |items|
-            items << @faker.build_unit
-          end
+        def active_resource_methods
+          [:create, :read, :update, :delete, :list]
         end
       end
     end

@@ -1,5 +1,6 @@
 module Intersail
   shared_examples "urr" do
+    it_behaves_like "serialize_idable"
     it "should behave as a ZUrr" do
       expect(subject).to have_attr_accessor(:id)
       expect(subject).to have_attr_accessor(:unit)

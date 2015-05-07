@@ -3,9 +3,9 @@ module Intersail
     class ZUrr
       include Serializable
       include Infoable
+      include SerializeId
 
       # Attributes
-      attr_accessor :id
       # class attributes
       attr_accessor :unit
       attr_accessor :role

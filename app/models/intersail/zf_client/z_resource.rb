@@ -3,9 +3,9 @@ module Intersail
     class ZResource
       include ActiveModel::Model
       include Serializable
+      include SerializeId
 
       # Attributes
-      attr_accessor :id
       attr_accessor :first_name
       attr_accessor :last_name
       attr_accessor :mail
@@ -17,7 +17,6 @@ module Intersail
       # Validation
       validates_presence_of :first_name
       validates_presence_of :last_name
-      validates_presence_of :mail
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
 
       # Serialization

@@ -4,34 +4,41 @@ module Intersail
   module ZfClient
     module Client
       describe ZUnitManager, type: :client do
+        it_behaves_like "httparty_validatable"
 
-        #@jtodoIMP complete all the tests below
         context "configuration" do
-          xit "should setup def settings with after_initialize"
-        end
+          before(:all) do
+            ZfClient.configure do |config|
+              config.unit_uri = "/units"
+              config.unit_base_uri = Faker::Internet.url
+            end
+          end
 
-        #@dup same for all manager need to refactor
-        context "single unit" do
-          it "should create unit" do
-            expect(subject).to respond_to(:create)
-          end
-          it "should read unit" do
-            expect(subject).to respond_to(:read)
-          end
-          it "should update unit" do
-            expect(subject).to respond_to(:update)
-          end
-          it "should delete unit" do
-            expect(subject).to respond_to(:delete)
-          end
-        end
+          it "should use initializer settings as default" do
+            # run callback
+            subject.after_initialize
 
-        context "all units" do
-          it "should list all unit info" do
-            expect(subject).to respond_to(:list)
+            # reset class base_uri value
+            subject.class.class_eval("@default_options[:base_uri] = nil")
+            expect(subject.class.new.class.base_uri).to be == (ZfClient.config.unit_base_uri)
           end
-          it "should list all units filtered" do
-            expect(subject).to respond_to(:list)
+
+          context "resourceable" do
+            it_behaves_like "httparty_resourceable"
+
+            it "should activate create read update delete list methods on of http_resource" do
+              expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
+            end
+            it "should setup resource_uri " do
+              # run callback
+              subject.after_initialize
+
+              expect(subject.resource_uri).to be == ZfClient.config.unit_uri
+            end
+
+            it "should setup ZUser as resource class" do
+              expect(subject.resource_class).to be == ZUnit
+            end
           end
         end
       end

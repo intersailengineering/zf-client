@@ -4,9 +4,9 @@ module Intersail
 
       include ActiveModel::Model
       include Serializable
+      include SerializeId
 
       # Attributes
-      attr_accessor :id
       attr_accessor :username
       attr_accessor :description
       attr_accessor :password
