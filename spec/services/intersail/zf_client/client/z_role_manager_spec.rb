@@ -36,7 +36,7 @@ module Intersail
               expect(subject.resource_uri).to be == ZfClient.config.role_uri
             end
 
-            it "should setup ZUser as resource class" do
+            it "should setup ZRole as resource class" do
               expect(subject.resource_class).to be == ZRole
             end
           end

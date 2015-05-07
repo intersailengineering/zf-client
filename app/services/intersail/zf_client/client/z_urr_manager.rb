@@ -3,32 +3,17 @@ module Intersail
     module Client
       class ZUrrManager
         include HTTPartyValidatable
+        include HTTPartyResource
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+          super
+          self.class.base_uri(ZfClient.config.urr_base_uri) unless self.class.base_uri
+          self.resource_uri = ZfClient.config.urr_uri
+          self.resource_class = ZUrr
         end
 
-        # Urr
-        # {user_id: , role_id:, unit_id: }
-        def create(ids = {})
-          user = @faker.build_user(ids[:user_id])
-          role = @faker.build_role
-          role.id = ids[:role_id]
-          unit = @faker.build_unit
-          unit.id = ids[:unit_id]
-
-          urr = @faker.build_urr(user,unit,role)
-          urr.id = 1
-          urr
-        end
-
-        def read(id)
-          @faker.build_urr(@faker.build_user(id.to_i),@faker.build_unit,@faker.build_role)
-        end
-
-        def delete(id)
-          nil
+        def active_resource_methods
+          [:create, :read, :update]
         end
 
       end

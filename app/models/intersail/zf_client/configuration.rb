@@ -17,6 +17,10 @@ module Intersail
       attr_accessor :role_uri
       attr_accessor :role_base_uri
 
+      # Urr
+      attr_accessor :urr_uri
+      attr_accessor :urr_base_uri
+
       # Acl
       attr_accessor :acl_uri
       attr_accessor :acl_base_uri

@@ -36,7 +36,7 @@ module Intersail
               expect(subject.resource_uri).to be == ZfClient.config.unit_uri
             end
 
-            it "should setup ZUser as resource class" do
+            it "should setup ZUnit as resource class" do
               expect(subject.resource_class).to be == ZUnit
             end
           end
