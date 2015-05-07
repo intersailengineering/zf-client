@@ -77,7 +77,7 @@ module Intersail
 
     context "error handling" do
       it "should raise exception on server 500" do
-        allow_any_instance_of(subject.class).to receive(:send) { OpenStruct.new(code: 500, body: "fake body") }
+        allow_any_instance_of(subject.class).to receive(:do_request) { OpenStruct.new(code: 500, body: "fake body") }
 
         expect{subject.call_method(:post, {}, "/resource")}.to raise_error(StandardError, "fake body")
       end
@@ -91,14 +91,14 @@ module Intersail
     end
 
     # Helpers
-    def it_should_do_validation_and_call_method(def_name, method)
+    def it_should_do_validation_and_call_method(name, method)
       expect(subject).to receive(:doValidation)
 
       jsonable = double(to_json: "{}")
       uri = "/RelativeUri.aspx"
 
-      expect(subject).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
-      subject.send(def_name, uri, jsonable)
+      expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
+      subject.send(name, uri, jsonable)
     end
   end
 end

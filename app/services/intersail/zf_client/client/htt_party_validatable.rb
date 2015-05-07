@@ -62,9 +62,13 @@ module Intersail
         end
 
         def call_method(method, obj, relative_uri)
-          res = send(method, relative_uri, body: obj.to_json, headers: header)
+          res = do_request(method, obj, relative_uri)
           raise(StandardError, res.body) if res.code == 500
           res
+        end
+
+        def do_request(method, obj, relative_uri)
+          self.class.send(method, relative_uri, body: obj.to_json, headers: header)
         end
 
         def doValidation(object_validatable)
