@@ -34,6 +34,8 @@ module Intersail
         it "should include nothing" do
           expect(subject.attributes_to_include).to be == []
         end
+
+        it_behaves_like "nested_resourceable"
       end
     end
   end

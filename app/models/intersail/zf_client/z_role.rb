@@ -4,6 +4,7 @@ module Intersail
       #@dup all the code here is the same as for the role, extract to mixin
       include Serializable
       include Infoable
+      extend NestedResource
 
       # Attributes
       attr_accessor :id

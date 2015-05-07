@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 module Intersail
-  describe 'InfoAble' do
+  describe 'InfoAble', type: :module do
     class InfoableItem
       include Infoable
 

@@ -1,7 +1,7 @@
 module Intersail
 
   shared_examples "httparty_validatable" do
-    let(:fake_data) { %Q/{"fake" : "fake_json"}/ }
+    let(:fake_data) { OpenStruct.new(body: %Q/{"fake" : "fake_json"}/, code: 200) }
 
     it { is_expected.to includes(HTTParty) }
 
@@ -75,6 +75,14 @@ module Intersail
       end
     end
 
+    context "error handling" do
+      it "should raise exception on server 500" do
+        allow_any_instance_of(subject.class).to receive(:send) { OpenStruct.new(code: 500, body: "fake body") }
+
+        expect{subject.call_method(:post, {}, "/resource")}.to raise_error(StandardError, "fake body")
+      end
+    end
+
     it "should do validation and call method" do
       it_should_do_validation_and_call_method(:_get, :get)
       it_should_do_validation_and_call_method(:_post, :post)
@@ -83,14 +91,14 @@ module Intersail
     end
 
     # Helpers
-    def it_should_do_validation_and_call_method(name, method)
+    def it_should_do_validation_and_call_method(def_name, method)
       expect(subject).to receive(:doValidation)
 
       jsonable = double(to_json: "{}")
       uri = "/RelativeUri.aspx"
 
-      expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
-      subject.send(name, uri, jsonable)
+      expect(subject).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }
+      subject.send(def_name, uri, jsonable)
     end
   end
 end

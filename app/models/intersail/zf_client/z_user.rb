@@ -35,7 +35,6 @@ module Intersail
       end
 
       def self.from_hash(h)
-        #@test
         hash = h.clone
         hash["resource"] = ZResource.from_hash(hash["resource"])
         ZUser.new hash

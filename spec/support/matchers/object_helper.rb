@@ -18,6 +18,13 @@ module Helpers
       end
     end
 
+
+    RSpec::Matchers.define :extends do |klass|
+      match do |actual|
+        expect(actual.class.is_a? klass).to be true
+      end
+    end
+
     RSpec::Matchers.define :delegate_with_prefix do |method, klass, prefix|
       match do |actual|
         receiver = double("manager").as_null_object

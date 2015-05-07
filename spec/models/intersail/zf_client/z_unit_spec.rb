@@ -31,9 +31,7 @@ module Intersail
           expect(build(:unit_no_parent).as_json["parent_id"]).to be_nil
         end
 
-        it "should include nothing" do
-          expect(subject.attributes_to_include).to be == []
-        end
+        it_behaves_like "nested_resourceable"
       end
     end
   end

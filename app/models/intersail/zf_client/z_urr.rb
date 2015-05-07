@@ -36,8 +36,11 @@ module Intersail
       end
 
       def self.from_hash(hash)
-        #@test
-        ZUrr.new(hash)
+        hash = hash.clone
+        hash["unit"] = ZUnit.from_hash(hash["unit"]) if hash["unit"]
+        hash["role"] = ZRole.from_hash(hash["role"]) if hash["role"]
+        hash["resource"] = ZResource.from_hash(hash["resource"]) if hash["resource"]
+        ZUrr.new hash
       end
     end
   end
