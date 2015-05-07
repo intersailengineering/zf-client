@@ -4,34 +4,41 @@ module Intersail
   module ZfClient
     module Client
       describe ZRoleManager, type: :client do
-        context "single role" do
+        it_behaves_like "httparty_validatable"
 
-          #@jtodoIMP complete all the tests below
-          context "configuration" do
-            xit "should setup def settings with after_initialize"
+        context "configuration" do
+          before(:all) do
+            ZfClient.configure do |config|
+              config.role_uri = "/roles"
+              config.role_base_uri = Faker::Internet.url
+            end
           end
-        end
 
-        #@dup same for all manager need to refactor
-        it "should create role" do
-          expect(subject).to respond_to(:create)
-        end
-        it "should read role" do
-          expect(subject).to respond_to(:read)
-        end
-        it "should update role" do
-          expect(subject).to respond_to(:update)
-        end
-        it "should delete role" do
-          expect(subject).to respond_to(:delete)
-        end
+          it "should use initializer settings as default" do
+            # run callback
+            subject.after_initialize
 
-        context "all roles" do
-          it "should list all role info" do
-            expect(subject).to respond_to(:list)
+            # reset class base_uri value
+            subject.class.class_eval("@default_options[:base_uri] = nil")
+            expect(subject.class.new.class.base_uri).to be == (ZfClient.config.role_base_uri)
           end
-          it "should list all roles filtered" do
-            expect(subject).to respond_to(:list)
+
+          context "resourceable" do
+            it_behaves_like "httparty_resourceable"
+
+            it "should activate create read update delete list methods on of http_resource" do
+              expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
+            end
+            it "should setup resource_uri " do
+              # run callback
+              subject.after_initialize
+
+              expect(subject.resource_uri).to be == ZfClient.config.role_uri
+            end
+
+            it "should setup ZUser as resource class" do
+              expect(subject.resource_class).to be == ZRole
+            end
           end
         end
       end

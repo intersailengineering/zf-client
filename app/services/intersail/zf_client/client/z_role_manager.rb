@@ -3,36 +3,17 @@ module Intersail
     module Client
       class ZRoleManager
         include HTTPartyValidatable
+        include HTTPartyResource
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+          super
+          self.class.base_uri(ZfClient.config.role_base_uri) unless self.class.base_uri
+          self.resource_uri = ZfClient.config.role_uri
+          self.resource_class = ZRole
         end
 
-        def create(role)
-          doValidation(role)
-          role.id = 1
-          role
-        end
-
-        def read(id)
-          @faker.build_role
-        end
-
-        def update(role)
-          doValidation(role)
-          role
-        end
-
-        def delete(id)
-          nil
-        end
-        # {user_id: 12345}
-        def list(filter = {})
-          # ignore filter for now
-          (1..20).inject([]) do |items|
-            items << @faker.build_role
-          end
+        def active_resource_methods
+          [:create, :read, :update, :delete, :list]
         end
       end
     end
