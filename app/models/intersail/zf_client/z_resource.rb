@@ -3,7 +3,7 @@ module Intersail
     class ZResource
       include ActiveModel::Model
       include Serializable
-      include SerializeId
+      include DefaultZeroId
 
       # Attributes
       attr_accessor :first_name

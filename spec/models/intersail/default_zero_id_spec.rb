@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 module Intersail
-  describe 'SerializeId', type: :module do
-    class SerializeIdStub
-      include SerializeId
+  describe 'DefaultZeroId', type: :module do
+    class DefaultZeroIdStub
+      include DefaultZeroId
     end
 
-    subject {SerializeIdStub.new}
+    subject {DefaultZeroIdStub.new}
 
-    it_behaves_like "serialize_idable"
+    it_behaves_like "default_zero_idable"
 
     it "should return id 0 if falsey" do
       subject.id = nil

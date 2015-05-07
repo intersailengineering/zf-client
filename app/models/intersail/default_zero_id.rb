@@ -1,5 +1,5 @@
 module Intersail
-  module SerializeId
+  module DefaultZeroId
     def id
       return 0 unless @id
       @id

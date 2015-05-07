@@ -2,7 +2,7 @@ module Intersail
   shared_examples "role" do
     let(:_role) { subject }
 
-    it_behaves_like "serialize_idable"
+    it_behaves_like "default_zero_idable"
     it "should behave as a ZUser" do
       expect(_role).to have_attr_accessor(:id)
       expect(_role).to have_attr_accessor(:name)

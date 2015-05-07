@@ -3,7 +3,7 @@ module Intersail
     class ZUrr
       include Serializable
       include Infoable
-      include SerializeId
+      include DefaultZeroId
 
       # Attributes
       # class attributes

@@ -2,7 +2,7 @@ module Intersail
   shared_examples "process_instance" do
     let(:_p_inst) { subject }
 
-    it_behaves_like "serialize_idable"
+    it_behaves_like "default_zero_idable"
     it "should have process instance attributes" do
       expect(_p_inst).to have_attr_accessor(:id)
       expect(_p_inst).to have_attr_accessor(:process_def_id)

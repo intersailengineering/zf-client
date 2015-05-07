@@ -4,7 +4,7 @@ module Intersail
 
       include ActiveModel::Model
       include Serializable
-      include SerializeId
+      include DefaultZeroId
 
       # Attributes
       attr_accessor :process_id
