@@ -47,7 +47,6 @@ module Intersail
         def define_list_method
           instance_eval do
             def list(filter = {})
-              byebug
               _get("#{self.resource_uri}#{hash_to_query_string(filter)}").collect do |result_hash|
                 self.resource_class.from_hash(result_hash)
               end
