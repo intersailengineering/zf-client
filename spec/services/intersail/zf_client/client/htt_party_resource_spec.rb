@@ -125,7 +125,18 @@ module Intersail
             expect(subject.list({})).to be == [{}, {}]
           end
 
-          xit "should list all resources as info filtered"
+          it "should list all resources as info filtered" do
+            filter = {key1: "value1", key2: 2}
+            uri = "#{subject.resource_uri}?key1=value1&key2=2"
+            expect(subject).to receive(:_get)
+                               .with(uri)
+                               .and_return(api_multiple_res)
+
+            expect(subject.resource_class).to receive(:from_hash).twice.with(api_multiple_res[0]) { {} }
+
+            # validate building of response as json
+            expect(subject.list(filter)).to be == [{}, {}]
+          end
         end
       end
     end

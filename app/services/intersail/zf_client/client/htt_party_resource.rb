@@ -47,9 +47,15 @@ module Intersail
         def define_list_method
           instance_eval do
             def list(filter = {})
-              _get("#{self.resource_uri}").collect do |result_hash|
+
+              _get("#{self.resource_uri}#{hash_to_query_string(filter)}").collect do |result_hash|
                 self.resource_class.from_hash(result_hash)
               end
+            end
+
+            def hash_to_query_string(hash)
+              return "" unless hash.any?
+              "?".concat hash.to_a.map{|x| "#{x[0]}=#{x[1]}"}.join("&")
             end
           end
         end
