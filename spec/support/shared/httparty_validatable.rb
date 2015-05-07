@@ -10,7 +10,7 @@ module Intersail
         expect(subject.header["X-ZToken"]).to be == subject.z_token
       end
 
-      it "should pass data content json in header" do
+      it "should pass content-type json in header" do
         expect(subject.header["Content-Type"]).to be == 'application/json'
       end
     end
@@ -86,7 +86,7 @@ module Intersail
     def it_should_do_validation_and_call_method(name, method)
       expect(subject).to receive(:doValidation)
 
-      jsonable = double(as_json: "{}")
+      jsonable = double(to_json: "{}")
       uri = "/RelativeUri.aspx"
 
       expect(subject.class).to receive(method).with(uri, body: "{}", headers: subject.header) { fake_data }

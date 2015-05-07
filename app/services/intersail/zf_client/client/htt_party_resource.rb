@@ -20,7 +20,7 @@ module Intersail
         attr_accessor :resource_uri
 
         def resource_class=(klass)
-          raise(StandardError, "You need to pass a resource class that respond_to from_hash") unless (klass.class.respond_to? :from_hash)
+          raise(StandardError, "You need to pass a resource class that respond_to from_hash") unless (klass.respond_to? :from_hash)
           @resource_class=klass
         end
 

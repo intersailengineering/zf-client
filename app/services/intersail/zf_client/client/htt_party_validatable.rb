@@ -20,8 +20,8 @@ module Intersail
         attr_accessor :z_token
 
         def initialize(z_token = nil, base_uri = nil)
-          self.base_uri = base_uri
           self.z_token = z_token
+          self.base_uri = base_uri
           after_initialize
         end
 
@@ -62,7 +62,7 @@ module Intersail
         end
 
         def call_method(method, obj, relative_uri)
-          self.class.send(method, relative_uri, body: obj.as_json, headers: header)
+          self.class.send(method, relative_uri, body: obj.to_json, headers: header)
         end
 
         def doValidation(object_validatable)

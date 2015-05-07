@@ -30,11 +30,15 @@ module Intersail
               expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
             end
 
-            it "should setup resource_uri" do
+            it "should setup resource_uri " do
               # run callback
               subject.after_initialize
 
               expect(subject.resource_uri).to be == ZfClient.config.user_uri
+            end
+
+            it "should setup ZUser as resource class" do
+              expect(subject.resource_class).to be == ZUser
             end
           end
         end
