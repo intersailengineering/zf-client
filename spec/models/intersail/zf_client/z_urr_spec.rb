@@ -28,9 +28,9 @@ module Intersail
         it "should use id fields from has when resources are not given" do
           fake_hash = {
               "id" => Faker::Number.digit,
-              "unit_id" =>  Faker::Number.digit,
-              "role_id" =>  Faker::Number.digit,
-              "resource_id" =>  Faker::Number.digit
+              "unit_id" => Faker::Number.digit,
+              "role_id" => Faker::Number.digit,
+              "resource_id" => Faker::Number.digit
           }
 
           urr = ZUrr.from_hash(fake_hash)
@@ -44,9 +44,9 @@ module Intersail
         it "should ask role and units to be built from_hash" do
           fake_hash = {
               "id" => Faker::Number.digit,
-              "unit" =>  {},
-              "role" =>  {},
-              "resource" =>  {"urrs" => []}
+              "unit" => {},
+              "role" => {},
+              "resource" => {"urrs" => []}
           }
           resource = ZResource.new fake_hash["resource"]
           unit = ZUnit.new fake_hash["unit"]

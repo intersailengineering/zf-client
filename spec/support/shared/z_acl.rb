@@ -5,8 +5,8 @@ module Intersail
     it_behaves_like "default_zero_idable"
     it "should behaves as a ZAcl" do
       expect(_acl).to have_attr_accessor(:id)
-      expect(_acl).to have_attr_accessor(:process_id)
-      expect(_acl).to have_attr_accessor(:activity_id)
+      expect(_acl).to have_attr_accessor(:process_def_id)
+      expect(_acl).to have_attr_accessor(:activity_def_id)
       expect(_acl).to have_attr_accessor(:unit_id)
       expect(_acl).to have_attr_accessor(:role_id)
       expect(_acl).to have_attr_accessor(:resource_id)
@@ -23,18 +23,17 @@ module Intersail
     end
 
     it "should validate his data" do
-      expect(_acl).to validate_presence_of(:process_id)
-      expect(_acl).to validate_presence_of(:activity_id)
+      expect(_acl).to validate_presence_of(:process_def_id)
+      expect(_acl).to validate_presence_of(:activity_def_id)
       expect(_acl).to validate_presence_of(:unit_id)
       expect(_acl).to validate_presence_of(:role_id)
       expect(_acl).to validate_presence_of(:resource_id)
       expect(_acl).to validate_presence_of(:permission)
       expect(_acl).to validate_presence_of(:priority)
-      expect(_acl).to validate_presence_of(:inherit_unit)
-      expect(_acl).to validate_presence_of(:inherit_role)
-      #@jtodoIMP here not use presence but just check that is not nil
-      expect(_acl).to validate_presence_of(:mandatory)
-      expect(_acl).to validate_presence_of(:enabled)
+      expect(subject).to validate_exclusion_of(:inherit_unit).in_array([nil])
+      expect(subject).to validate_exclusion_of(:inherit_role).in_array([nil])
+      expect(subject).to validate_exclusion_of(:mandatory).in_array([nil])
+      expect(subject).to validate_exclusion_of(:enabled).in_array([nil])
     end
   end
 end

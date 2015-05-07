@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :acl, class: Intersail::ZfClient::ZAcl do
-    process_id Faker::Number.digit
-    activity_id Faker::Number.digit
+    process_def_id Faker::Number.digit
+    activity_def_id Faker::Number.digit
     unit_id Faker::Number.digit
     role_id Faker::Number.digit
     resource_id Faker::Number.digit

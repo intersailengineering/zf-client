@@ -7,7 +7,6 @@ module Intersail
       expect(_unit).to have_attr_accessor(:name)
       expect(_unit).to have_attr_accessor(:description)
       expect(_unit).to have_attr_accessor(:parent)
-
     end
 
     it "should be an active model" do

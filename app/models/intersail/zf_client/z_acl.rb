@@ -7,8 +7,8 @@ module Intersail
       include DefaultZeroId
 
       # Attributes
-      attr_accessor :process_id
-      attr_accessor :activity_id
+      attr_accessor :process_def_id
+      attr_accessor :activity_def_id
       attr_accessor :unit_id
       attr_accessor :role_id
       attr_accessor :resource_id
@@ -20,24 +20,25 @@ module Intersail
       attr_accessor :enabled
 
       # Validation
-      validates_presence_of :process_id
-      validates_presence_of :activity_id
+      validates_presence_of :process_def_id
+      validates_presence_of :activity_def_id
       validates_presence_of :unit_id
       validates_presence_of :role_id
       validates_presence_of :resource_id
       validates_presence_of :permission
       validates_presence_of :priority
-      validates_presence_of :inherit_unit
-      validates_presence_of :inherit_role
-      validates_presence_of :mandatory
-      validates_presence_of :enabled
+      validates :inherit_unit, exclusion: { in: [nil] }
+      validates :inherit_role, exclusion: { in: [nil] }
+      validates :mandatory, exclusion: { in: [nil] }
+      validates :enabled, exclusion: { in: [nil] }
 
 
       # Serialization
       def attributes
         {
-            "process_id" => 0,
-            "activity_id" => 0,
+            "id" => nil,
+            "process_def_id" => 0,
+            "activity_def_id" => 0,
             "unit_id" => "",
             "role_id" => "",
             "resource_id" => "",
@@ -52,6 +53,10 @@ module Intersail
 
       def attributes_to_include
         []
+      end
+
+      def self.from_hash(hash)
+        ZAcl.new hash
       end
     end
   end

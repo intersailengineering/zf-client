@@ -11,8 +11,8 @@ module Intersail
         it_behaves_like "serializable"
 
         it "should have serialization attributes" do
-          pending "fix acl model"
           expect(subject.attributes).to be == {
+            "id" => nil,
             "process_def_id" => 0,
             "activity_def_id" => 0,
             "unit_id" => "",
@@ -30,6 +30,8 @@ module Intersail
         it "should include properties" do
           expect(subject.attributes_to_include).to be == []
         end
+
+        it { is_expected.to be_buildable_from_hash }
       end
     end
   end

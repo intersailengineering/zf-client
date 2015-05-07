@@ -3,38 +3,19 @@ module Intersail
     module Client
       class ZAclManager
         include HTTPartyValidatable
+        include HTTPartyResource
 
         def after_initialize
-          #@jtodoIMP remove this when faking is done
-          @faker = Intersail::Fake::Builder.new
+          super
+          self.class.base_uri(ZfClient.config.acl_base_uri) unless self.class.base_uri
+          self.resource_uri = ZfClient.config.acl_uri
+          self.resource_class = ZAcl
         end
 
-        def create(acl)
-          doValidation(acl)
-          acl.id = 1
-          acl
+        # Resourceable
+        def active_resource_methods
+          [:create, :read, :update, :delete, :list]
         end
-
-        def read(id)
-          @faker.build_acl
-        end
-
-        def update(acl)
-          doValidation(acl)
-          acl
-        end
-
-        def delete(id)
-          nil
-        end
-
-        def list(filter = {})
-          # ignore filter for now
-          (1..20).inject([]) do |items|
-            items << @faker.build_acl
-          end
-        end
-
       end
     end
   end
