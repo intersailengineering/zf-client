@@ -3,36 +3,42 @@ require 'httparty'
 module Intersail
   module ZfClient
     module Client
-      module HTTPartyValidatable
-        # Depends on HTTParty
+
+      # Handles HTTParty method calls and validation
+      # You need to include this module first because it uses
+      # after_initialize for method hooks, other modules need to override this method
+      # in order to make it work.
+      # NOTE: also call super on after_initialize implemented methods in order to call initializer
+      # on all the subclasses
+
+      module  HTTPartyValidatable
         def self.included(base)
+          # Depends on HTTParty
           base.send :include, HTTParty
+        end
 
-          base.class_eval do
-            attr_accessor :z_token
+        attr_accessor :z_token
 
-            def initialize(z_token = nil, base_uri = nil)
-              self.base_uri = base_uri
-              self.z_token = z_token
-              after_initialize
-            end
+        def initialize(z_token = nil, base_uri = nil)
+          self.base_uri = base_uri
+          self.z_token = z_token
+          after_initialize
+        end
 
-            def base_uri=(uri)
-              self.class.base_uri uri
-            end
+        def base_uri=(uri)
+          self.class.base_uri uri
+        end
 
-            def base_uri
-              self.class.base_uri
-            end
+        def base_uri
+          self.class.base_uri
+        end
 
-            def after_initialize
-              # does nothing
-            end
-          end
+        def after_initialize
+          # method hook used for other modules or sublcasses
         end
 
         def header
-          {"X-ZToken" => self.z_token, "Accept" => "application/json"}
+          {"X-ZToken" => self.z_token, "Content-Type" => "application/json"}
         end
 
         def _get(relative_uri, obj = nil)

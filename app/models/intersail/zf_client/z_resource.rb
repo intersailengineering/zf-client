@@ -36,6 +36,7 @@ module Intersail
       end
 
       def self.from_hash(h)
+        #@test
         hash = h.clone
         hash["urrs"] = hash["urrs"] && hash["urrs"].inject([]) do |urrs,urr|
           urrs << ZUrr.from_hash(urr)

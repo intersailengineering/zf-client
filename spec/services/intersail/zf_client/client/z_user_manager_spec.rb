@@ -18,80 +18,24 @@ module Intersail
             # run callback
             subject.after_initialize
 
-            expect(subject.user_uri).to be == (ZfClient.config.user_uri)
             # reset class base_uri value
             subject.class.class_eval("@default_options[:base_uri] = nil")
             expect(subject.class.new.class.base_uri).to be == (ZfClient.config.user_base_uri)
           end
-        end
 
-        # @jtodoIMP extract as mixin for resource where you decide
-        # in which method of crud you want to activate
-        context "api" do
-          let(:user) { build(:user) }
-          let(:single_user_res) { as_json(:user_success_res) }
-          let(:multiple_user_res) { as_json_list(:user_success_res, 2) }
+          context "resourceable" do
+            it_behaves_like "httparty_resourceable"
 
-          context "stub validation" do
-            subject { user }
-            it_behaves_like "user"
-          end
+            it "should activate create read update delete list methods on of http_resource" do
+              expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
+            end
 
-          it "should create user" do
-            expect(subject).to receive(:_post)
-                               .with(subject.user_uri, user)
-                               .and_return(single_user_res)
+            it "should setup resource_uri" do
+              # run callback
+              subject.after_initialize
 
-            expect(ZUser).to receive(:from_hash) { Hash.new }
-
-            expect(subject.create(user)).to be == {}
-          end
-
-          it "should read user" do
-            id = Faker::Number.digit
-            uri = "#{subject.user_uri}/#{id}"
-            expect(subject).to receive(:_get)
-                               .with(uri)
-                               .and_return(single_user_res)
-
-            expect(ZUser).to receive(:from_hash) { Hash.new }
-
-            expect(subject.read(id)).to be == {}
-          end
-
-          it "should update user" do
-            id = Faker::Number.digit
-            uri = "#{subject.user_uri}/#{id}"
-            expect(subject).to receive(:_put)
-                               .with(uri, user)
-                               .and_return(single_user_res)
-
-            expect(ZUser).to receive(:from_hash) { Hash.new }
-
-            expect(subject.update(id, user)).to be == {}
-          end
-
-          it "should delete user" do
-            id = Faker::Number.digit
-            uri = "#{subject.user_uri}/#{id}"
-            expect(subject).to receive(:_delete)
-                               .with(uri)
-            subject.delete(id)
-          end
-
-          it "should list all user as info" do
-            expect(subject).to receive(:_get)
-                               .with(subject.user_uri)
-                               .and_return(multiple_user_res)
-
-            expect(ZUser).to receive(:from_hash).twice { Hash.new }
-
-            # validate building of response as json
-            expect(subject.list({})).to be == [{}, {}]
-          end
-
-          it "should list all users as info filtered" do
-            expect(subject).to respond_to(:list)
+              expect(subject.resource_uri).to be == ZfClient.config.user_uri
+            end
           end
         end
       end

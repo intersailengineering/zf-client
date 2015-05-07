@@ -11,7 +11,7 @@ module Intersail
       end
 
       it "should pass data content json in header" do
-        expect(subject.header["Accept"]).to be == 'application/json'
+        expect(subject.header["Content-Type"]).to be == 'application/json'
       end
     end
 

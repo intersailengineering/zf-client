@@ -36,6 +36,7 @@ module Intersail
       end
 
       def self.from_hash(hash)
+        #@test
         ZUrr.new(hash)
       end
     end

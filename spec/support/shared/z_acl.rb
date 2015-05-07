@@ -31,6 +31,7 @@ module Intersail
       expect(_acl).to validate_presence_of(:priority)
       expect(_acl).to validate_presence_of(:inherit_unit)
       expect(_acl).to validate_presence_of(:inherit_role)
+      #@jtodoIMP here not use presence but just check that is not nil
       expect(_acl).to validate_presence_of(:mandatory)
       expect(_acl).to validate_presence_of(:enabled)
     end
