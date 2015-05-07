@@ -25,6 +25,7 @@ module Intersail
       # Serialization
       def attributes
         {
+            "id" => nil,
             "unit_id" => nil,
             "role_id" => nil,
             "resource_id" => nil
