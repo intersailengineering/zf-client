@@ -13,8 +13,8 @@ Intersail::ZfClient.configure do |config|
   config.role_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
   # Urr
   config.urr_uri = "/urrs"
-  config.urr_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
+  config.urr_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"
   # Acl
   config.acl_uri = "/acls"
-  config.acl_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
+  config.acl_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"
 end
