@@ -3,7 +3,7 @@ module Intersail
     class ZResource
       include ActiveModel::Model
       include Serializable
-      include DefaultZeroId
+      extend DefaultZeroId
 
       # Attributes
       attr_accessor :first_name
@@ -13,6 +13,8 @@ module Intersail
       attr_accessor :custom_data
       # Array of ZUrr items
       attr_accessor :urrs
+      # Attributes that default to 0
+      zero_attributes [:id]
 
       # Validation
       validates_presence_of :first_name

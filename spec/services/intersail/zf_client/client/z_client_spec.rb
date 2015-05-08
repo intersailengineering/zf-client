@@ -27,7 +27,7 @@ module Intersail
 
         context "stub validation" do
           subject { StubManager.new }
-          it_behaves_like "httparty_validatable"
+          it_should_behave_like "httparty_validatable"
         end
 
         context "client delegation" do

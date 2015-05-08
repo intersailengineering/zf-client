@@ -5,10 +5,10 @@ module Intersail
     describe ZUnit, type: :model do
       subject { build(:unit) }
 
-      it_behaves_like "unit"
+      it_should_behave_like "unit"
 
       context "infoable" do
-        it_behaves_like "infoable"
+        it_should_behave_like "infoable"
 
         it "should have given infoable attributes" do
           expect(subject.infoable_attributes).to be == [:parent]
@@ -16,7 +16,7 @@ module Intersail
       end
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
               "id" => nil,
@@ -32,7 +32,7 @@ module Intersail
           expect(build(:unit_no_parent).as_json["parent_id"]).to be_nil
         end
 
-        it_behaves_like "nested_resourceable"
+        it_should_behave_like "nested_resourceable"
       end
     end
   end

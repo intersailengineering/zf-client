@@ -5,10 +5,10 @@ module Intersail
     describe ZResource, type: :model do
       subject { build(:user_resource) }
 
-      it_behaves_like "user_resource"
+      it_should_behave_like "user_resource"
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
 
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {

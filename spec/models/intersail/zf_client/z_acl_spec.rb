@@ -5,10 +5,10 @@ module Intersail
     describe ZAcl, type: :model do
       subject { build(:acl) }
 
-      it_behaves_like "acl"
+      it_should_behave_like "acl"
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
 
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {

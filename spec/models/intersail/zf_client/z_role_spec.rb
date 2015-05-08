@@ -5,10 +5,10 @@ module Intersail
     describe ZRole, type: :model do
       subject { build(:role) }
 
-      it_behaves_like "role"
+      it_should_behave_like "role"
 
       context "infoable" do
-        it_behaves_like "infoable"
+        it_should_behave_like "infoable"
 
         it "should have given infoable attributes" do
           expect(subject.infoable_attributes).to be == [:parent]
@@ -16,7 +16,7 @@ module Intersail
       end
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
               "id" => nil,
@@ -36,7 +36,7 @@ module Intersail
           expect(subject.attributes_to_include).to be == []
         end
 
-        it_behaves_like "nested_resourceable"
+        it_should_behave_like "nested_resourceable"
       end
     end
   end

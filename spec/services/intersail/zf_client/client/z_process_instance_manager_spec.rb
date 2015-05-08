@@ -4,7 +4,7 @@ module Intersail
   module ZfClient
     module Client
       describe ZProcessInstanceManager, type: :client do
-        it_behaves_like "httparty_validatable"
+        it_should_behave_like "httparty_validatable"
 
         context "configuration" do
           before(:all) do
@@ -31,7 +31,7 @@ module Intersail
 
           context "stub validation" do
             subject { p_inst }
-            it_behaves_like "process_instance"
+            it_should_behave_like "process_instance"
           end
 
           #@jtodoIMP use the resource mixin with only c of crud

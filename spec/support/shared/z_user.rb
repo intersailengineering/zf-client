@@ -1,6 +1,6 @@
 module Intersail
   shared_examples "user" do
-    it_behaves_like "default_zero_idable"
+    it_should_behave_like "default_zero", [:id]
     it "should behave as a ZUser" do
       expect(subject).to have_attr_accessor(:username)
       expect(subject).to have_attr_accessor(:description)

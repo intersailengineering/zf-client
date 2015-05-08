@@ -4,7 +4,7 @@ module Intersail
 
       include ActiveModel::Model
       include Serializable
-      include DefaultZeroId
+      extend DefaultZeroId
 
       # Attributes
       attr_accessor :username
@@ -12,7 +12,8 @@ module Intersail
       attr_accessor :password
       attr_accessor :active
       attr_accessor :resource
-
+      # Attributes that default to 0
+      zero_attributes [:id]
       # Validations
       validates_presence_of :username
       validates :active, exclusion: { in: [nil] }

@@ -4,7 +4,7 @@ module Intersail
   module ZfClient
     module Client
       describe ZAclManager, type: :client do
-        it_behaves_like "httparty_validatable"
+        it_should_behave_like "httparty_validatable"
 
         context "configuration" do
           before(:all) do
@@ -24,7 +24,7 @@ module Intersail
           end
 
           context "resourceable" do
-            it_behaves_like "httparty_resourceable"
+            it_should_behave_like "httparty_resourceable"
 
             it "should activate create read update delete list methods on of http_resource" do
               expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]

@@ -5,10 +5,12 @@ module Intersail
     describe ZUrr, type: :model do
       subject { build(:urr) }
 
-      it_behaves_like "urr"
+      it_should_behave_like "urr"
+
+      it_should_behave_like "default_zero" ,[:id, :_destroy]
 
       context "infoable" do
-        it_behaves_like "infoable"
+        it_should_behave_like "infoable"
 
         it "should have given infoable attributes" do
           expect(subject.infoable_attributes).to be == [:unit, :role, :resource]
@@ -16,13 +18,14 @@ module Intersail
       end
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
               "id" => nil,
               "unit_id" => nil,
               "role_id" => nil,
-              "resource_id" => nil
+              "resource_id" => nil,
+              "_destroy" => nil
           }
         end
 

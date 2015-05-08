@@ -1,7 +1,7 @@
 module Intersail
   shared_examples "unit" do
     let(:_unit) { subject }
-    it_behaves_like "default_zero_idable"
+    it_should_behave_like "default_zero", [:id]
     it "should behave as a ZUser" do
       expect(_unit).to have_attr_accessor(:id)
       expect(_unit).to have_attr_accessor(:name)

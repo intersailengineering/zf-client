@@ -2,7 +2,7 @@ module Intersail
   shared_examples "user_resource" do
     let(:_user) { subject }
 
-    it_behaves_like "default_zero_idable"
+    it_should_behave_like "default_zero", [:id]
     it "should behave as a ZResource" do
       expect(_user).to have_attr_accessor(:id)
       expect(_user).to have_attr_accessor(:first_name)

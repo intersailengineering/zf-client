@@ -4,7 +4,7 @@ module Intersail
 
       include ActiveModel::Model
       include Serializable
-      include DefaultZeroId
+      extend DefaultZeroId
 
       # Attributes
       attr_accessor :process_def_id
@@ -18,6 +18,8 @@ module Intersail
       attr_accessor :inherit_role
       attr_accessor :mandatory
       attr_accessor :enabled
+      # Attributes that default to 0
+      zero_attributes [:id]
 
       # Validation
       validates_presence_of :process_def_id

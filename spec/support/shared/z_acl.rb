@@ -2,7 +2,7 @@ module Intersail
   shared_examples "acl" do
     let(:_acl) { subject }
 
-    it_behaves_like "default_zero_idable"
+    it_should_behave_like "default_zero", [:id]
     it "should behaves as a ZAcl" do
       expect(_acl).to have_attr_accessor(:id)
       expect(_acl).to have_attr_accessor(:process_def_id)

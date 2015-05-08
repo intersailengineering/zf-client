@@ -29,7 +29,7 @@ module Intersail
         let(:api_multiple_res) { [OpenStruct.new, OpenStruct.new] }
         subject { HTTPartyResourceStub.new("/resource", obj) }
 
-        it_behaves_like "httparty_resourceable"
+        it_should_behave_like "httparty_resourceable"
 
         it "should set resource class only if respond to? from_hash" do
           expect{subject.resource_class=Object}.to raise_error(StandardError, "You need to pass a resource class that respond_to from_hash")

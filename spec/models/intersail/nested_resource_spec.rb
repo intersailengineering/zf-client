@@ -14,7 +14,7 @@ module Intersail
 
     subject {NestedResourceStub.new}
 
-    it_behaves_like "nested_resourceable"
+    it_should_behave_like "nested_resourceable"
 
     it "should be built recursively from hash" do
       fake_hierarchy = {

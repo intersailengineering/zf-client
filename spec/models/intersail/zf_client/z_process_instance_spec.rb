@@ -5,10 +5,10 @@ module Intersail
     describe ZProcessInstance, type: :model do
       subject { build(:z_process_inst) }
 
-      it_behaves_like "process_instance"
+      it_should_behave_like "process_instance"
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
 
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {

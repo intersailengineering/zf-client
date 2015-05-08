@@ -1,6 +1,5 @@
 module Intersail
   shared_examples "urr" do
-    it_behaves_like "default_zero_idable"
     it "should behave as a ZUrr" do
       expect(subject).to have_attr_accessor(:id)
       expect(subject).to have_attr_accessor(:unit)
@@ -9,6 +8,7 @@ module Intersail
       expect(subject).to have_attr_accessor(:unit_id)
       expect(subject).to have_attr_accessor(:role_id)
       expect(subject).to have_attr_accessor(:resource_id)
+      expect(subject).to have_attr_accessor(:_destroy)
     end
 
     it "should be an active model" do

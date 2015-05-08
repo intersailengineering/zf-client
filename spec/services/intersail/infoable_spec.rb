@@ -16,7 +16,7 @@ module Intersail
     let(:infoable) { InfoableItem.new }
     subject {infoable}
 
-    it_behaves_like "infoable"
+    it_should_behave_like "infoable"
 
     it "can be created from the id attributes" do
       expect(subject.class.new(an_attribute_a_id: 1).an_attribute_a_id).to be == 1

@@ -5,10 +5,10 @@ module Intersail
     describe ZUser, type: :model do
       subject { build(:user) }
 
-      it_behaves_like "user"
+      it_should_behave_like "user"
 
       context "serialization" do
-        it_behaves_like "serializable"
+        it_should_behave_like "serializable"
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
               "id" => nil,

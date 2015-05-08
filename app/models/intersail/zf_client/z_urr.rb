@@ -3,19 +3,23 @@ module Intersail
     class ZUrr
       include Serializable
       include Infoable
-      include DefaultZeroId
+      extend DefaultZeroId
 
       # Attributes
       # class attributes
       attr_accessor :unit
       attr_accessor :role
       attr_accessor :resource
-
+      # To destroy an urr when passed from users
+      attr_accessor :_destroy
+      # Attributes that default to 0
+      zero_attributes [:id, :_destroy]
       # Validation
       # validates presence of either class param or class_id
       validates_presence_of :unit_id
       validates_presence_of :role_id
       validates_presence_of :resource_id
+
 
       # Info object handling
       def infoable_attributes
@@ -28,7 +32,8 @@ module Intersail
             "id" => nil,
             "unit_id" => nil,
             "role_id" => nil,
-            "resource_id" => nil
+            "resource_id" => nil,
+            "_destroy" => nil
         }
       end
 

@@ -4,14 +4,15 @@ module Intersail
       #@dup all the code here is the same as for the role, extract to mixin
       include Serializable
       include Infoable
-      include DefaultZeroId
+      extend DefaultZeroId
       extend NestedResource
 
       # Attributes
       attr_accessor :name
       attr_accessor :description
       attr_accessor :parent
-
+      # Attributes that default to 0
+      zero_attributes [:id]
       # Validation
       validates_presence_of :name
       validates_presence_of :description
