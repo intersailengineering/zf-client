@@ -22,6 +22,7 @@ module Intersail
       # Serialization
       def attributes
         {
+            "id" => nil,
             "first_name" => "",
             "last_name" => "",
             "mail" => "",

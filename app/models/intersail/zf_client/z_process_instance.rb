@@ -22,6 +22,7 @@ module Intersail
       # Serialization
       def attributes
         {
+          "id" => nil,
           "process_def_id" => 0,
           "parent_process_id" => 0,
           "name" => "",

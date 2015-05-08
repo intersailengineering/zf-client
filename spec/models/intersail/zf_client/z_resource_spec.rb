@@ -12,6 +12,7 @@ module Intersail
 
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
+              "id" => nil,
               "first_name" => "",
               "last_name" => "",
               "mail" => "",

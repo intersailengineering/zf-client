@@ -12,6 +12,7 @@ module Intersail
 
         it "should have serialization attributes" do
           expect(subject.attributes).to be == {
+              "id" => nil,
               "process_def_id" => 0,
               "parent_process_id" => 0,
               "name" => "",
