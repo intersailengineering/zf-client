@@ -33,6 +33,14 @@ module Helpers
       end
     end
 
+    RSpec::Matchers.define :delegates do |method, klass|
+      match do |actual|
+        receiver = double("manager").as_null_object
+        actual.send("#{klass}=", receiver)
+        actual.send("#{method.to_s}", {})
+      end
+    end
+
     RSpec::Matchers.define :delegate_methods_with_prefix do |methods, klass, prefix|
       match do |actual|
         methods.each do |method|

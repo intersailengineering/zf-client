@@ -44,6 +44,9 @@ module Intersail
           end
         end
 
+        # Fetches all resources and passes filter hash as a query string
+        # the valid options depend on the api called
+        # an example could be: {username: "pippo"}
         def define_list_method
           instance_eval do
             def list(filter = {})

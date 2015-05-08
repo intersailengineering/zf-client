@@ -20,6 +20,9 @@ module Intersail
       validates_presence_of :resource
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :resource
 
+      # Delegation
+      delegate :first_name, :last_name, :mail, :custom_data, :urrs, to: :resource
+
       # Serialization
       def attributes
         {

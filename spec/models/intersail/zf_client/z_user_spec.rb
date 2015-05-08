@@ -27,6 +27,14 @@ module Intersail
         expect(subject).to_not have_subattribute_validator(:urrs)
       end
 
+      context "delegation" do
+        it {is_expected.to delegates(:first_name, :resource)}
+        it {is_expected.to delegates(:last_name, :resource)}
+        it {is_expected.to delegates(:mail, :resource)}
+        it {is_expected.to delegates(:custom_data, :resource)}
+        it {is_expected.to delegates(:urrs, :resource)}
+      end
+
       context "serialization" do
         it_should_behave_like "serializable"
         it "should have serialization attributes" do
