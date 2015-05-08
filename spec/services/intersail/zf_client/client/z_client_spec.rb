@@ -58,7 +58,8 @@ module Intersail
                   unit: Intersail::ZfClient::Client::ZUnitManager,
                   urr: Intersail::ZfClient::Client::ZUrrManager,
                   acl: Intersail::ZfClient::Client::ZAclManager,
-                  process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
+                  process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager,
+                  process_def: Intersail::ZfClient::Client::ZProcessDefManager
               }
             end
           end
@@ -86,6 +87,10 @@ module Intersail
 
             it "should delegate crud methods to process_instance" do
               expect(@z_client).to delegate_methods_with_prefix([:create, :abort, :apply_transition], :process_instance, :process_instance)
+            end
+
+            it "should delegate crud methods to process_def" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :process_def, :process_def)
             end
           end
         end

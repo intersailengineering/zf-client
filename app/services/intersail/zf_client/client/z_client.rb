@@ -23,6 +23,7 @@ module Intersail
         delegate :create, :read, :update, to: :urr, prefix: :urr
         delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
         delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
+        delegate :create, :read, :update, :list, :delete, to: :process_def, prefix: :process_def
 
         # List of all the managers as name => class
         def delegated
@@ -32,7 +33,8 @@ module Intersail
               unit: Intersail::ZfClient::Client::ZUnitManager,
               urr: Intersail::ZfClient::Client::ZUrrManager,
               acl: Intersail::ZfClient::Client::ZAclManager,
-              process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager
+              process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager,
+              process_def: Intersail::ZfClient::Client::ZProcessDefManager
           }
         end
 

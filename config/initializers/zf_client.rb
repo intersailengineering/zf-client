@@ -1,7 +1,13 @@
 Intersail::ZfClient.configure do |config|
-  # Process instance creation
+  # Process instance
   config.process_uri = "/processes"
   config.process_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
+  # Process def
+  config.process_def_uri = "/process_defs"
+  config.process_def_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
+  # Activity def
+  config.activity_def_uri = "/activity_defs"
+  config.activity_def_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"
   # User
   config.user_uri = "/users"
   config.user_base_uri = "http://wrkdev-boncri/ZapFlowWsApi"

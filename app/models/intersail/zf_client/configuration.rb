@@ -5,6 +5,14 @@ module Intersail
       attr_accessor :process_uri
       attr_accessor :process_base_uri
 
+      # Process def
+      attr_accessor :process_def_uri
+      attr_accessor :process_def_base_uri
+
+      # Activity def
+      attr_accessor :activity_def_uri
+      attr_accessor :activity_def_base_uri
+
       # User
       attr_accessor :user_uri
       attr_accessor :user_base_uri
