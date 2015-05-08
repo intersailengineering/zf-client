@@ -34,6 +34,21 @@ module Intersail
           subject.class.class_eval("@default_options[:base_uri] = nil")
           expect { subject.class.new }.to change { subject.class.base_uri }.to(ZfClient.instance_eval("config.#{config_options[:base_uri].keys.first}"))
         end
+
+        it "should setup resource_uri " do
+          # run callback
+          subject.after_initialize
+
+          expect(subject.resource_uri).to be == ZfClient.instance_eval("config.#{config_options[:uri].keys.first}")
+        end
+
+        it "should setup Given resource as resource class" do
+          expect(subject.resource_class).to be == config_options[:resource_class]
+        end
+
+        it "should activate given methods of http_resource" do
+          expect(subject.active_resource_methods).to be == config_options[:active_resource_methods]
+        end
       end
     end
   end

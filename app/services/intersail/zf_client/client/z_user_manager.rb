@@ -14,7 +14,7 @@ module Intersail
 
         # Resourceable
         def active_resource_methods
-          [:create, :read, :update, :delete, :list]
+          [:create, :read, :update, :list]
         end
       end
     end

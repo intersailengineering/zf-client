@@ -5,43 +5,12 @@ module Intersail
     module Client
       describe ZUserManager, type: :client do
         it_should_behave_like "httparty_validatable"
-
-        context "configuration" do
-          before(:all) do
-            ZfClient.configure do |config|
-              config.user_uri = "/User.aspx"
-              config.user_base_uri = Faker::Internet.url
-            end
-          end
-
-          it "should use initializer settings as default" do
-            # run callback
-            subject.after_initialize
-
-            # reset class base_uri value
-            subject.class.class_eval("@default_options[:base_uri] = nil")
-            expect(subject.class.new.class.base_uri).to be == (ZfClient.config.user_base_uri)
-          end
-
-          context "resourceable" do
-            it_should_behave_like "httparty_resourceable"
-
-            it "should activate create read update delete list methods on of http_resource" do
-              expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
-            end
-
-            it "should setup resource_uri " do
-              # run callback
-              subject.after_initialize
-
-              expect(subject.resource_uri).to be == ZfClient.config.user_uri
-            end
-
-            it "should setup ZUser as resource class" do
-              expect(subject.resource_class).to be == ZUser
-            end
-          end
-        end
+        it_should_behave_like "httparty_resourceable",
+                              {uri: {user_uri: "/user"},
+                               base_uri: {user_base_uri: Faker::Internet.url},
+                               active_resource_methods: [:create, :read, :update, :list],
+                               resource_class: ZUser
+                              }
       end
     end
   end
