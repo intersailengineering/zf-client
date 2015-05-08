@@ -7,25 +7,17 @@ module Intersail
         it_should_behave_like "httparty_validatable"
 
         context "configuration" do
-          before(:all) do
-            ZfClient.configure do |config|
-              config.acl_uri = "/acls"
-              config.acl_base_uri = Faker::Internet.url
-            end
-          end
-
-          it "should use initializer settings as default" do
-            # run callback
-            subject.after_initialize
-
-            # reset class base_uri value
-            subject.class.class_eval("@default_options[:base_uri] = nil")
-            expect(subject.class.new.class.base_uri).to be == (ZfClient.config.acl_base_uri)
-          end
-
           context "resourceable" do
-            it_should_behave_like "httparty_resourceable"
+            it_should_behave_like "httparty_resourceable",
+                { uri: {acl_uri: "/acls"},
+                  base_uri: {acl_base_uri: "/acls"}
+                }
 
+            #@jtodoIMP extract this in the mixin then put mixin in all manager
+            # then fix the unit and resource
+            # then pinstance
+            # then pdef adef model and test
+            # then auth
             it "should activate create read update delete list methods on of http_resource" do
               expect(subject.active_resource_methods).to be == [:create, :read, :update, :delete, :list]
             end
