@@ -41,7 +41,7 @@ module Intersail
 
       class << self
         def from_hash(hash)
-          ZActivityDef.new(hash)
+          Intersail::ZfClient::ZActivityDef.new(hash)
         end
       end
     end

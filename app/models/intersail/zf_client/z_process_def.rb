@@ -32,7 +32,7 @@ module Intersail
 
       class << self
         def from_hash(hash)
-          ZProcessDef.new(hash)
+          Intersail::ZfClient::ZProcessDef.new(hash)
         end
       end
     end

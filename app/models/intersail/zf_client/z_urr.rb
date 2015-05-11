@@ -44,10 +44,10 @@ module Intersail
       class << self
         def from_hash(hash)
           hash = hash.clone
-          hash["unit"] = ZUnit.from_hash(hash["unit"]) if hash["unit"]
-          hash["role"] = ZRole.from_hash(hash["role"]) if hash["role"]
-          hash["resource"] = ZResource.from_hash(hash["resource"]) if hash["resource"]
-          ZUrr.new hash
+          hash["unit"] = Intersail::ZfClient::ZUnit.from_hash(hash["unit"]) if hash["unit"]
+          hash["role"] = Intersail::ZfClient::ZRole.from_hash(hash["role"]) if hash["role"]
+          hash["resource"] = Intersail::ZfClient::ZResource.from_hash(hash["resource"]) if hash["resource"]
+          Intersail::ZfClient::ZUrr.new hash
         end
       end
     end

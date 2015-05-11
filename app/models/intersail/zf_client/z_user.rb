@@ -41,8 +41,8 @@ module Intersail
       class << self
         def from_hash(h)
           hash = h.clone
-          hash["resource"] = ZResource.from_hash(hash["resource"])
-          ZUser.new hash
+          hash["resource"] = Intersail::ZfClient::ZResource.from_hash(hash["resource"])
+          Intersail::ZfClient::ZUser.new hash
         end
       end
     end

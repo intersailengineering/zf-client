@@ -46,9 +46,9 @@ module Intersail
         def from_hash(h)
           hash = h.clone
           hash["urrs"] = hash["urrs"] && hash["urrs"].inject([]) do |urrs,urr|
-            urrs << ZUrr.from_hash(urr)
+            urrs << Intersail::ZfClient::ZUrr.from_hash(urr)
           end
-          ZResource.new hash
+          Intersail::ZfClient::ZResource.new hash
         end
       end
     end
