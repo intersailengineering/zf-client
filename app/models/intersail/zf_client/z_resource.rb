@@ -21,6 +21,11 @@ module Intersail
       validates_presence_of :last_name
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
 
+      # Default attributes
+      def urrs
+        @urrs || []
+      end
+
       # Serialization
       def attributes
         {

@@ -21,6 +21,12 @@ module Intersail
           }
         end
 
+        context "urrs" do
+          it "should return empty array if urrs is nil" do
+            expect(ZResource.new.urrs).to be == []
+          end
+        end
+
         it "should include custom data" do
           expect(subject.attributes_to_include).to be == [:urrs]
         end
