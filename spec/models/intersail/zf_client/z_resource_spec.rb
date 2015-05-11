@@ -23,7 +23,7 @@ module Intersail
 
         context "urrs" do
           it "should return empty array if urrs is nil" do
-            expect(ZResource.new.urrs).to be == []
+            expect(subject.class.new.urrs).to be == []
           end
         end
 
