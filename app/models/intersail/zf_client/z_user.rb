@@ -38,10 +38,12 @@ module Intersail
         [:resource]
       end
 
-      def self.from_hash(h)
-        hash = h.clone
-        hash["resource"] = ZResource.from_hash(hash["resource"])
-        ZUser.new hash
+      class << self
+        def from_hash(h)
+          hash = h.clone
+          hash["resource"] = ZResource.from_hash(hash["resource"])
+          ZUser.new hash
+        end
       end
     end
   end

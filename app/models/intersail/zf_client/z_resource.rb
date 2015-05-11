@@ -37,12 +37,14 @@ module Intersail
         [:urrs]
       end
 
-      def self.from_hash(h)
-        hash = h.clone
-        hash["urrs"] = hash["urrs"] && hash["urrs"].inject([]) do |urrs,urr|
-          urrs << ZUrr.from_hash(urr)
+      class << self
+        def from_hash(h)
+          hash = h.clone
+          hash["urrs"] = hash["urrs"] && hash["urrs"].inject([]) do |urrs,urr|
+            urrs << ZUrr.from_hash(urr)
+          end
+          ZResource.new hash
         end
-        ZResource.new hash
       end
     end
   end

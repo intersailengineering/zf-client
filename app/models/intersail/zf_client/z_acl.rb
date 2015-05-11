@@ -29,10 +29,10 @@ module Intersail
       validates_presence_of :resource_id
       validates_presence_of :permission
       validates_presence_of :priority
-      validates :inherit_unit, exclusion: { in: [nil] }
-      validates :inherit_role, exclusion: { in: [nil] }
-      validates :mandatory, exclusion: { in: [nil] }
-      validates :enabled, exclusion: { in: [nil] }
+      validates :inherit_unit, exclusion: { in: [nil]}
+      validates :inherit_role, exclusion: { in: [nil]}
+      validates :mandatory, exclusion: { in: [nil]}
+      validates :enabled, exclusion: { in: [nil]}
 
 
       # Serialization
@@ -57,8 +57,10 @@ module Intersail
         []
       end
 
-      def self.from_hash(hash)
-        ZAcl.new hash
+      class << self
+        def from_hash(hash)
+          Intersail::ZfClient::ZAcl.new hash
+        end
       end
     end
   end

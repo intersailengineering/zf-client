@@ -37,8 +37,10 @@ module Intersail
         []
       end
 
-      def self.from_hash(hash)
-        ZProcessInstance.new hash
+      class << self
+        def from_hash(hash)
+          ZProcessInstance.new hash
+        end
       end
     end
   end
