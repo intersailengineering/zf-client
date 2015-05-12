@@ -1,7 +1,7 @@
 === Guida all'uso dello sviluppatore
 
-1. Eseguire sempre le spec: 'bundle exec rspec'
+1. Eseguire sempre le spec con: 'bundle exec rspec'
 2. Creare nuove spec quando si implementano nuove features
 3. Le spec devono essere tenute allineate con i requisiti dell'applicativo altrimenti
-perdono la loro utilità il che sarebbe uno spreco di lavoro
+perdono la loro utilità il che renderebbe vano il lavoro fatto fino ad ora e la test di regressione sarebbe inutile
 4. Se una spec fallisce c'è qualche problema: controlla il perchè e risolvilo, non commentando la spec!
