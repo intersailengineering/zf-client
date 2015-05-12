@@ -20,7 +20,7 @@ module Intersail
         # This is a comment to show the available filter for the list
         # the available filter options are the following:
         # username: "string"
-        # enabled: boolean
+        # active: boolean
         # email: "string"
         # first_name: "string"
         # last_name: "string"
