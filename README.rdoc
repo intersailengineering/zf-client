@@ -3,7 +3,7 @@
 Questa gemma permette di collegarsi all'api di ZapFlow.
 
 == Setup
-* Aggiungere come dipendenza al gemfile: gem 'zf_client', :git => 'https://github.com/intersailengineering/zf-client.git', :branch => 'f-net-integration'
+* Aggiungere come dipendenza al gemfile: gem 'zf_client', :git => 'https://github.com/intersailengineering/zf-client.git', :branch => 'staging'
 * Eseguire bundle install(Attenzione devi essere aggiunto agli utenti del repository per scaricarlo)
 A questo punto è possibile ottenere il client con il seguente comando:
     c = Intersail::ZfClient::Client::ZClient.new "token"
