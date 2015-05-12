@@ -16,6 +16,19 @@ module Intersail
         def active_resource_methods
           [:create, :read, :update, :list]
         end
+
+        # This is a comment to show the available filter for the list
+        # the available filter options are the following:
+        # username: "string"
+        # enabled: boolean
+        # email: "string"
+        # first_name: "string"
+        # last_name: "string"
+        # role_id: integer
+        # unit_id: integer
+        # all the options are attached with AND operator
+        # def list(filter ={})
+        # end
       end
     end
   end
