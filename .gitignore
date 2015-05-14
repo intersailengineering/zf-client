@@ -8,5 +8,6 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 
 .idea/
-.coverage/
+coverage/
 api_def/
+
