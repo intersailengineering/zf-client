@@ -18,6 +18,14 @@ module Intersail
 
     it_should_behave_like "infoable"
 
+    it "should have empty infoable attributes as default" do
+      class InfoableEmptyItem
+        include Infoable
+      end
+
+      expect(InfoableEmptyItem.new.infoable_attributes).to be == []
+    end
+
     it "can be created from the id attributes" do
       expect(subject.class.new(an_attribute_a_id: 1).an_attribute_a_id).to be == 1
     end
