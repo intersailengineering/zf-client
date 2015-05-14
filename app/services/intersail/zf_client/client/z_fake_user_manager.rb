@@ -1,3 +1,4 @@
+# This class could be removed
 module Intersail
   module ZfClient
     module Client

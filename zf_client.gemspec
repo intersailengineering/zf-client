@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.1"
   # Build fake data
-  #@jtodoIMP remove when faking is done
+  #@jtodoMed remove this after removing fake data builder
   s.add_dependency 'faker'
 
   # Databse connector

@@ -18,6 +18,5 @@ group :development, :test do
   gem 'byebug'
   # Test coverage
   gem 'simplecov'
-
   # Others
 end

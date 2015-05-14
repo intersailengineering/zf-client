@@ -1,3 +1,4 @@
+# This class could be removed
 require 'faker'
 
 module Intersail
