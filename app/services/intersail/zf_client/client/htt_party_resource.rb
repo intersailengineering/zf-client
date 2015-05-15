@@ -57,7 +57,7 @@ module Intersail
 
             def hash_to_query_string(hash)
               return "" unless hash.any?
-              "?".concat hash.to_a.map{|x| "#{x[0]}=#{x[1]}"}.join("&")
+              "?".concat hash.map{|key,value| "#{key}=#{value}"}.join("&")
             end
           end
         end
