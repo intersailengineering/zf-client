@@ -2,6 +2,8 @@
 # without restarting the server under development
 Rails.application.config.to_prepare do
   Intersail::ZfClient.configure do |config|
+    # Debug
+    config.debug = true
     # Process instance
     config.process_uri = "/processes"
     config.process_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"

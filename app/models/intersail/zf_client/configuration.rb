@@ -1,6 +1,9 @@
 module Intersail
   module ZfClient
     class Configuration
+      # Logging
+      attr_accessor :debug
+
       # Process instance
       attr_accessor :process_uri
       attr_accessor :process_base_uri

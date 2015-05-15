@@ -18,10 +18,12 @@ module Intersail
         end
 
         attr_accessor :z_token
+        attr_accessor :debug
 
         def initialize(z_token = nil, base_uri = nil)
           self.z_token = z_token
           self.base_uri = base_uri
+          self.debug = ZfClient.config.debug
           after_initialize
         end
 
@@ -63,6 +65,7 @@ module Intersail
 
         def call_method(method, obj, relative_uri)
           res = do_request(method, obj, relative_uri)
+          record_info(obj,res,relative_uri)
           raise(StandardError, res.body) if res.code == 500
           res
         end
@@ -75,6 +78,28 @@ module Intersail
           return if object_validatable.nil?
           raise(Intersail::Errors::StandardValidationError, "You need to provide a validatable object") unless object_validatable.respond_to?(:valid?)
           raise(Intersail::Errors::StandardValidationError, object_validatable.errors.full_messages) unless object_validatable.valid?
+        end
+
+        # Logging
+
+        def debug?
+          return true if self.debug
+          false
+        end
+
+        def logger
+          Logger.new("#{Rails.root}/log/client.log")
+        end
+
+        def record_info(obj, res, uri)
+          return unless debug?
+
+          msg = %Q{request_body: #{obj.as_json}
+request_uri: #{uri}
+response_body: #{res.body}
+response_code: #{res.code}
+          }
+          logger.info(msg)
         end
       end
     end

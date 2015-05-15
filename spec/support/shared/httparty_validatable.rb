@@ -1,5 +1,4 @@
 module Intersail
-
   shared_examples "httparty_validatable" do
     let(:fake_data) { OpenStruct.new(body: %Q/{"fake" : "fake_json"}/, code: 200) }
 
@@ -74,6 +73,74 @@ module Intersail
         expect(valid).to receive(:valid?) { true }
 
         subject.doValidation(valid)
+      end
+    end
+
+    #@jtodoMed extract into a debug mixin
+    context "debugging" do
+      it "should have a debug attribute" do
+        expect(subject).to have_attr_accessor(:debug)
+      end
+
+      it "debug should be enabled by default" do
+        expect(Intersail::ZfClient.config.debug).to be == true
+      end
+
+      context "configuration" do
+        it "should read debug flag from configuration" do
+          allow_any_instance_of(ZfClient).to receive_message_chain(:config,:debug) { true }
+          expect(subject.class.new.debug?).to be == true
+        end
+      end
+    end
+
+    #@jtodoMed extract this into a logger mixin
+    context "logging" do
+      def logger_device
+        subject.logger.instance_eval("@logdev")
+      end
+
+      let(:fake_response) { OpenStruct.new(code: 200, body: {body: "fake body"}) }
+      let(:fake_obj) { {} }
+      let(:fake_uri) { "/test.aspx" }
+
+      it "should have a logger" do
+        expect(logger_device.dev.class).to be == File
+        expect(logger_device.dev.path).to be == "#{Rails.root}/log/client.log"
+      end
+
+      it "should record information" do
+        expect(subject).to receive(:record_info).with(fake_obj, fake_response, fake_uri)
+        expect(subject).to receive(:do_request) { fake_response }
+
+        subject.call_method("method_name",fake_obj,fake_uri)
+      end
+
+      context "debug configuration is enabled" do
+        let(:client_debug) { subject.debug = true; subject }
+
+        it "should log request and response data with record info" do
+          msg = %Q{request_body: #{fake_obj.as_json}
+request_uri: #{fake_uri}
+response_body: #{fake_response.body}
+response_code: #{fake_response.code}
+          }
+          fake_logger = double("fake_logger")
+          expect(fake_logger).to receive(:info).with(msg)
+          expect(client_debug).to receive(:logger) { fake_logger }
+
+          client_debug.record_info(fake_obj,fake_response,fake_uri)
+        end
+      end
+
+      context "debug configuration is disabled" do
+        let(:client_debug) { subject.debug = false; subject }
+
+        it "should do nothing with record info" do
+          expect(client_debug).to_not receive(:logger)
+
+          client_debug.record_info("some","fake","data")
+        end
       end
     end
 
