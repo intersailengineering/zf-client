@@ -26,6 +26,7 @@ module Intersail
         # last_name: "string"
         # role_id: integer
         # unit_id: integer
+        # full_text_search: search on all the fields with or clause and %like%
         # all the options are attached with AND operator
         # def list(filter ={})
         # end

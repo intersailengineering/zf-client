@@ -106,7 +106,7 @@ module Intersail
 
       it "should have a logger" do
         expect(logger_device.dev.class).to be == File
-        expect(logger_device.dev.path).to be == "#{Rails.root}/log/client.log"
+        expect(logger_device.dev.path).to be == "#{Rails.root}/log/zf_client.log"
       end
 
       it "should record information" do

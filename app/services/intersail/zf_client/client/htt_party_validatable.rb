@@ -88,7 +88,7 @@ module Intersail
         end
 
         def logger
-          Logger.new("#{Rails.root}/log/client.log")
+          Logger.new("#{Rails.root}/log/zf_client.log")
         end
 
         def record_info(obj, res, uri)

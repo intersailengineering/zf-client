@@ -15,6 +15,12 @@ module Intersail
         def active_resource_methods
           [:create, :read, :update, :delete, :list]
         end
+
+        # This is a comment to show the available filter for the list
+        # the available filter options are the following:
+        # full_text_search: search on all the fields with or clause and %like%
+        # def list(filter ={})
+        # end
       end
     end
   end
