@@ -21,7 +21,7 @@ module Intersail
         # the available filter options are the following:
         # username: "string"
         # active: boolean
-        # email: "string"
+        # mail: "string"
         # first_name: "string"
         # last_name: "string"
         # role_id: integer
