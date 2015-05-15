@@ -120,7 +120,8 @@ module Intersail
         let(:client_debug) { subject.debug = true; subject }
 
         it "should log request and response data with record info" do
-          msg = %Q{request_body: #{fake_obj.as_json}
+          msg = %Q{
+request_body: #{fake_obj.as_json}
 request_uri: #{fake_uri}
 response_body: #{fake_response.body}
 response_code: #{fake_response.code}

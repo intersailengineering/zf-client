@@ -94,7 +94,8 @@ module Intersail
         def record_info(obj, res, uri)
           return unless debug?
 
-          msg = %Q{request_body: #{obj.as_json}
+          msg = %Q{
+request_body: #{obj.as_json}
 request_uri: #{uri}
 response_body: #{res.body}
 response_code: #{res.code}
