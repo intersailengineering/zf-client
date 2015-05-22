@@ -16,6 +16,9 @@ Rails.application.config.to_prepare do
     # User
     config.user_uri = "/users"
     config.user_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"
+    # Resource
+    config.resource_uri = "/resources"
+    config.resource_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"
     # Unit
     config.unit_uri = "/units"
     config.unit_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"

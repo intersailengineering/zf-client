@@ -19,9 +19,10 @@ module Intersail
         # List of all the methods that needs to be delegated
         # User Management
         delegate :create, :read, :update, :list, :delete, to: :user, prefix: :user
+        delegate :create, :read, :update, :list,          to: :resource, prefix: :resource
         delegate :create, :read, :update, :list, :delete, to: :role, prefix: :role
         delegate :create, :read, :update, :list, :delete, to: :unit, prefix: :unit
-        delegate :create, :read, :update, to: :urr, prefix: :urr
+        delegate :create, :read, :update,                 to: :urr, prefix: :urr
         delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
         # Process handling
         delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
@@ -32,6 +33,7 @@ module Intersail
         def delegated
           {
               user: Intersail::ZfClient::Client::ZUserManager,
+              resource: Intersail::ZfClient::Client::ZResourceManager,
               role: Intersail::ZfClient::Client::ZRoleManager,
               unit: Intersail::ZfClient::Client::ZUnitManager,
               urr: Intersail::ZfClient::Client::ZUrrManager,

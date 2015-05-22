@@ -54,6 +54,7 @@ module Intersail
             it "should have valid delegated classes" do
               expect(@z_client.delegated).to be == {
                   user: Intersail::ZfClient::Client::ZUserManager,
+                  resource: Intersail::ZfClient::Client::ZResourceManager,
                   role: Intersail::ZfClient::Client::ZRoleManager,
                   unit: Intersail::ZfClient::Client::ZUnitManager,
                   urr: Intersail::ZfClient::Client::ZUrrManager,
@@ -68,6 +69,10 @@ module Intersail
           context "method delegation" do
             it "should delegate crud methods to user" do
               expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :user, :user)
+            end
+
+            it "should delegate crud methods to resources" do
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list], :resource, :resource)
             end
 
             it "should delegate crud methods to role" do

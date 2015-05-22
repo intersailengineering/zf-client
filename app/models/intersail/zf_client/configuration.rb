@@ -20,6 +20,10 @@ module Intersail
       attr_accessor :user_uri
       attr_accessor :user_base_uri
 
+      # Resource
+      attr_accessor :resource_uri
+      attr_accessor :resource_base_uri
+
       # Unit
       attr_accessor :unit_uri
       attr_accessor :unit_base_uri
