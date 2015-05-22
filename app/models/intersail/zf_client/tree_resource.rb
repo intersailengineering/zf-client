@@ -11,7 +11,7 @@ module Intersail
       attr_accessor :description
       attr_accessor :parent
       # Attributes that default to 0
-      zero_attributes [:id]
+      zero_attributes [:id, :parent_id]
 
       # Validation
       validates_presence_of :name

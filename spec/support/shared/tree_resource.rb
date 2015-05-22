@@ -3,7 +3,7 @@ require 'rails_helper'
 module Intersail
   shared_examples "tree_resource" do
     context "attributes" do
-      it_should_behave_like "default_zero", [:id]
+      it_should_behave_like "default_zero", [:id, :parent_id]
       it { is_expected.to have_attr_accessor(:id) }
       it { is_expected.to have_attr_accessor(:name) }
       it { is_expected.to have_attr_accessor(:description) }
