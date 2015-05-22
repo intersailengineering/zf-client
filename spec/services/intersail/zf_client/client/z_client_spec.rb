@@ -84,7 +84,7 @@ module Intersail
             end
 
             it "should delegate crud methods to urr" do
-              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update], :urr, :urr)
+              expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list], :urr, :urr)
             end
 
             it "should delegate crud methods to acl" do

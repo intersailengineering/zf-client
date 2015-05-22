@@ -13,9 +13,16 @@ module Intersail
         end
 
         def active_resource_methods
-          [:create, :read, :update]
+          [:create, :read, :update, :list]
         end
 
+        # This is a comment to show the available filter for the list
+        # the available filter options are the following:
+        # unit_id
+        # role_id
+        # resource_id
+        # def list(filter ={})
+        # end
       end
     end
   end

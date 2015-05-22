@@ -8,7 +8,7 @@ module Intersail
         it_should_behave_like "httparty_resourceable",
                               {uri: {urr_uri: "/urrs"},
                                base_uri: {urr_base_uri: Faker::Internet.url},
-                               active_resource_methods: [:create, :read, :update],
+                               active_resource_methods: [:create, :read, :update, :list],
                                resource_class: ZUrr
                               }
       end

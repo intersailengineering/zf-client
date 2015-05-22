@@ -22,7 +22,7 @@ module Intersail
         delegate :create, :read, :update, :list,          to: :resource, prefix: :resource
         delegate :create, :read, :update, :list, :delete, to: :role, prefix: :role
         delegate :create, :read, :update, :list, :delete, to: :unit, prefix: :unit
-        delegate :create, :read, :update,                 to: :urr, prefix: :urr
+        delegate :create, :read, :update, :list,          to: :urr, prefix: :urr
         delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
         # Process handling
         delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
