@@ -1,12 +1,12 @@
 module Intersail
   module ZfClient
     class ZAcl
-
       include ActiveModel::Model
       include Serializable
-      extend DefaultZeroId
+      include DefaultZeroId
 
       # Attributes
+      attr_accessor :id
       attr_accessor :process_def_id
       attr_accessor :activity_def_id
       attr_accessor :unit_id
@@ -19,7 +19,9 @@ module Intersail
       attr_accessor :mandatory
       attr_accessor :enabled
       # Attributes that default to 0
-      zero_attributes [:id]
+      def zero_attributes
+        [:id]
+      end
 
       # Validation
       validates_presence_of :process_def_id

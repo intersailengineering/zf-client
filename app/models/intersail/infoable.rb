@@ -19,14 +19,15 @@ module Intersail
       private
 
       def before_initialize
+        #@jtodoIMP test this and fix the setter
+        super() if respond_to? :super
         create_infoable_attributes_setter
         create_infoable_attributes_getter
-
       end
 
       def create_infoable_attributes_getter
         infoable_attributes.each do |attr|
-          instance_eval("def #{attr}_id() (@#{attr} && @#{attr}.id) || @#{attr}_id  end")
+          instance_eval("def #{attr}_id() (@#{attr} && @#{attr}.id) || super(); end")
         end
       end
 

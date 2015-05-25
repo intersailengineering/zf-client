@@ -3,14 +3,17 @@ module Intersail
     class ZProcessDef
       include ActiveModel::Model
       include Serializable
-      extend DefaultZeroId
+      include DefaultZeroId
 
       # Attributes
+      attr_accessor :id
       attr_accessor :name
       attr_accessor :ignore_history
       attr_accessor :app_domain
       # Attributes that default to 0
-      zero_attributes [:id]
+      def zero_attributes
+        [:id]
+      end
 
       # Validation
       validates_presence_of :name

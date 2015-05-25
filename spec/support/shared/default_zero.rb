@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module Intersail
   shared_examples "default_zero" do |attributes = nil|
-    it { is_expected.to extends(Intersail::DefaultZeroId) }
+    it { is_expected.to includes(DefaultZeroId) }
 
     if attributes
       it "should return id 0 if falsey" do

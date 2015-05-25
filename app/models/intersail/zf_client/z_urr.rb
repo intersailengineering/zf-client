@@ -2,18 +2,21 @@ module Intersail
   module ZfClient
     class ZUrr
       include Serializable
+      include DefaultZeroId
       include Infoable
-      extend DefaultZeroId
 
       # Attributes
       # class attributes
+      attr_accessor :id
       attr_accessor :unit
       attr_accessor :role
       attr_accessor :resource
       # To destroy an urr when passed from users
       attr_accessor :_destroy
       # Attributes that default to 0
-      zero_attributes [:id, :_destroy]
+      def zero_attributes
+        [:id, :_destroy]
+      end
       # Validation
       # validates presence of either class param or class_id
       validates_presence_of :unit_id

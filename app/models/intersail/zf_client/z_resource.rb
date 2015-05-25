@@ -3,9 +3,10 @@ module Intersail
     class ZResource
       include ActiveModel::Model
       include Serializable
-      extend DefaultZeroId
+      include DefaultZeroId
 
       # Attributes
+      attr_accessor :id
       attr_accessor :first_name
       attr_accessor :last_name
       attr_accessor :mail
@@ -14,7 +15,9 @@ module Intersail
       # Array of ZUrr items
       attr_accessor :urrs
       # Attributes that default to 0
-      zero_attributes [:id]
+      def zero_attributes
+        [:id]
+      end
 
       # Validation
       validates_presence_of :first_name
