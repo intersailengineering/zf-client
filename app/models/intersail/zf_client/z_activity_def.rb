@@ -3,9 +3,10 @@ module Intersail
     class ZActivityDef
       include ActiveModel::Model
       include Serializable
-      extend DefaultZeroId
+      include DefaultZeroId
 
       # Attributes
+      attr_accessor :id
       attr_accessor :name
       attr_accessor :type
       attr_accessor :in_param_string
@@ -14,7 +15,9 @@ module Intersail
       attr_accessor :process_definition_id
       attr_accessor :enabled
       # Attributes that default to 0
-      zero_attributes [:id]
+      def zero_attributes
+        [:id]
+      end
 
       # Validation
       validates_presence_of :name

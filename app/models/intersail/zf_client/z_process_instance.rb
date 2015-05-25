@@ -3,9 +3,10 @@ module Intersail
     class ZProcessInstance
       include ActiveModel::Model
       include Serializable
-      extend DefaultZeroId
+      include DefaultZeroId
 
       # Attributes
+      attr_accessor :id
       attr_accessor :process_def_id
       attr_accessor :parent_process_id
       attr_accessor :name
@@ -13,7 +14,9 @@ module Intersail
       # Hash of custom properties
       attr_accessor :properties
       # Attributes that default to 0
-      zero_attributes [:id]
+      def zero_attributes
+        [:id]
+      end
 
       # Validation
       validates_presence_of :process_def_id

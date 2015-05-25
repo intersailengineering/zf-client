@@ -3,9 +3,14 @@ require 'rails_helper'
 module Intersail
   describe 'DefaultZeroId', type: :module do
     class DefaultZeroIdStub
-      extend DefaultZeroId
+      include DefaultZeroId
 
-      zero_attributes [:id, :name]
+      attr_accessor :id
+      attr_accessor :name
+
+      def zero_attributes
+        [:id, :name]
+      end
     end
 
     subject {DefaultZeroIdStub.new}

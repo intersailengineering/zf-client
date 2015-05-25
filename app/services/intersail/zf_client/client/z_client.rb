@@ -2,7 +2,6 @@ module Intersail
   module ZfClient
     module Client
       class ZClient
-
         attr_accessor :z_token
         attr_accessor :base_uri
 

@@ -3,15 +3,19 @@ module Intersail
     class TreeResource
       include Serializable
       include Infoable
-      extend DefaultZeroId
+      include DefaultZeroId
       extend NestedResource
 
       # Attributes
+      attr_accessor :id
       attr_accessor :name
       attr_accessor :description
       attr_accessor :parent
+      attr_accessor :parent_id
       # Attributes that default to 0
-      zero_attributes [:id, :parent_id]
+      def zero_attributes
+        [:id, :parent_id]
+      end
 
       # Validation
       validates_presence_of :name
