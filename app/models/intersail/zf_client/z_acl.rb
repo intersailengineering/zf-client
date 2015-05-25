@@ -12,7 +12,7 @@ module Intersail
       attr_accessor :unit_id
       attr_accessor :role_id
       attr_accessor :resource_id
-      attr_accessor :permission
+      attr_accessor :permission_str
       attr_accessor :priority
       attr_accessor :inherit_unit
       attr_accessor :inherit_role
@@ -27,7 +27,7 @@ module Intersail
       validates_presence_of :unit_id
       validates_presence_of :role_id
       validates_presence_of :resource_id
-      validates_presence_of :permission
+      validates_presence_of :permission_str
       validates_presence_of :priority
       validates :inherit_unit, exclusion: { in: [nil]}
       validates :inherit_role, exclusion: { in: [nil]}
@@ -44,7 +44,7 @@ module Intersail
             "unit_id" => "",
             "role_id" => "",
             "resource_id" => "",
-            "permission" => "",
+            "permission_str" => "",
             "priority" => 0,
             "inherit_unit" => false,
             "inherit_role" => false,

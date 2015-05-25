@@ -5,7 +5,7 @@ FactoryGirl.define do
     unit_id Faker::Number.digit
     role_id Faker::Number.digit
     resource_id Faker::Number.digit
-    permission Faker::Lorem.characters(3)
+    permission_str Faker::Lorem.characters(3)
     priority Faker::Number.digit
     inherit_unit false
     inherit_role false

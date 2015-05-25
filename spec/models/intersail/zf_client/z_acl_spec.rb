@@ -18,7 +18,7 @@ module Intersail
             "unit_id" => "",
             "role_id" => "",
             "resource_id" => "",
-            "permission" => "",
+            "permission_str" => "",
             "priority" => 0,
             "inherit_unit" => false,
             "inherit_role" => false,
