@@ -97,20 +97,24 @@ module Intersail
           [:an_attribute_b_id]
         end
       end
+      let(:attribute_a) { OpenStruct.new(id: 1) }
       let(:attribute_b) { OpenStruct.new(id: nil) }
+      let(:attribute_a_id) { 1 }
       let(:attribute_b_id) { nil }
 
       context "is not an info object" do
-        let(:infoable_zero) { InfoableZeroItem.new(an_attribute_b_id: attribute_b_id) }
+        let(:infoable_zero) { InfoableZeroItem.new(an_attribute_a_id: attribute_a_id, an_attribute_b_id: attribute_b_id) }
         it "should return 0" do
+          expect(infoable_zero.an_attribute_a_id).to be == 1
           expect(infoable_zero.an_attribute_b_id).to be == 0
         end
       end
 
       context "is an info object" do
-        let(:infoable_zero) { InfoableZeroItem.new(an_attribute_b: attribute_b) }
+        let(:infoable_zero) { InfoableZeroItem.new(an_attribute_a: attribute_a, an_attribute_b: attribute_b) }
 
         it "should return 0" do
+          expect(infoable_zero.an_attribute_a_id).to be == 1
           expect(infoable_zero.an_attribute_b_id).to be == 0
         end
       end

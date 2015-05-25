@@ -1,26 +1,27 @@
 module Intersail
 
   # return zero instead of nil for the given ids
-  # include this after Infoable mixin in order to make it work
+  # Important: include this mixin only after the Infoable mixin in order to make this work correctly
   module DefaultZeroId
+    extend ActiveSupport::Concern
 
-    def initialize(params={})
-      before_initialize
-      #@jtodoIMP test this
-      super(params) if respond_to?(:super)
+    included do
+      send("include", ActiveModel::Model)
+
+      def initialize(params={})
+        before_initialize
+        super if defined?(super)
+      end
     end
 
     def define_zero_attributes
       zero_attributes.each do |attr|
         instance_eval("def #{attr}() return 0 unless super(); super(); end")
-        instance_eval("def #{attr}=(value) @#{attr}=value; end")
       end
     end
 
     def before_initialize
-      #@jtodoIMP test this like zero_default_id
-      super() if respond_to?(:super)
-      create_infoable_attributes_setter
+      super() if defined?(super)
       define_zero_attributes
     end
 

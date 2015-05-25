@@ -10,24 +10,17 @@ module Intersail
 
     included do
       send("include", ActiveModel::Model)
-    end
 
-    def initialize(params={})
-      before_initialize
-      super
-    end
-
-    private
-    def create_infoable_attributes_getter
-      infoable_attributes.each do |attr|
-        instance_eval("def #{attr}_id() (@#{attr} && @#{attr}.id) || super(); end")
+      def initialize(params={})
+        before_initialize
+        super
       end
     end
 
-    def create_infoable_attributes_setter
-      infoable_attributes.each do |name|
-        self.class.class_eval("attr_accessor :#{name}_id")
-      end
+    def before_initialize
+      super() if defined?(super)
+      create_infoable_attributes_setter
+      create_infoable_attributes_getter
     end
 
     # Obtain if this object is an info attribute or a resource attribute
@@ -59,18 +52,22 @@ module Intersail
       my_attributes
     end
 
-    def before_initialize
-      #@jtodoIMP test this and fix the setter
-      super() if respond_to?(:super)
-      p "here"
-      create_infoable_attributes_setter
-      create_infoable_attributes_getter
-    end
-
     # Default infoable implementation
     def infoable_attributes
       []
     end
 
+    private
+    def create_infoable_attributes_getter
+      infoable_attributes.each do |attr|
+        instance_eval("def #{attr}_id() (@#{attr} && @#{attr}.id) || super(); end")
+      end
+    end
+
+    def create_infoable_attributes_setter
+      infoable_attributes.each do |name|
+        self.class.class_eval("attr_accessor :#{name}_id")
+      end
+    end
   end
 end
