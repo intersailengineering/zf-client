@@ -39,7 +39,8 @@ module Intersail
 
       it "should serialize parent_id" do
         expect(subject.as_json["parent_id"]).to be == subject.parent.id
-        expect(build(:unit_no_parent).as_json["parent_id"]).to be_nil
+        # This because a tree resource have default_zero for parent_id
+        expect(build(:unit_no_parent).as_json["parent_id"]).to be == 0
       end
 
       it_should_behave_like "nested_resourceable"

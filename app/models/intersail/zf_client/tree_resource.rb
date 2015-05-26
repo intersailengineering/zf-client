@@ -2,8 +2,8 @@ module Intersail
   module ZfClient
     class TreeResource
       include Serializable
-      include DefaultZeroId
       include Infoable
+      include DefaultZeroId
       extend NestedResource
 
       # Attributes
