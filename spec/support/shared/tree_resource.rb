@@ -38,8 +38,8 @@ module Intersail
       end
 
       it "should serialize parent_id" do
+        byebug
         expect(subject.as_json["parent_id"]).to be == subject.parent.id
-
         expect(build(:unit_no_parent).as_json["parent_id"]).to be_nil
       end
 

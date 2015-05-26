@@ -25,12 +25,7 @@ module Intersail
 
       # Validation
       validates_presence_of :process_def_id
-      validates_presence_of :activity_def_id
-      validates_presence_of :unit_id
-      validates_presence_of :role_id
-      validates_presence_of :resource_id
       validates_presence_of :permission_str
-      validates_presence_of :priority
       validates :inherit_unit, exclusion: { in: [nil]}
       validates :inherit_role, exclusion: { in: [nil]}
       validates :mandatory, exclusion: { in: [nil]}

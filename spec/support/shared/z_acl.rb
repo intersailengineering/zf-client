@@ -24,12 +24,7 @@ module Intersail
 
     it "should validate his data" do
       expect(_acl).to validate_presence_of(:process_def_id)
-      expect(_acl).to validate_presence_of(:activity_def_id)
-      expect(_acl).to validate_presence_of(:unit_id)
-      expect(_acl).to validate_presence_of(:role_id)
-      expect(_acl).to validate_presence_of(:resource_id)
       expect(_acl).to validate_presence_of(:permission_str)
-      expect(_acl).to validate_presence_of(:priority)
       expect(subject).to validate_exclusion_of(:inherit_unit).in_array([nil])
       expect(subject).to validate_exclusion_of(:inherit_role).in_array([nil])
       expect(subject).to validate_exclusion_of(:mandatory).in_array([nil])
