@@ -1,7 +1,7 @@
 module Intersail
 
   # return zero instead of nil for the given ids
-  # Important: include this mixin only after the Infoable mixin in order to make this work correctly
+  # Important: include this mixin only before the Infoable mixin in order to make this work correctly
   module DefaultZeroId
     extend ActiveSupport::Concern
 
@@ -10,7 +10,7 @@ module Intersail
 
       def initialize(params={})
         before_initialize
-        super if defined?(super)
+        super
       end
     end
 

@@ -2,8 +2,8 @@ module Intersail
   module ZfClient
     class ZUrr
       include Serializable
-      include Infoable
       include DefaultZeroId
+      include Infoable
 
       # Attributes
       # class attributes
