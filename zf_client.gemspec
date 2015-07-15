@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = ZfClient::VERSION
   s.authors     = ["jacopo-beschi-intersail"]
   s.email       = ["jacopo.beschi@intersail.it"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ZfClient."
-  s.description = "TODO: Description of ZfClient."
+  s.homepage    = "http://www.intersail.it"
+  s.summary     = "Summary of ZfClient."
+  s.description = "Description of ZfClient."
   s.license     = "PROPRIETARY"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
