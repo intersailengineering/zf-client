@@ -44,6 +44,11 @@ module Intersail
           end
         end
 
+        def hash_to_query_string(hash)
+          return "" unless hash.any?
+          "?".concat hash.map{|key,value| "#{key}=#{value}"}.join("&")
+        end
+
         # Fetches all resources and passes filter hash as a query string
         # the valid options depend on the api called
         # an example could be: {username: "pippo"}
@@ -53,11 +58,6 @@ module Intersail
               _get("#{self.resource_uri}#{hash_to_query_string(filter)}").collect do |result_hash|
                 self.resource_class.from_hash(result_hash)
               end
-            end
-
-            def hash_to_query_string(hash)
-              return "" unless hash.any?
-              "?".concat hash.map{|key,value| "#{key}=#{value}"}.join("&")
             end
           end
         end
@@ -72,8 +72,8 @@ module Intersail
 
         def define_read_method
           instance_eval do
-            def read(id)
-              self.resource_class.from_hash _get("#{self.resource_uri}/#{id}")
+            def read(id, filter={})
+              self.resource_class.from_hash _get("#{self.resource_uri}/#{id}#{hash_to_query_string(filter)}")
             end
           end
         end

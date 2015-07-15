@@ -8,6 +8,7 @@ module Intersail
       it { is_expected.to have_attr_accessor(:name) }
       it { is_expected.to have_attr_accessor(:description) }
       it { is_expected.to have_attr_accessor(:parent) }
+      it { is_expected.to have_attr_accessor(:metadata) }
 
       it { is_expected.to includes(ActiveModel::Model) }
     end
@@ -33,7 +34,8 @@ module Intersail
             "id" => nil,
             "name" => "",
             "description" => "",
-            "parent_id" => nil
+            "parent_id" => nil,
+            "metadata" => {}
         }
       end
 

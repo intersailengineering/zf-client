@@ -10,6 +10,7 @@ module Intersail
       attr_accessor :id
       attr_accessor :name
       attr_accessor :description
+      attr_accessor :metadata
       attr_accessor :parent
       attr_accessor :parent_id
       # Attributes that default to 0
@@ -33,7 +34,8 @@ module Intersail
             "id" => nil,
             "name" => "",
             "description" => "",
-            "parent_id" => nil
+            "parent_id" => nil,
+            "metadata" => {}
         }
       end
 

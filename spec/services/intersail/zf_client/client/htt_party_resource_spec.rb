@@ -83,15 +83,16 @@ module Intersail
           end
 
           it "should read resource" do
+            filter = {key1: "value1", key2: 2}
             id = Faker::Number.digit
-            uri = "#{subject.resource_uri}/#{id}"
+            uri = "#{subject.resource_uri}/#{id}?key1=value1&key2=2"
             expect(subject).to receive(:_get)
                                .with(uri)
                                .and_return(api_single_res)
 
             expect(subject.resource_class).to receive(:from_hash).with(api_single_res) { {} }
 
-            expect(subject.read(id)).to be == {}
+            expect(subject.read(id, filter)).to be == {}
           end
 
           it "should update resource" do
