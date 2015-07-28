@@ -2,10 +2,7 @@ module Intersail
   module ZfClient
     module Client
 
-      # This need to be used with HTTPartyValidatable module
-      # IMPORTANT: Remember to include HTTPartyValidatable module before this
-      # allows you to automatically create methods for reading and writing resource
-      #
+      # == Generic HTTP Resource
       # in order to use it you need to setup:
       # resource_uri: the uri of the resource for example /user
       # resource_class: the class associated to the resource (which need to respond_to from_hash method)
@@ -16,6 +13,9 @@ module Intersail
       # def active_resource_methods() [:create]; end # this will activate only create method
       #
       module HTTPartyResource
+        extend ActiveSupport::Concern
+        include HTTPartyValidatable
+
         # Attributes
         attr_accessor :resource_uri
 

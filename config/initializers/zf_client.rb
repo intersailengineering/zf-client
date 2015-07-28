@@ -1,5 +1,6 @@
 # This is needed to update the initializer automatically
-# without restarting the server under development
+# without restarting the server under development if you're using an app that
+# implements this library locally
 Rails.application.config.to_prepare do
   Intersail::ZfClient.configure do |config|
     # Debug

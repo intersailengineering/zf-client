@@ -47,7 +47,7 @@ module Intersail
         def initialize_clients
           delegated.each do |name, klass|
             self.class_eval("attr_accessor :#{name}")
-            self.send("#{name}=", initialize_client(klass))
+            self.public_send("#{name}=", initialize_client(klass))
           end
         end
 

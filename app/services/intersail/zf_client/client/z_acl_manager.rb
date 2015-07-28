@@ -2,7 +2,6 @@ module Intersail
   module ZfClient
     module Client
       class ZAclManager
-        include HTTPartyValidatable
         include HTTPartyResource
 
         def after_initialize

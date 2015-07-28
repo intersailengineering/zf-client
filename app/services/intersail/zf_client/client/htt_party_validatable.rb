@@ -5,16 +5,12 @@ module Intersail
     module Client
 
       # Handles HTTParty method calls and validation
-      # You need to include this module first because it uses
-      # after_initialize for method hooks, other modules need to override this method
-      # in order to make it work.
-      # NOTE: also call super on after_initialize implemented methods in order to call initializer
-      # on all the subclasses
-
       module  HTTPartyValidatable
-        def self.included(base)
+        extend ActiveSupport::Concern
+
+        included do
           # Depends on HTTParty
-          base.send :include, HTTParty
+          send :include, HTTParty
         end
 
         attr_accessor :z_token
@@ -35,8 +31,10 @@ module Intersail
           self.class.base_uri
         end
 
+        # Hook used for other modules and is called after the "initialize" method
+        # NOTE: call super on after_initialize implemented methods in order to call initializer correctly
         def after_initialize
-          # method hook used for other modules or sublcasses
+          super if defined? super
         end
 
         def header

@@ -6,7 +6,6 @@ module Intersail
       describe 'HttpPartyResource' do
 
         class HTTPartyResourceStub
-          include HTTPartyValidatable
           include HTTPartyResource
 
           def initialize(resource_uri, resource_class)
@@ -31,6 +30,8 @@ module Intersail
 
         it_should_behave_like "httparty_resourceable"
 
+        it {is_expected.to includes(HTTPartyValidatable)}
+
         it "should set resource class only if respond to? from_hash" do
           expect{subject.resource_class=Object}.to raise_error(StandardError, "You need to pass a resource class that respond_to from_hash")
         end
@@ -46,7 +47,7 @@ module Intersail
             include HTTPartyResource
           end
 
-          expect_any_instance_of(StubSuper).to receive(:after_initialize)
+          expect_any_instance_of(StubSuper).to receive(:after_initialize).at_least(1)
           SuperCallClass.new.after_initialize
         end
 

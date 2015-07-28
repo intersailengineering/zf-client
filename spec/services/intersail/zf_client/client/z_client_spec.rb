@@ -6,7 +6,7 @@ module Intersail
       describe ZClient, type: :client do
         # Stubs
         class StubManager
-          include HTTPartyValidatable
+          include HTTPartyResource
 
           def stub_method
           end
@@ -19,7 +19,7 @@ module Intersail
             {
                 stub_m: Intersail::ZfClient::Client::StubManager,
                 stub_struct: Class.new do
-                  include HTTPartyValidatable
+                  include HTTPartyResource
                 end
             }
           end
