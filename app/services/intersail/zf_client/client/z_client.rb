@@ -18,10 +18,10 @@ module Intersail
         # List of all the methods that needs to be delegated
         # User Management
         delegate :create, :read, :update, :list, :delete, to: :user, prefix: :user
-        delegate :create, :read, :update, :list,          to: :resource, prefix: :resource
+        delegate :create, :read, :update, :list, to: :resource, prefix: :resource
         delegate :create, :read, :update, :list, :delete, to: :role, prefix: :role
         delegate :create, :read, :update, :list, :delete, to: :unit, prefix: :unit
-        delegate :create, :read, :update, :list,          to: :urr, prefix: :urr
+        delegate :create, :read, :update, :list, to: :urr, prefix: :urr
         delegate :create, :read, :update, :list, :delete, to: :acl, prefix: :acl
         # Process handling
         delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
@@ -53,6 +53,21 @@ module Intersail
 
         def initialize_client(klass)
           klass.new(@z_token, @base_uri)
+        end
+
+        # You can pass a general resource as parameter in the given format: #resource_#metod.
+        # in this case the client will make a new instance of hash manager that point to /resources
+        # and calls the given method.
+        # Example: point_read(1) will call read(1) on ZHashManager with the uri /points
+        def method_missing(name, *args, &block)
+          if (name =~ /(\w*)\_(\w*)/)
+            resource = $1; method = $2
+            client = initialize_client(Intersail::ZfClient::Client::ZHashManager)
+            client.resource_uri = "/#{resource}s"
+            client.send($2, *args)
+          else
+            super
+          end
         end
       end
     end

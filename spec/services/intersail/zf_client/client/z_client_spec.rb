@@ -25,12 +25,12 @@ module Intersail
           end
         end
 
-        context "stub validation" do
+        describe "stub validation" do
           subject { StubManager.new }
           it_should_behave_like "httparty_validatable"
         end
 
-        context "client delegation" do
+        describe "client delegation" do
           before(:all) do
             @z_token = SecureRandom.uuid
             @base_uri = "http://fake-base.com"
@@ -38,7 +38,7 @@ module Intersail
             @z_client_stub = StubClient.new(@z_token, @base_uri)
           end
 
-          context "configuration" do
+          describe "configuration" do
             it "initializes himself with z_token and base_uri" do
               expect(@z_client_stub.z_token).to be == @z_token
               expect(@z_client_stub.base_uri).to be == @base_uri
@@ -66,7 +66,7 @@ module Intersail
             end
           end
 
-          context "method delegation" do
+          describe "method delegation" do
             it "delegates crud methods to user" do
               expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :user, :user)
             end
@@ -102,6 +102,24 @@ module Intersail
             it "delegates crud methods to activity_def" do
               expect(@z_client).to delegate_methods_with_prefix([:create, :read, :update, :list, :delete], :activity_def, :activity_def)
             end
+          end
+
+          describe "#method_missing" do
+            context '{#resource_#method} url given' do
+              it "creates an HashManager and initialize his configuration" do
+                d_hash_manager = double("hash_manager")
+                expect(d_hash_manager).to receive(:read).with(1)
+                expect(d_hash_manager).to receive(:resource_uri=).with("/ress")
+                expect(Intersail::ZfClient::Client::ZHashManager).to receive(:new).with(@z_token, @base_uri) { d_hash_manager }
+
+                @z_client.res_read(1)
+              end
+            end
+          end
+
+          describe '#respond_to?' do
+              xit 'responds to {#resource_#method}'
+              xit "doesn't respond otherwise"
           end
         end
       end
