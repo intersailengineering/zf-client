@@ -4,6 +4,10 @@ module Intersail
       # Logging
       attr_accessor :debug
 
+      ##
+      # Uris
+      ##
+
       # Process instance
       attr_accessor :process_uri
       attr_accessor :process_base_uri
@@ -39,6 +43,9 @@ module Intersail
       # Acl
       attr_accessor :acl_uri
       attr_accessor :acl_base_uri
+
+      # Hash
+      attr_accessor :hash_base_uri
     end
   end
 end

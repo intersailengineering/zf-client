@@ -4,7 +4,6 @@ module Intersail
   module ZfClient
     module Client
       describe ZActivityDefManager, type: :client do
-        it_should_behave_like "httparty_validatable"
         it_should_behave_like "httparty_resourceable",
                               {uri: {activity_def_uri: "/activity_defs"},
                                base_uri: {activity_def_base_uri: Faker::Internet.url},

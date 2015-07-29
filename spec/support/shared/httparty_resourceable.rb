@@ -4,6 +4,8 @@ require 'rails_helper'
 # to see his structure: for example z_acl_manager_spec.rb
 module Intersail
   shared_examples "httparty_resourceable" do |config_options = {}|
+    it_should_behave_like "httparty_validatable"
+
     context "interface" do
       it { is_expected.to includes(Intersail::ZfClient::Client::HTTPartyResource) }
       it { is_expected.to respond_to :active_resource_methods }
@@ -21,7 +23,7 @@ module Intersail
       context "configuration" do
         before(:all) do
           ZfClient.configure do |config|
-            config.instance_eval(%Q[#{config_options[:uri].keys.first}="#{config_options[:uri].values.first}"])
+            config.instance_eval(%Q[#{config_options[:uri].keys.first}="#{config_options[:uri].values.first}"]) if config_options.fetch(:uri,false)
             config.instance_eval(%Q[#{config_options[:base_uri].keys.first}="#{config_options[:base_uri].values.first}"])
           end
         end
@@ -39,7 +41,7 @@ module Intersail
           # run callback
           subject.after_initialize
 
-          expect(subject.resource_uri).to be == ZfClient.instance_eval("config.#{config_options[:uri].keys.first}")
+          expect(subject.resource_uri).to be == ZfClient.instance_eval("config.#{config_options[:uri].keys.first}") if config_options.fetch(:uri,false)
         end
 
         it "should setup Given resource as resource class" do

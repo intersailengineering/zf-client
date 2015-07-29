@@ -4,8 +4,6 @@ module Intersail
   module ZfClient
     module Client
       describe ZProcessInstanceManager, type: :client do
-        it_should_behave_like "httparty_validatable"
-
         it_should_behave_like "httparty_resourceable",
                               {uri: {process_uri: "/process"},
                                base_uri: {process_base_uri: Faker::Internet.url},

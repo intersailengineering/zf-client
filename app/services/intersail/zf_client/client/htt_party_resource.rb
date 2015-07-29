@@ -20,7 +20,7 @@ module Intersail
         attr_accessor :resource_uri
 
         def resource_class=(klass)
-          raise(StandardError, "You need to pass a resource class that respond_to from_hash") unless (klass.respond_to? :from_hash)
+          raise(StandardError, "You need to pass a resource class that respond_to from_hash") unless (klass.respond_to?(:from_hash) || klass == Hash)
           @resource_class=klass
         end
 
@@ -46,52 +46,48 @@ module Intersail
 
         def hash_to_query_string(hash)
           return "" unless hash.any?
-          "?".concat hash.map{|key,value| "#{key}=#{value}"}.join("&")
+          "?".concat hash.map { |key, value| "#{key}=#{value}" }.join("&")
         end
 
         # Fetches all resources and passes filter hash as a query string
         # the valid options depend on the api called
         # an example could be: {username: "pippo"}
         def define_list_method
-          instance_eval do
-            def list(filter = {})
-              _get("#{self.resource_uri}#{hash_to_query_string(filter)}").collect do |result_hash|
-                self.resource_class.from_hash(result_hash)
-              end
+          define_singleton_method :list do |filter= {}|
+            _get("#{self.resource_uri}#{hash_to_query_string(filter)}").collect do |result_hash|
+              build_result(result_hash)
             end
           end
         end
 
         def define_delete_method
-          instance_eval do
-            def delete(id)
-              _delete("#{self.resource_uri}/#{id}")
-            end
+          define_singleton_method :delete do |id|
+            _delete("#{self.resource_uri}/#{id}")
           end
         end
 
         def define_read_method
-          instance_eval do
-            def read(id, filter={})
-              self.resource_class.from_hash _get("#{self.resource_uri}/#{id}#{hash_to_query_string(filter)}")
-            end
+          define_singleton_method :read do |id, filter={}|
+            build_result _get("#{self.resource_uri}/#{id}#{hash_to_query_string(filter)}")
           end
         end
 
         def define_update_method
-          instance_eval do
-            def update(id, resource)
-              self.resource_class.from_hash _put("#{self.resource_uri}/#{id}", resource)
-            end
+          define_singleton_method :update do |id, resource|
+            build_result _put("#{self.resource_uri}/#{id}", resource)
           end
         end
 
         def define_create_method
-          instance_eval do
-            def create(resource)
-              self.resource_class.from_hash _post(self.resource_uri, resource)
-            end
+          define_singleton_method :create do |resource|
+            build_result _post(self.resource_uri, resource)
           end
+        end
+
+        private
+        def build_result(result_hash)
+          return @resource_class.from_hash(result_hash) unless @resource_class == Hash
+          result_hash
         end
       end
     end
