@@ -38,7 +38,7 @@ module Intersail
         end
 
         def header
-          {"X-Session-Token" => self.z_token, "Content-Type" => "application/json"}
+          {"X-Api-Token" => self.z_token, "Content-Type" => "application/json"}
         end
 
         def _get(relative_uri, obj = nil)

@@ -6,8 +6,8 @@ module Intersail
 
     context "header" do
       it "should pass authorization data in the hedader" do
-        expect(subject.header).to have_key "X-Session-Token"
-        expect(subject.header["X-Session-Token"]).to be == subject.z_token
+        expect(subject.header).to have_key "X-Api-Token"
+        expect(subject.header["X-Api-Token"]).to be == subject.z_token
       end
 
       it "should pass content-type json in header" do
