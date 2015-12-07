@@ -4,9 +4,7 @@ module Intersail
       # Logging
       attr_accessor :debug
 
-      ##
-      # Uris
-      ##
+      attr_accessor :base_uri
 
       # Process instance
       attr_accessor :process_uri

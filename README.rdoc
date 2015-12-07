@@ -22,6 +22,17 @@ Per sovvrascrivere la configurazione creare un file intersail_auth.rb nella cart
 Il file deve essere così strutturato:
 
 Intersail::ZfClient.configure do |config|
+
+  # the base uri for the client
+  config.base_uri = "http://srvdelivery.staging.vpn"
+
+  ###
+  # Optional settings
+  ###
+
+  # In case you want to use a different base_uri for each manager you can set a
+  # custom one for each manager and do not set the config.base_uri
+
   # Process instance
   config.process_uri = "/processes"
   config.process_base_uri = "http://wrkdev-jacopo/ZapFlowWsApi"
@@ -56,3 +67,7 @@ Il suo utilizzo più semplice consiste nel creare un'istanza di ZClient con para
 Successivamente di possono chiamare i metodi per accedere alle risorse così mappati: nomerisorsa_methodo.
 Il sistema gestisce anche risorse generiche, basta chiamare risorsa_metodo ed il client accedera all'uri /risorsas chiamando il
 metodo fornito; i risultati saranno poi mostrati come hash
+
+=== opzione raw
+Nel caso si passi al client il metodo "raw" il risultato ritornato sarà sempre un'hash, e.g.:
+    client.user_manager.raw.read(1)

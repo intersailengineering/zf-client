@@ -153,9 +153,19 @@ module Intersail
             before { subject.instance_variable_set("@resource_class", klass)}
             context 'klass is != Hash' do
               let(:klass) { Object }
-              it 'calls from_hash with the result_hash' do
-                expect(klass).to receive(:from_hash).with(result_hash)
-                subject.send("build_result",result_hash)
+              context 'is_raw' do
+                before {subject.is_raw = true}
+                it 'returns the result_hash' do
+                  expect(klass).to_not receive(:from_hash)
+                  expect(subject.send("build_result",result_hash)).to eq(result_hash)
+                end
+              end
+              context 'is not raw' do
+                before {subject.is_raw = false}
+                it 'calls from_hash with the result_hash' do
+                  expect(klass).to receive(:from_hash).with(result_hash)
+                  subject.send("build_result",result_hash)
+                end
               end
             end
             context 'klass is Hash' do
@@ -164,6 +174,19 @@ module Intersail
                 expect(klass).to_not receive(:from_hash)
                 expect(subject.send("build_result",result_hash)).to eq(result_hash)
               end
+            end
+          end
+
+          describe '#raw' do
+            it 'creates a copy of self with is_raw == true' do
+              expect(subject.raw).to_not eq subject
+              expect(subject.raw.is_raw).to eq true
+            end
+          end
+
+          describe 'is_raw' do
+            it 'is false by default' do
+              expect(subject.is_raw).to eq false
             end
           end
         end

@@ -16,7 +16,9 @@ module Intersail
         extend ActiveSupport::Concern
         include HTTPartyValidatable
 
+
         # Attributes
+        attr_accessor :is_raw
         attr_accessor :resource_uri
 
         def resource_class=(klass)
@@ -30,6 +32,14 @@ module Intersail
 
         def active_resource_methods
           []
+        end
+
+        def is_raw
+          @is_raw.nil? ? false : @is_raw
+        end
+
+        def raw
+          self.dup.tap {|obj| obj.is_raw = true}
         end
 
         def after_initialize
@@ -86,7 +96,7 @@ module Intersail
 
         private
         def build_result(result_hash)
-          return @resource_class.from_hash(result_hash) unless @resource_class == Hash
+          return @resource_class.from_hash(result_hash) unless @resource_class == Hash || self.is_raw
           result_hash
         end
       end

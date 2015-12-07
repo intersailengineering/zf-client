@@ -39,16 +39,24 @@ module Intersail
           end
 
           describe "configuration" do
-            it "initializes himself with z_token and base_uri" do
-              expect(@z_client_stub.z_token).to be == @z_token
-              expect(@z_client_stub.base_uri).to be == @base_uri
+            context 'base_uri set in configuration and not passed in initializer' do
+              before {@z_client_stub = StubClient.new(@z_token)}
+              it "initializes himself with z_token and base_uri configured" do
+                expect(@z_client_stub.z_token).to eq @z_token
+                expect(@z_client_stub.base_uri).to eq ZfClient.config.base_uri
+              end
+            end
+
+            it "initializes himself with z_token and base_uri given" do
+              expect(@z_client_stub.z_token).to eq @z_token
+              expect(@z_client_stub.base_uri).to eq @base_uri
             end
 
             it "initializes all the manager with token and base_uri" do
               expect(@z_client_stub).to have_attr_accessor :stub_m
-              expect(@z_client_stub.stub_m.class).to be == StubManager
-              expect(@z_client_stub.stub_m.z_token).to be == @z_token
-              expect(@z_client_stub.stub_m.base_uri).to be == @base_uri
+              expect(@z_client_stub.stub_m.class).to eq StubManager
+              expect(@z_client_stub.stub_m.z_token).to eq @z_token
+              expect(@z_client_stub.stub_m.base_uri).to eq @base_uri
             end
 
             it "has valid delegated classes" do
