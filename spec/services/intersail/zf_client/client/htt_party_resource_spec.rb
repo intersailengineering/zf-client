@@ -180,6 +180,7 @@ module Intersail
           describe '#raw' do
             it 'creates a copy of self with is_raw == true' do
               expect(subject.raw).to_not eq subject
+              expect(subject.raw).to be_a subject.class
               expect(subject.raw.is_raw).to eq true
             end
           end

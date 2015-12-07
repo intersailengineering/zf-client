@@ -39,7 +39,7 @@ module Intersail
         end
 
         def raw
-          self.dup.tap {|obj| obj.is_raw = true}
+          self.clone.tap {|obj| obj.is_raw = true}
         end
 
         def after_initialize
