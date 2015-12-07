@@ -6,7 +6,7 @@ module Intersail
         attr_accessor :base_uri
 
         def initialize(z_token, base_uri = nil)
-          self.base_uri = base_uri || ZfClient.config.resource_base_uri
+          self.base_uri = base_uri || ZfClient.config.base_uri
           self.z_token = z_token
           initialize_clients
         end
