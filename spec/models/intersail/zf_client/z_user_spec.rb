@@ -12,6 +12,7 @@ module Intersail
         expect(subject).to have_attr_accessor(:password)
         expect(subject).to have_attr_accessor(:active)
         expect(subject).to have_attr_accessor(:resource)
+        expect(subject).to have_attr_accessor(:metadata)
         expect(subject).to_not have_attr_accessor(:urrs)
       end
 
@@ -43,7 +44,8 @@ module Intersail
               "username" => "",
               "description" => "",
               "active" => false,
-              "resource" => nil
+              "resource" => nil,
+              "metadata" => {}
           }
         end
 

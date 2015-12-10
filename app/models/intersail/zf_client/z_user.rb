@@ -12,6 +12,8 @@ module Intersail
       attr_accessor :password
       attr_accessor :active
       attr_accessor :resource
+      attr_accessor :metadata
+
       # Attributes that default to 0
       def zero_attributes
         [:id]
@@ -32,7 +34,8 @@ module Intersail
             "username" => "",
             "description" => "",
             "active" => false,
-            "resource" => nil
+            "resource" => nil,
+            "metadata" => {}
         }
       end
 
