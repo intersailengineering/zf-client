@@ -5,10 +5,10 @@ it:
         intersail/zf_client/z_resource:
           attributes:
             first_name:
-              :blank: "Non può essere lasciato bianco"
+              :blank: "Non può essere lasciato vuoto"
             last_name:
-              :blank: "Non può essere lasciato bianco"
+              :blank: "Non può essere lasciato vuoto"
             urrs:
               :blank: "L'utente deve avere associato un profilo"
             mail:
-              :blank: "Non può essere lasciato bianco"
+              :blank: "Non può essere lasciato vuoto"

@@ -1,0 +1,10 @@
+it:
+  activemodel:
+    errors:
+      models:
+        intersail/zf_client/z_unit:
+          attributes:
+            name:
+              :blank: "Non può essere lasciato vuoto"
+            name:
+              :description: "Non può essere lasciato vuoto"
