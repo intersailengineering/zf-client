@@ -5,4 +5,4 @@ it:
         intersail/zf_client/z_user:
           attributes:
             username:
-              :blank: "Non può essere lasciato bianco"
+              :blank: "Non può essere lasciato vuoto"
