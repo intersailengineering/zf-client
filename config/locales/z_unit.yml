@@ -6,5 +6,5 @@ it:
           attributes:
             name:
               :blank: "Non può essere lasciato vuoto"
-            name:
-              :description: "Non può essere lasciato vuoto"
+            description:
+              :blank: "Non può essere lasciato vuoto"
