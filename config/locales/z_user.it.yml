@@ -1,0 +1,8 @@
+it:
+  activemodel:
+    errors:
+      models:
+        intersail/zf_client/z_user:
+          attributes:
+            username:
+              :blank: "Non può essere lasciato bianco"

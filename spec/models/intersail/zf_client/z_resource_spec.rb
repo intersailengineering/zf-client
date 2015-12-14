@@ -7,6 +7,11 @@ module Intersail
 
       it_should_behave_like "user_resource"
 
+      describe 'valid?' do
+        it {is_expected.to validate_presence_of :urrs}
+        it {is_expected.to validate_presence_of :mail}
+      end
+
       context "serialization" do
         it_should_behave_like "serializable"
 

@@ -22,6 +22,8 @@ module Intersail
       # Validation
       validates_presence_of :first_name
       validates_presence_of :last_name
+      validates_presence_of :mail
+      validates_presence_of :urrs
       validates_with Intersail::Validators::SubAttributeValidator, attributes: :urrs
 
       # Default attributes

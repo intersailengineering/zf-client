@@ -38,21 +38,19 @@ module Intersail
         it "should set error if the subattribute is invalid" do
           error_double = double("error")
           expect(error_double).to receive(:valid?) { false }
-          expect(error_double).to receive_message_chain(:errors, :full_messages) { ["Fake error message"] }
+          expect(error_double).to receive_message_chain(:errors, :messages) { {field: "Fake error message"} }
           @stub.sub_attr = error_double
 
           expect(@stub.valid?).to be == false
-          expect(@stub.errors.full_messages_for :sub_attr).to be == ["Sub attr [\"Fake error message\"]"]
         end
 
         it "should set error if any of the subattributes are invalid" do
           error_double = double("error")
           expect(error_double).to receive(:valid?) { false }
-          expect(error_double).to receive_message_chain(:errors, :full_messages) { ["Fake error message"] }
+          expect(error_double).to receive_message_chain(:errors, :messages) { {field: "Fake error message"} }
           @stub.sub_attr = [double(valid?: true), error_double]
 
           expect(@stub.valid?).to be == false
-          expect(@stub.errors.full_messages_for :sub_attr).to be == ["Sub attr [\"Fake error message\"]"]
         end
       end
     end

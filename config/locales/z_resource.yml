@@ -1,0 +1,14 @@
+it:
+  activemodel:
+    errors:
+      models:
+        intersail/zf_client/z_resource:
+          attributes:
+            first_name:
+              :blank: "Non può essere lasciato bianco"
+            last_name:
+              :blank: "Non può essere lasciato bianco"
+            urrs:
+              :blank: "L'utente deve avere associato un profilo"
+            mail:
+              :blank: "Non può essere lasciato bianco"

@@ -20,7 +20,7 @@ module Intersail
         expect(subject).to includes(ActiveModel::Model)
       end
 
-      it "should validate his data" do
+      it "validates his data" do
         expect(subject).to validate_presence_of(:username)
         expect(subject).to validate_exclusion_of(:active).in_array([nil])
         expect(subject).to validate_presence_of(:resource)
