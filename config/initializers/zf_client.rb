@@ -1,4 +1,4 @@
-unless Rails.env = "test"
+unless Rails.env == "test"
   Intersail::ZfClient.configure do |config|
     # Debug
     config.debug = true
