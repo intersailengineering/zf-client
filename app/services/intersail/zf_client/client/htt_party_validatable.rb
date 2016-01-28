@@ -64,6 +64,7 @@ module Intersail
         def call_method(method, obj, relative_uri)
           res = do_request(method, obj, relative_uri)
           record_info(obj,res,relative_uri)
+          #@jtodoMED maybie also handle other standard error codes?
           raise(StandardError, res.body) if res.code == 500
           res
         end

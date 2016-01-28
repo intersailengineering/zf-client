@@ -13,7 +13,7 @@ module Intersail
 
         describe '#reset_password' do
           let(:user_id) {1}
-          before {@success_res = OpenStruct.new(code: 200, to_h: {id: user_id, email: "fake@mail.com", password: "new_random_password"}) }
+          before {@success_res = OpenStruct.new(code: 200, to_h: {id: user_id, username: "username", email: "fake@mail.com", password: "new_random_password"}) }
           it 'calls post with /users/id/reset_password and returns the UserPassword obj' do
             expect(subject).to receive(:call_method).with(:post, {}, "/users/#{user_id}/reset_password").and_return(@success_res)
             expect(subject.reset_password user_id ).to eq @success_res

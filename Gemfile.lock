@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zf_client (0.2.2)
+    zf_client (0.2.3)
       faker
       httparty
       rails (~> 4.1)
