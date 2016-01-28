@@ -29,6 +29,12 @@ module Intersail
         # all the options are attached with AND operator
         # def list(filter ={})
         # end
+
+        # Asks to reset the user passwor, returns an object like this:
+        #   {id: user_id, email: "fake@mail.com", password: "new_random_password"}
+        def reset_password(user_id)
+          call_method(:post, {}, "/users/#{user_id}/reset_password")
+        end
       end
     end
   end
