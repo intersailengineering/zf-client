@@ -15,6 +15,12 @@ unless Rails.env == "test"
     # Activity def
     config.activity_def_uri = "/activity_defs"
     config.activity_def_base_uri = config.base_uri
+    # Transition def
+    config.transition_def_uri = "/transition_defs"
+    config.transition_def_base_uri = config.base_uri
+    # Property def
+    config.property_def_uri = "/property_defs"
+    config.property_def_base_uri = config.base_uri
     # User
     config.user_uri = "/users"
     config.user_base_uri = config.base_uri
@@ -53,6 +59,12 @@ else
     # Activity def
     config.activity_def_uri = "/activity_defs"
     config.activity_def_base_uri = config.base_uri
+    # Transition def
+    config.transition_def_uri = "/transition_defs"
+    config.transition_def_base_uri = config.base_uri
+    # Property def
+    config.property_def_uri = "/property_defs"
+    config.property_def_base_uri = config.base_uri
     # User
     config.user_uri = "/users"
     config.user_base_uri = config.base_uri

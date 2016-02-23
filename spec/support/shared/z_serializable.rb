@@ -36,5 +36,10 @@ module Intersail
         expect{SerializableStub.new.serializable_hash}.to raise_error(StandardError, "You need to define attributes_to_include method")
       end
     end
+
+    it "should use the values defined in attributes as default values" do
+      expect(_serializable.class.new.serializable_hash.reject {|k,v| _serializable.zero_attributes.include?(k.to_sym)})
+        .to eq(_serializable.attributes.reject {|k,v| _serializable.zero_attributes.include?(k.to_sym)})
+    end
   end
 end

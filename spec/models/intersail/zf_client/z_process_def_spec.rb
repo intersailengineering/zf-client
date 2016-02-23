@@ -11,6 +11,11 @@ module Intersail
         expect(subject).to have_attr_accessor(:name)
         expect(subject).to have_attr_accessor(:ignore_history)
         expect(subject).to have_attr_accessor(:app_domain)
+        expect(subject).to have_attr_accessor(:activities)
+        expect(subject).to have_attr_accessor(:transitions)
+        expect(subject).to have_attr_accessor(:properties)
+        expect(subject).to have_attr_accessor(:permissions)
+        expect(subject).to have_attr_accessor(:trigger_defs)
       end
 
       it "should be an active model" do
@@ -30,15 +35,22 @@ module Intersail
               "id" => nil,
               "name" => "",
               "app_domain" => "",
-              "ignore_history" => false
+              "ignore_history" => false,
+              "activities" => [],
+              "transitions" => [],
+              "properties" => [],
+              "permissions" => [],
+              "trigger_defs" => []
           }
         end
 
-        it "should include resource and urrs" do
-          expect(subject.attributes_to_include).to be == []
+        it "should include activities, transitions and properties" do
+          expect(subject.attributes_to_include).to be == [:activities, :transitions, :properties]
         end
 
-        it { is_expected.to be_buildable_from_hash }
+        it "is buildable_from_hash" do
+          expect(subject).to be_buildable_from_hash
+        end
       end
     end
   end

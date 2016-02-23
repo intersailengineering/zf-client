@@ -18,6 +18,14 @@ module Intersail
       attr_accessor :activity_def_uri
       attr_accessor :activity_def_base_uri
 
+      # Transition def
+      attr_accessor :transition_def_uri
+      attr_accessor :transition_def_base_uri
+
+      # Property def
+      attr_accessor :property_def_uri
+      attr_accessor :property_def_base_uri
+
       # User
       attr_accessor :user_uri
       attr_accessor :user_base_uri

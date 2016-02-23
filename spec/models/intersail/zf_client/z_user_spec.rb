@@ -49,7 +49,7 @@ module Intersail
           }
         end
 
-        it "should include resource and urrs" do
+        it "should include resource" do
           expect(subject.attributes_to_include).to be == [:resource]
         end
 

@@ -32,7 +32,7 @@ module Intersail
           end
         end
 
-        it "should include custom data" do
+        it "should include urrs" do
           expect(subject.attributes_to_include).to be == [:urrs]
         end
         it { is_expected.to be_buildable_from_hash }

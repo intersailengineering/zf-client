@@ -1,6 +1,6 @@
 module Intersail
   module ZfClient
-    class ZActivityDef
+    class ZPropertyDef
       include ActiveModel::Model
       include Serializable
       include DefaultZeroId
@@ -8,12 +8,14 @@ module Intersail
       # Attributes
       attr_accessor :id
       attr_accessor :name
+      attr_accessor :description
       attr_accessor :type
-      attr_accessor :in_param_string
-      attr_accessor :manager
-      attr_accessor :process_result
-      attr_accessor :process_definition_id
-      attr_accessor :enabled
+      attr_accessor :process_def_id
+      attr_accessor :default_value
+      attr_accessor :constraint_definition
+      attr_accessor :read_only
+      attr_accessor :internal_property
+
       # Attributes that default to 0
       def zero_attributes
         [:id]
@@ -22,19 +24,19 @@ module Intersail
       # Validation
       validates_presence_of :name
       validates_presence_of :type
-      validates_presence_of :process_definition_id
-      validates :enabled, exclusion: {in: [nil]}
+      validates_presence_of :process_def_id
 
       def attributes
         {
             "id" => nil,
             "name" => nil,
+            "description" => nil,
             "type" => 0,
-            "in_param_string" => nil,
-            "manager" => nil,
-            "process_result" => 0,
-            "process_definition_id" => 0,
-            "enabled" => 0
+            "process_def_id" => 0,
+            "default_value" => nil,
+            "constraint_definition" => nil,
+            "read_only" => 0,
+            "internal_property" => 0
         }
       end
 
@@ -44,7 +46,7 @@ module Intersail
 
       class << self
         def from_hash(hash)
-          Intersail::ZfClient::ZActivityDef.new(hash)
+          Intersail::ZfClient::ZPropertyDef.new(hash)
         end
       end
     end

@@ -27,6 +27,8 @@ module Intersail
         delegate :create, :abort, :apply_transition, to: :process_instance, prefix: :process_instance
         delegate :create, :read, :update, :list, :delete, to: :process_def, prefix: :process_def
         delegate :create, :read, :update, :list, :delete, to: :activity_def, prefix: :activity_def
+        delegate :create, :read, :update, :list, :delete, to: :property_def, prefix: :property_def
+        delegate :create, :read, :update, :list, :delete, to: :transition_def, prefix: :transition_def
 
         # List of all the managers as name => class
         def delegated
@@ -39,7 +41,9 @@ module Intersail
               acl: Intersail::ZfClient::Client::ZAclManager,
               process_instance: Intersail::ZfClient::Client::ZProcessInstanceManager,
               process_def: Intersail::ZfClient::Client::ZProcessDefManager,
-              activity_def: Intersail::ZfClient::Client::ZActivityDefManager
+              activity_def: Intersail::ZfClient::Client::ZActivityDefManager,
+              transition_def: Intersail::ZfClient::Client::ZTransitionDefManager,
+              property_def: Intersail::ZfClient::Client::ZPropertyDefManager
           }
         end
 

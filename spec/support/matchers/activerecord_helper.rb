@@ -50,7 +50,7 @@ module Helpers
 
     RSpec::Matchers.define :be_buildable_from_hash do
       match do |actual|
-        expect(actual.class.from_hash(actual.as_json).serializable_hash).to be == actual.as_json
+        expect(actual.class.from_hash(actual.as_json).serializable_hash).to match_array(actual.as_json)
       end
     end
   end

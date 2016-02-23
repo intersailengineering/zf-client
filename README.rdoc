@@ -71,3 +71,7 @@ metodo fornito; i risultati saranno poi mostrati come hash
 === opzione raw
 Nel caso si passi al client il metodo "raw" il risultato ritornato sarà sempre un'hash, e.g.:
     client.user_manager.raw.read(1)
+
+== Models
+Il metodo attributes di un model contiene un hash in cui le chiavi rappresentano gli attributi da serializzare,
+ed i valori rappresentano i valori di default degli attributi in caso siano valorizzati con nil.

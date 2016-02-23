@@ -17,6 +17,10 @@ module Intersail
         def attributes_to_include
           raise StandardError, "You need to define attributes_to_include method"
         end
+
+        def read_attribute_for_serialization(key)
+          send(key).nil? ? attributes.fetch(key) : send(key)
+        end
       end
     end
   end
