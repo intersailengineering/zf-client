@@ -7,6 +7,7 @@ module Intersail
 
       # Attributes
       attr_accessor :id
+      attr_accessor :entity_id
       attr_accessor :name
       attr_accessor :type
       attr_accessor :in_param_string
@@ -14,6 +15,9 @@ module Intersail
       attr_accessor :process_result
       attr_accessor :process_definition_id
       attr_accessor :enabled
+      attr_accessor :deletable
+      attr_accessor :deletable_message
+
       # Attributes that default to 0
       def zero_attributes
         [:id]
@@ -28,6 +32,7 @@ module Intersail
       def attributes
         {
             "id" => nil,
+            "entity_id" => nil,
             "name" => nil,
             "type" => 0,
             "in_param_string" => nil,

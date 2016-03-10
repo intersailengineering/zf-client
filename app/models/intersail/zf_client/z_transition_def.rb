@@ -7,6 +7,7 @@ module Intersail
 
       # Attributes
       attr_accessor :id
+      attr_accessor :entity_id
       attr_accessor :name
       attr_accessor :activity_result
       attr_accessor :rules
@@ -18,6 +19,8 @@ module Intersail
       attr_accessor :user_change_required
       attr_accessor :comment_title
       attr_accessor :reverse_transition_id
+      attr_accessor :deletable
+      attr_accessor :deletable_message
 
       # Attributes that default to 0
       def zero_attributes
@@ -34,6 +37,7 @@ module Intersail
       def attributes
         {
             "id" => nil,
+            "entity_id" => nil,
             "name" => nil,
             "activity_result" => 0,
             "rules" => nil,

@@ -12,9 +12,10 @@ module Intersail
       attr_accessor :type
       attr_accessor :process_def_id
       attr_accessor :default_value
-      attr_accessor :constraint_definition
       attr_accessor :read_only
       attr_accessor :internal_property
+      attr_accessor :deletable
+      attr_accessor :deletable_message
 
       # Attributes that default to 0
       def zero_attributes
@@ -34,7 +35,6 @@ module Intersail
             "type" => 0,
             "process_def_id" => 0,
             "default_value" => nil,
-            "constraint_definition" => nil,
             "read_only" => 0,
             "internal_property" => 0
         }

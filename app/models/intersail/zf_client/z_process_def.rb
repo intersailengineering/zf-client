@@ -13,8 +13,9 @@ module Intersail
       attr_accessor :activities
       attr_accessor :transitions
       attr_accessor :properties
-      attr_accessor :permissions
-      attr_accessor :trigger_defs
+      attr_accessor :deletable
+      attr_accessor :deletable_message
+      attr_accessor :diagram_data
 
       # Attributes that default to 0
       def zero_attributes
@@ -38,8 +39,7 @@ module Intersail
             "activities" => [],
             "transitions" => [],
             "properties" => [],
-            "permissions" => [],
-            "trigger_defs" => []
+            "diagram_data" => nil
         }
       end
 
